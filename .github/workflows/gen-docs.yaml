@@ -1,0 +1,53 @@
+name: Automatically build squid documentation
+
+on:
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+  workflow_dispatch:
+  schedule:
+    - cron: '5 2 * * *'
+
+jobs:
+  gen-docs:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Install prerequisite Linux packages
+        run: |
+          # required for "apt-get build-dep" to work
+          sudo sed --in-place -E 's/^(Types: deb)$/\1 deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get --quiet=2 update
+          sudo apt-get --quiet=2 build-dep squid
+          sudo apt-get --quiet=2 install libtool-bin doxygen graphviz pdf2svg
+
+
+      - name: Checkout Docs
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
+
+      - name: Checkout Squid sources
+        uses: actions/checkout@v5
+        with:
+          repository: squid-cache/squid
+          path: squid
+
+      - name: Prepare squid sources
+        working-directory: squid
+        run: |
+          ./bootstrap.sh
+          . ./test-suite/buildtests/layer-02-maximus.opts
+          eval ./configure $DISTCHECK_CONFIGURE_FLAGS
+
+      - name: Build programming guide
+        run: |
+          doxygen doxyfile
+
+      - name: update self
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "automated update"
+          add: "./docs"
+          push: true
