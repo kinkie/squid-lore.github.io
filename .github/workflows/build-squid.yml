@@ -1,0 +1,45 @@
+name: Build Squid
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-squid:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Install prerequisite Linux packages
+        run: |
+          # required for "apt-get build-dep" to work
+          sudo sed --in-place -E 's/^(Types: deb)$/\1 deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get --quiet=2 update
+          sudo apt-get --quiet=2 build-dep squid
+          sudo apt-get --quiet=2 install libtool-bin
+
+      - name: Checkout Squid sources
+        uses: actions/checkout@v4
+        with:
+          repository: squid-cache/squid
+          path: squid
+
+      - name: Bootstrap Squid
+        working-directory: squid
+        run: ./bootstrap.sh
+
+      - name: Configure Squid
+        working-directory: squid
+        run: ./configure --with-openssl
+
+      - name: Build Squid
+        working-directory: squid
+        run: make -j`nproc`
+
+      - name: Install Squid
+        working-directory: squid
+        run: |
+          sudo make install
+          sudo chown -R nobody:nogroup /usr/local/squid
