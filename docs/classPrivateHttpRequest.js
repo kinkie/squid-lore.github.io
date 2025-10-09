@@ -57,7 +57,7 @@ var classPrivateHttpRequest =
     [ "MEMPROXY_CLASS", "classPrivateHttpRequest.html#ab5fc70de129f504c0265fd064d478141", null ],
     [ "multipartRangeRequest", "classPrivateHttpRequest.html#a52c61e6b8c61c28ff10381895aa114a9", null ],
     [ "notes", "classPrivateHttpRequest.html#a88c3369b97fa30b60dc234b21dda9b91", null ],
-    [ "pack", "classPrivateHttpRequest.html#a1ccba1a49359586df5419373d1a5fe4b", null ],
+    [ "pack", "classPrivateHttpRequest.html#a54b1b1d850d85e6ad33ff19febb6adc8", null ],
     [ "packFirstLineInto", "classPrivateHttpRequest.html#a4b8c93ad725acc2569f8e9afd3ba2554", null ],
     [ "packInto", "classPrivateHttpRequest.html#a2246a9adc15d8fdbbd9c25cb3e35460f", null ],
     [ "parse", "classPrivateHttpRequest.html#ab7bc7675bb66bcd700cee04661290d21", null ],

@@ -321,7 +321,7 @@ Variables</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">public</span>: \</div>
 <div class="line">        <span class="keywordtype">void</span> *toCbdata()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="keyword">this</span>; } \</div>
 <div class="line">    <span class="keyword">private</span>:</div>
-</div><!-- fragment --><p>cbdata-enables a non-final CbdataParent-derived class T in a hierarchy. Using this macro is required to be able to create cbdata pointers in T constructors, when the current vtable is still pointing to T::toCbdata() that would have been pure without this macro, leading to FATAL runtime <a class="el" href="main_8cc.html#a8f22a6a804b53e5fb1655c378f1faa52">OnTerminate()</a> calls. However, assuming that the final cbdata pointer will still point to T::this is risky &ndash; multiple inheritance changes "this"!</p>
+</div><!-- fragment --><p>cbdata-enables a non-final CbdataParent-derived class T in a hierarchy. Using this macro is required to be able to create cbdata pointers in T constructors, when the current vtable is still pointing to T::toCbdata() that would have been pure without this macro, leading to FATAL runtime <a class="el" href="pinger_8cc.html#a8f22a6a804b53e5fb1655c378f1faa52">OnTerminate()</a> calls. However, assuming that the final cbdata pointer will still point to T::this is risky &ndash; multiple inheritance changes "this"!</p>
 <p>sets the class declaration section to "private" use this at the start of your class declaration for consistency sake </p>
 
 <p class="definition">Definition at line <a class="el" href="cbdata_8h_source.html#l00311">311</a> of file <a class="el" href="cbdata_8h_source.html">cbdata.h</a>.</p>

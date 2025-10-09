@@ -1296,36 +1296,36 @@ $(document).ready(function(){initNavTree('net__db_8cc_source.html',''); initResi
 <div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span>        <span class="keywordflow">if</span> ( !addr.<a class="code hl_function" href="classIp_1_1Address.html#a6533c101544f6cf997406b3676849b3d">isIPv4</a>() )</div>
 <div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span>            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span> </div>
-<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>        buf[i] = (char) <a class="code hl_enumvalue" href="enums_8h.html#a157d5577a5b2f5986037d0d09c7dc77dab70571a83018b172dbc746d1b9ac9540">NETDB_EX_NETWORK</a>;</div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>        ++i;</div>
-<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span> </div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>        addr.<a class="code hl_function" href="classIp_1_1Address.html#ac3a3018afdc4821b005d685cf7149b9b">getInAddr</a>(line_addr);</div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>        memcpy(&amp;buf[i], &amp;line_addr, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> in_addr));</div>
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span> </div>
-<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>        i += <span class="keyword">sizeof</span>(<span class="keyword">struct </span>in_addr);</div>
+<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>        <span class="keywordflow">if</span> (i + rec_sz &gt; 4096) {</div>
+<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>            s-&gt;<a class="code hl_function" href="classStoreEntry.html#acb2597cf8038d0f9932b34f77a08345b">append</a>(buf, i);</div>
+<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span>            i = 0;</div>
+<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>        }</div>
+<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span> </div>
+<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>        buf[i] = (char) <a class="code hl_enumvalue" href="enums_8h.html#a157d5577a5b2f5986037d0d09c7dc77dab70571a83018b172dbc746d1b9ac9540">NETDB_EX_NETWORK</a>;</div>
+<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>        ++i;</div>
 <div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span> </div>
-<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>        buf[i] = (char) <a class="code hl_enumvalue" href="enums_8h.html#a157d5577a5b2f5986037d0d09c7dc77da795f100edbd5a1aa5d11fea512a18621">NETDB_EX_RTT</a>;</div>
-<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>        ++i;</div>
+<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>        addr.<a class="code hl_function" href="classIp_1_1Address.html#ac3a3018afdc4821b005d685cf7149b9b">getInAddr</a>(line_addr);</div>
+<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>        memcpy(&amp;buf[i], &amp;line_addr, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> in_addr));</div>
 <div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span> </div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>        j = htonl((<span class="keywordtype">int</span>) (n-&gt;<a class="code hl_variable" href="classnetdbEntry.html#aeb58697c7277e94de50468abcf1756b3">rtt</a> * 1000));</div>
+<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>        i += <span class="keyword">sizeof</span>(<span class="keyword">struct </span>in_addr);</div>
 <div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span> </div>
-<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>        memcpy(&amp;buf[i], &amp;j, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
-<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span> </div>
-<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span>        i += <span class="keyword">sizeof</span>(<a class="code hl_variable" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>);</div>
-<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span> </div>
-<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>        buf[i] = (char) <a class="code hl_enumvalue" href="enums_8h.html#a157d5577a5b2f5986037d0d09c7dc77da61ba80344a8a716c4ce6732e5b7e7ff9">NETDB_EX_HOPS</a>;</div>
-<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>        ++i;</div>
+<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>        buf[i] = (char) <a class="code hl_enumvalue" href="enums_8h.html#a157d5577a5b2f5986037d0d09c7dc77da795f100edbd5a1aa5d11fea512a18621">NETDB_EX_RTT</a>;</div>
+<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>        ++i;</div>
+<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span> </div>
+<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>        j = htonl((<span class="keywordtype">int</span>) (n-&gt;<a class="code hl_variable" href="classnetdbEntry.html#aeb58697c7277e94de50468abcf1756b3">rtt</a> * 1000));</div>
+<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span> </div>
+<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>        memcpy(&amp;buf[i], &amp;j, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
 <div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span> </div>
-<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>        j = htonl((<span class="keywordtype">int</span>) (n-&gt;<a class="code hl_variable" href="classnetdbEntry.html#a5033ad6c7a825a566df038c6008834a2">hops</a> * 1000));</div>
+<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>        i += <span class="keyword">sizeof</span>(<a class="code hl_variable" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>);</div>
 <div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span> </div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>        memcpy(&amp;buf[i], &amp;j, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span> </div>
-<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>        i += <span class="keyword">sizeof</span>(<a class="code hl_variable" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>);</div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span> </div>
-<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>        <span class="keywordflow">if</span> (i + rec_sz &gt; 4096) {</div>
-<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>            s-&gt;<a class="code hl_function" href="classStoreEntry.html#acb2597cf8038d0f9932b34f77a08345b">append</a>(buf, i);</div>
-<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>            i = 0;</div>
-<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>        }</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>        buf[i] = (char) <a class="code hl_enumvalue" href="enums_8h.html#a157d5577a5b2f5986037d0d09c7dc77da61ba80344a8a716c4ce6732e5b7e7ff9">NETDB_EX_HOPS</a>;</div>
+<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>        ++i;</div>
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span> </div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>        j = htonl((<span class="keywordtype">int</span>) (n-&gt;<a class="code hl_variable" href="classnetdbEntry.html#a5033ad6c7a825a566df038c6008834a2">hops</a> * 1000));</div>
+<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span> </div>
+<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>        memcpy(&amp;buf[i], &amp;j, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span> </div>
+<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>        i += <span class="keyword">sizeof</span>(<a class="code hl_variable" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>);</div>
 <div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>    }</div>
 <div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span> </div>
 <div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>    <span class="keywordflow">if</span> (i &gt; 0) {</div>
@@ -1469,7 +1469,7 @@ $(document).ready(function(){initNavTree('net__db_8cc_source.html',''); initResi
 <div class="ttc" id="aCachePeers_8h_html"><div class="ttname"><a href="CachePeers_8h.html">CachePeers.h</a></div></div>
 <div class="ttc" id="aFwdState_8h_html"><div class="ttname"><a href="FwdState_8h.html">FwdState.h</a></div></div>
 <div class="ttc" id="aHttpReply_8h_html"><div class="ttname"><a href="HttpReply_8h.html">HttpReply.h</a></div></div>
-<div class="ttc" id="aIcmpSquid_8cc_html_acdab1b7e33ad534cd99d66618cc51d9f"><div class="ttname"><a href="IcmpSquid_8cc.html#acdab1b7e33ad534cd99d66618cc51d9f">icmpEngine</a></div><div class="ttdeci">IcmpSquid icmpEngine</div><div class="ttdef"><b>Definition</b> <a href="IcmpSquid_8cc_source.html#l00027">IcmpSquid.cc:27</a></div></div>
+<div class="ttc" id="aIcmpSquid_8cc_html_acdab1b7e33ad534cd99d66618cc51d9f"><div class="ttname"><a href="IcmpSquid_8cc.html#acdab1b7e33ad534cd99d66618cc51d9f">icmpEngine</a></div><div class="ttdeci">IcmpSquid icmpEngine</div><div class="ttdef"><b>Definition</b> <a href="IcmpSquid_8cc_source.html#l00028">IcmpSquid.cc:28</a></div></div>
 <div class="ttc" id="aIcmpSquid_8h_html"><div class="ttname"><a href="IcmpSquid_8h.html">IcmpSquid.h</a></div></div>
 <div class="ttc" id="aMemObject_8h_html"><div class="ttname"><a href="MemObject_8h.html">MemObject.h</a></div></div>
 <div class="ttc" id="aModDevPoll_8cc_html_a439227feff9d7f55384e8780cfc2eb82"><div class="ttname"><a href="ModDevPoll_8cc.html#a439227feff9d7f55384e8780cfc2eb82">size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition</b> <a href="ModDevPoll_8cc_source.html#l00070">ModDevPoll.cc:70</a></div></div>
@@ -1486,7 +1486,7 @@ $(document).ready(function(){initNavTree('net__db_8cc_source.html',''); initResi
 <div class="ttc" id="acbdata_8h_html"><div class="ttname"><a href="cbdata_8h.html">cbdata.h</a></div></div>
 <div class="ttc" id="acbdata_8h_html_a4710a3530194cffbc7f74fa2b2c4529d"><div class="ttname"><a href="cbdata_8h.html#a4710a3530194cffbc7f74fa2b2c4529d">CBDATA_CLASS_INIT</a></div><div class="ttdeci">#define CBDATA_CLASS_INIT(type)</div><div class="ttdef"><b>Definition</b> <a href="cbdata_8h_source.html#l00325">cbdata.h:325</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html"><div class="ttname"><a href="classAnyP_1_1Uri.html">AnyP::Uri</a></div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00031">Uri.h:32</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_aab379cecc273683d9744197a8a2efe3f"><div class="ttname"><a href="classAnyP_1_1Uri.html#aab379cecc273683d9744197a8a2efe3f">AnyP::Uri::host</a></div><div class="ttdeci">void host(const char *src)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00142">Uri.cc:142</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_aab379cecc273683d9744197a8a2efe3f"><div class="ttname"><a href="classAnyP_1_1Uri.html#aab379cecc273683d9744197a8a2efe3f">AnyP::Uri::host</a></div><div class="ttdeci">void host(const char *src)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00154">Uri.cc:154</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_aff2c3402a1b8f1ebc50bc6a3e5933708"><div class="ttname"><a href="classAnyP_1_1Uri.html#aff2c3402a1b8f1ebc50bc6a3e5933708">AnyP::Uri::userInfo</a></div><div class="ttdeci">void userInfo(const SBuf &amp;s)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00070">Uri.h:70</a></div></div>
 <div class="ttc" id="aclassCachePeer_html"><div class="ttname"><a href="classCachePeer.html">CachePeer</a></div><div class="ttdef"><b>Definition</b> <a href="CachePeer_8h_source.html#l00028">CachePeer.h:29</a></div></div>
 <div class="ttc" id="aclassCachePeer_html_a40813ba2a7cf12d12260d2dfeb3b1314"><div class="ttname"><a href="classCachePeer.html#a40813ba2a7cf12d12260d2dfeb3b1314">CachePeer::http_port</a></div><div class="ttdeci">unsigned short http_port</div><div class="ttdef"><b>Definition</b> <a href="CachePeer_8h_source.html#l00104">CachePeer.h:104</a></div></div>
@@ -1509,7 +1509,7 @@ $(document).ready(function(){initNavTree('net__db_8cc_source.html',''); initResi
 <div class="ttc" id="aclassHttpRequest_html_af191362e7cf9b99f7f15dd20a0076e89"><div class="ttname"><a href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">HttpRequest::url</a></div><div class="ttdeci">AnyP::Uri url</div><div class="ttdoc">the request URI</div><div class="ttdef"><b>Definition</b> <a href="HttpRequest_8h_source.html#l00115">HttpRequest.h:115</a></div></div>
 <div class="ttc" id="aclassHttp_1_1Message_html_afcb0c1d278e61a1379032790c427788d"><div class="ttname"><a href="classHttp_1_1Message.html#afcb0c1d278e61a1379032790c427788d">Http::Message::http_ver</a></div><div class="ttdeci">AnyP::ProtocolVersion http_ver</div><div class="ttdef"><b>Definition</b> <a href="http_2Message_8h_source.html#l00072">Message.h:72</a></div></div>
 <div class="ttc" id="aclassHttp_1_1StatusLine_html_af852e58bb3e96bc41cd16787b0a7d7db"><div class="ttname"><a href="classHttp_1_1StatusLine.html#af852e58bb3e96bc41cd16787b0a7d7db">Http::StatusLine::status</a></div><div class="ttdeci">Http::StatusCode status() const</div><div class="ttdoc">retrieve the status code for this status line</div><div class="ttdef"><b>Definition</b> <a href="StatusLine_8h_source.html#l00045">StatusLine.h:45</a></div></div>
-<div class="ttc" id="aclassIcmpSquid_html_a02d200a157749d7c1481c9da33f05d8e"><div class="ttname"><a href="classIcmpSquid.html#a02d200a157749d7c1481c9da33f05d8e">IcmpSquid::DomainPing</a></div><div class="ttdeci">void DomainPing(Ip::Address &amp;to, const char *domain)</div><div class="ttdef"><b>Definition</b> <a href="IcmpSquid_8cc_source.html#l00178">IcmpSquid.cc:178</a></div></div>
+<div class="ttc" id="aclassIcmpSquid_html_a02d200a157749d7c1481c9da33f05d8e"><div class="ttname"><a href="classIcmpSquid.html#a02d200a157749d7c1481c9da33f05d8e">IcmpSquid::DomainPing</a></div><div class="ttdeci">void DomainPing(Ip::Address &amp;to, const char *domain)</div><div class="ttdef"><b>Definition</b> <a href="IcmpSquid_8cc_source.html#l00206">IcmpSquid.cc:206</a></div></div>
 <div class="ttc" id="aclassIp_1_1Address_html"><div class="ttname"><a href="classIp_1_1Address.html">Ip::Address</a></div><div class="ttdef"><b>Definition</b> <a href="ip_2Address_8h_source.html#l00042">Address.h:43</a></div></div>
 <div class="ttc" id="aclassIp_1_1Address_html_a00a47f51e0c2b78115495af295924aee"><div class="ttname"><a href="classIp_1_1Address.html#a00a47f51e0c2b78115495af295924aee">Ip::Address::toStr</a></div><div class="ttdeci">char * toStr(char *buf, const unsigned int blen, int force=AF_UNSPEC) const</div><div class="ttdef"><b>Definition</b> <a href="ip_2Address_8cc_source.html#l00804">Address.cc:804</a></div></div>
 <div class="ttc" id="aclassIp_1_1Address_html_a6533c101544f6cf997406b3676849b3d"><div class="ttname"><a href="classIp_1_1Address.html#a6533c101544f6cf997406b3676849b3d">Ip::Address::isIPv4</a></div><div class="ttdeci">bool isIPv4() const</div><div class="ttdef"><b>Definition</b> <a href="ip_2Address_8cc_source.html#l00178">Address.cc:178</a></div></div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s_0',['s',['../classhtcpStuff.html#a945aae55462d707343b63cfe4ef8bb7e',1,'htcpStuff::S'],['../classAnyP_1_1PortCfg.html#abfa023ef22cc4d8da066377ac34cf820',1,'AnyP::PortCfg::s'],['../classIp_1_1Address__list.html#a4aa0250d41de83d565e2fb5a2eedaa31',1,'Ip::Address_list::s'],['../classns.html#af04cc7f9539281e1e68ca1cf440c51bf',1,'ns::S']]],
+  ['s_0',['s',['../classIp_1_1Address__list.html#a4aa0250d41de83d565e2fb5a2eedaa31',1,'Ip::Address_list::s'],['../classns.html#af04cc7f9539281e1e68ca1cf440c51bf',1,'ns::S'],['../classhtcpStuff.html#a945aae55462d707343b63cfe4ef8bb7e',1,'htcpStuff::S'],['../classAnyP_1_1PortCfg.html#abfa023ef22cc4d8da066377ac34cf820',1,'AnyP::PortCfg::s']]],
   ['s_5fbox_1',['S_BOX',['../encrypt_8c.html#a843cecad13a9c3d25e8fbc2394b8301e',1,'encrypt.c']]],
   ['s_5fiinitcount_2',['s_iInitCount',['../windows__service_8cc.html#a0358fe72911d23c9033873308f19c304',1,'windows_service.cc']]],
   ['s_5fmaxage_3',['s_maxage',['../classHttpHdrCc.html#af10eb872efd1ba9b443b4ac918d5b1c1',1,'HttpHdrCc']]],
@@ -216,7 +216,7 @@ var searchData=
   ['sm_5ffuncs_213',['SM_FUNCS',['../classFtp_1_1Relay.html#ad09d0b6e5afa5bd515ba10cedddd5011',1,'Ftp::Relay']]],
   ['smsgid_214',['smsgid',['../classDiskdIOStrategy.html#aeac5e625045a8acddd0d404e16bde9b0',1,'DiskdIOStrategy']]],
   ['sname_215',['sname',['../structSMBDOMAIN.html#a30ad7bf9fc9e458c0eb4c85af7c3c197',1,'SMBDOMAIN']]],
-  ['snmp_216',['snmp',['../classSquidConfig.html#a149daa8fc2d498c277f56095c092d1ec',1,'SquidConfig::Snmp'],['../classSquidConfig.html#ad05c06f2f73ad46dd9ec88af424fdfa6',1,'SquidConfig::snmp'],['../classSquidConfig.html#ae655d3aaef63a37e4b30c5438180536e',1,'SquidConfig::snmp']]],
+  ['snmp_216',['snmp',['../classSquidConfig.html#ad05c06f2f73ad46dd9ec88af424fdfa6',1,'SquidConfig::snmp'],['../classSquidConfig.html#ae655d3aaef63a37e4b30c5438180536e',1,'SquidConfig::snmp'],['../classSquidConfig.html#a149daa8fc2d498c277f56095c092d1ec',1,'SquidConfig::Snmp']]],
   ['snmp_5fcommunity_217',['snmp_community',['../classACLFilledChecklist.html#a742143bcb4ce8ce98b1e85d040418f74',1,'ACLFilledChecklist']]],
   ['snmp_5ferrno_218',['snmp_errno',['../snmp__api__error_8c.html#a67d4be25eccbd98d161b4204afaadc8e',1,'snmp_api_error.c']]],
   ['snmp_5fincoming_219',['snmp_incoming',['../classSquidConfig.html#a91d22c6aed3555f32e76f0c5f0e1e0df',1,'SquidConfig']]],
@@ -385,7 +385,7 @@ var searchData=
   ['stopreason_382',['stopReason',['../classAsyncJob.html#aff483bcf321c5dab3100496b32e6a564',1,'AsyncJob']]],
   ['stoptime_383',['stopTime',['../classKid.html#a7c59a921a9176146c04e1ffb13eabed3',1,'Kid']]],
   ['storage_384',['storage',['../classCachePeers.html#a726744cb7cc05a301065c8f04b7e7c5e',1,'CachePeers::storage'],['../classKids.html#a69cc18dc809ab4546ff07438e0f753b2',1,'Kids::storage'],['../classSsl_1_1GlobalContextStorage.html#abfc6159bbbae3e4cfdfa6d7923c2ef57',1,'Ssl::GlobalContextStorage::storage']]],
-  ['store_385',['store',['../classRock_1_1HeaderUpdater.html#a9f51e4836b792ecea01b757df27487cd',1,'Rock::HeaderUpdater::store'],['../classShmWriter.html#a28fac6779e1f938a5e3af6b83a507867',1,'ShmWriter::store'],['../classMgr_1_1InfoActionData.html#ae4da067f13683c4e6a96cc39ad84f46e',1,'Mgr::InfoActionData::store'],['../classSquidConfig.html#a5aeed601093b2f141d94b3c25b9de79c',1,'SquidConfig::store'],['../classTestRock.html#afc65ef18c3f69608714a16d322fdf028',1,'TestRock::store'],['../classSquidConfig.html#adea47f8b8d273bd9c7e96838aae1b08a',1,'SquidConfig::Store']]],
+  ['store_385',['store',['../classSquidConfig.html#adea47f8b8d273bd9c7e96838aae1b08a',1,'SquidConfig::Store'],['../classRock_1_1HeaderUpdater.html#a9f51e4836b792ecea01b757df27487cd',1,'Rock::HeaderUpdater::store'],['../classShmWriter.html#a28fac6779e1f938a5e3af6b83a507867',1,'ShmWriter::store'],['../classMgr_1_1InfoActionData.html#ae4da067f13683c4e6a96cc39ad84f46e',1,'Mgr::InfoActionData::store'],['../classSquidConfig.html#a5aeed601093b2f141d94b3c25b9de79c',1,'SquidConfig::store'],['../classTestRock.html#afc65ef18c3f69608714a16d322fdf028',1,'TestRock::store']]],
   ['store_5f_386',['store_',['../classSBuf.html#ab42d5d2714baaf0d3d31a3ad6c5d6470',1,'SBuf::store_'],['../classAuth_1_1CredentialsCache.html#a81cc4d63b988318c41c5a4fc959f5b07',1,'Auth::CredentialsCache::store_']]],
   ['store_5fcheck_5fcachable_5fhist_387',['store_check_cachable_hist',['../store_8cc.html#a3064109f7c13475b46f9ffd7de34f70b',1,'store.cc']]],
   ['store_5fcomplete_5fstop_388',['store_complete_stop',['../classHierarchyLogEntry.html#a6bb47715bec32ed214916d6feb8d1167',1,'HierarchyLogEntry']]],

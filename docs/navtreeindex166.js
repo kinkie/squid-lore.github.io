@@ -1,5 +1,8 @@
 var NAVTREEINDEX166 =
 {
+"ssl_2gadgets_8h.html#a22edde69e4722995387cf536406cf23d":[10,0,0,5,31,15,42],
+"ssl_2gadgets_8h.html#a28721acc2f0f0a8c195c50b20f9b999c":[10,0,0,5,31,15,7],
+"ssl_2gadgets_8h.html#a34fb8e232d63350ec4b93e0cf045e773":[10,0,0,5,31,15,5],
 "ssl_2gadgets_8h.html#a364f10637b25ff6176f9cebbb2f25717":[10,0,0,5,31,15,4],
 "ssl_2gadgets_8h.html#a3bfba25b15c5254ae385f799348fbcfa":[10,0,0,5,31,15,9],
 "ssl_2gadgets_8h.html#a43e6998ba110ce6eb47c758eea5fb7fa":[10,0,0,5,31,15,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX166 =
 "store_8cc.html#ae1bbd473b3462e280451876eacbb301a":[10,0,0,5,297,16],
 "store_8cc.html#afa6a540609cf2302ac4b7e244ff32240":[10,0,0,5,297,30],
 "store_8cc.html#aff72a596f237f86af48a1c0e1402d1c5":[10,0,0,5,297,27],
-"store_8cc_source.html":[10,0,0,5,297],
-"store__client_8cc.html":[10,0,0,5,299],
-"store__client_8cc.html#a06631df680fe4de46f305a34874175f9":[10,0,0,5,299,7],
-"store__client_8cc.html#a1d6f3137e148014416e0812a317f853f":[10,0,0,5,299,1]
+"store_8cc_source.html":[10,0,0,5,297]
 };

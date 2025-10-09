@@ -1,5 +1,8 @@
 var NAVTREEINDEX81 =
 {
+"classHttpHeader.html#af87838abd8fbd3fa454ccf7abf16ebed":[9,0,341,40],
+"classHttpHeader.html#afe9724c0468f38fffbcdc2a694ddb47d":[9,0,341,13],
+"classHttpHeaderEntry.html":[9,0,342],
 "classHttpHeaderEntry.html#a025921b5978511f5aada21dab8a3c0de":[9,0,342,7],
 "classHttpHeaderEntry.html#a050d4ae5ab8ecf5cc8619c4e6b5682a5":[9,0,342,8],
 "classHttpHeaderEntry.html#a4dd4adacea1e2c2d0f22144272016722":[9,0,342,3],
@@ -135,7 +138,6 @@ var NAVTREEINDEX81 =
 "classHttpRequest.html#a19b570f00b03eb4673a67589271dc96a":[9,0,347,14],
 "classHttpRequest.html#a1bae7d6cc4199acf1be7425a14d64a79":[9,0,347,52],
 "classHttpRequest.html#a1c29607ef5b650f0c54691ecc85e8ea3":[9,0,347,53],
-"classHttpRequest.html#a1ccba1a49359586df5419373d1a5fe4b":[9,0,347,40],
 "classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54":[9,0,347,88],
 "classHttpRequest.html#a20051b7200c5420151d8f311b0d15c99":[9,0,347,34],
 "classHttpRequest.html#a20853132c742d7eebf16d495c8da4fe9":[9,0,347,2],
@@ -170,6 +172,7 @@ var NAVTREEINDEX81 =
 "classHttpRequest.html#a4b8c93ad725acc2569f8e9afd3ba2554":[9,0,347,41],
 "classHttpRequest.html#a4c85991ad24839b1dd5a8d232d7b524e":[9,0,347,57],
 "classHttpRequest.html#a52c61e6b8c61c28ff10381895aa114a9":[9,0,347,38],
+"classHttpRequest.html#a54b1b1d850d85e6ad33ff19febb6adc8":[9,0,347,40],
 "classHttpRequest.html#a5c031f584be4a77277cccd49b0d4cea1":[9,0,347,80],
 "classHttpRequest.html#a5f8f335cf16fa13580238d91973bc566":[9,0,347,83],
 "classHttpRequest.html#a600ede53c88970fc5727f7c2182d916e":[9,0,347,27],
@@ -246,8 +249,5 @@ var NAVTREEINDEX81 =
 "classHttpRequest.html#afcb0c1d278e61a1379032790c427788d":[9,0,347,81],
 "classHttpRequestMethod.html":[9,0,348],
 "classHttpRequestMethod.html#a1f2fdc9de654660793489d03d7e7ce84":[9,0,348,0],
-"classHttpRequestMethod.html#a294a18165164ba2ee6d0a7fba7d48f92":[9,0,348,15],
-"classHttpRequestMethod.html#a4851912268374a062e4498b383312f93":[9,0,348,12],
-"classHttpRequestMethod.html#a4efa328d87cb3bb4edb7468ff296c9fd":[9,0,348,18],
-"classHttpRequestMethod.html#a62e53a6953b813370bade644f30927b3":[9,0,348,11]
+"classHttpRequestMethod.html#a294a18165164ba2ee6d0a7fba7d48f92":[9,0,348,15]
 };

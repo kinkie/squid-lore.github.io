@@ -64,7 +64,7 @@ var classHttpStateData =
     [ "handleAdaptedHeader", "classHttpStateData.html#ab97cb5ceeb63c036ae02a8dbe6527b5c", null ],
     [ "handledEarlyAdaptationAbort", "classHttpStateData.html#a6053fb38d1c526556db94cb37187aa6e", null ],
     [ "handleMoreAdaptedBodyAvailable", "classHttpStateData.html#a53cf96be09b25777be97e0109f341390", null ],
-    [ "handleMoreRequestBodyAvailable", "classHttpStateData.html#ab9d8eb3796a4a996c3ef6716e1c830f4", null ],
+    [ "handleMoreRequestBodyAvailable", "classHttpStateData.html#adec78d9bcfb4abdb923ef3150cf8cf30", null ],
     [ "handleRequestBodyProducerAborted", "classHttpStateData.html#a07938dba6173cb5892c128c57483fd9f", null ],
     [ "handleRequestBodyProductionEnded", "classHttpStateData.html#a85ec4ffad5fd43c5cb43c563037cf218", null ],
     [ "handleStopRequest", "classHttpStateData.html#a26068238eb171775fcf80583f5d54dec", null ],

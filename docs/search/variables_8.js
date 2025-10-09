@@ -72,7 +72,7 @@ var searchData=
   ['high_5fpf_69',['high_pf',['../classSquidConfig.html#a5ce5bb95d0bac98071e8d775418ebfd7',1,'SquidConfig']]],
   ['high_5frptm_70',['high_rptm',['../classSquidConfig.html#af6d658e3036cdb252b413010dfed6a3f',1,'SquidConfig']]],
   ['highoffset_71',['highOffset',['../classAccessLogEntry_1_1CacheDetails.html#a5210a8077c0fd80a0f51172d4da8a40c',1,'AccessLogEntry::CacheDetails']]],
-  ['highwatermark_72',['highwatermark',['../classClientDelayPool.html#aafe32084cfa2bbb42fbed5add5351e94',1,'ClientDelayPool::highwatermark'],['../classSquidConfig.html#ad7d435f6d583f81e55095a81fd332aba',1,'SquidConfig::highWaterMark']]],
+  ['highwatermark_72',['highwatermark',['../classSquidConfig.html#ad7d435f6d583f81e55095a81fd332aba',1,'SquidConfig::highWaterMark'],['../classClientDelayPool.html#aafe32084cfa2bbb42fbed5add5351e94',1,'ClientDelayPool::highwatermark']]],
   ['hipc_73',['hipc',['../IcmpSquid_8cc.html#a8e735a6cc6533c76f83cd3548de2eff8',1,'hIpc:&#160;IcmpSquid.cc'],['../unlinkd_8cc.html#a8e735a6cc6533c76f83cd3548de2eff8',1,'hIpc:&#160;unlinkd.cc'],['../classHelper_1_1SessionBase.html#a6c3b8e6de1d7ccdf2211e8575a4a8015',1,'Helper::SessionBase::hIpc']]],
   ['hist_74',['hist',['../classPconnPool.html#a30ea18f0ac5e10fa0c2c737610c0d056',1,'PconnPool']]],
   ['history_75',['history',['../classComm_1_1Incoming.html#ac588da60f282c2eba6c3145211f68330',1,'Comm::Incoming']]],

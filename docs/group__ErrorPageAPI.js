@@ -41,7 +41,6 @@ var group__ErrorPageAPI =
       [ "reply", "classErrorState.html#a8958b50850b9f4b0d247cbc75c056b2f", null ],
       [ "request", "classErrorState.html#ac20438d9cd9b574a731b31bb5bff60b3", null ],
       [ "request", "classErrorState.html#ab81677194da82b5c4fef59b34268d27c", null ],
-      [ "request_hdrs", "classErrorState.html#abad8fd2e1c9c78aeef97b4a714d1b42d", null ],
       [ "response_", "classErrorState.html#ae166b6c5e857a740e4af39cad3495eaf", null ],
       [ "server_msg", "classErrorState.html#a900b604dae5df1955ac9ca4e2a2765f5", null ],
       [ "src_addr", "classErrorState.html#abae69d39090df491d71c8aaeea6d600a", null ],

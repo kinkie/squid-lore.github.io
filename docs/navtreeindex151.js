@@ -1,5 +1,6 @@
 var NAVTREEINDEX151 =
 {
+"group__FileFormatSwapStateAPI.html":[7,16,3],
 "group__FileSystems.html":[7,16],
 "group__IPCacheAPI.html":[7,2,11],
 "group__IPCacheAPI.html#ga01f4fb0a4852b5f21c596b57b75538a4":[7,2,11,10],
@@ -185,10 +186,10 @@ var NAVTREEINDEX151 =
 "group__Timeouts.html":[7,6],
 "group__UFS.html":[7,16,2],
 "group__compat.html":[7,0],
-"group__diskd.html":[7,16,2,1],
 "group__diskd.html":[7,16,1],
-"group__diskd.html#ga930e553b51fb797427225044aa9cd165":[7,16,1,4],
+"group__diskd.html":[7,16,2,1],
 "group__diskd.html#ga930e553b51fb797427225044aa9cd165":[7,16,2,1,4],
+"group__diskd.html#ga930e553b51fb797427225044aa9cd165":[7,16,1,4],
 "group__diskd.html#gac2d3520fa5be54fb4fa2c844ff61aefd":[7,16,1,5],
 "group__diskd.html#gac2d3520fa5be54fb4fa2c844ff61aefd":[7,16,2,1,5],
 "group__libsquid.html":[7,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX151 =
 "heap_8c.html#a1d9477f976ae34193df3c167b46fa3be":[10,0,0,3,9,24],
 "heap_8c.html#a268ab861ec35af399249cf2827114f36":[10,0,0,3,9,12],
 "heap_8c.html#a29d3956dd6e06e14b8ea0f7afa7c123b":[10,0,0,3,9,3],
-"heap_8c.html#a2b52c6eb3c2bdd5008df5cff4a8bb08b":[10,0,0,3,9,25],
-"heap_8c.html#a2b6d49ceb1e701a85f7084f8c0c02cfd":[10,0,0,3,9,28]
+"heap_8c.html#a2b52c6eb3c2bdd5008df5cff4a8bb08b":[10,0,0,3,9,25]
 };

@@ -40,7 +40,7 @@ var searchData=
   ['parsed_5f_37',['parsed_',['../classHttp_1_1One_1_1RequestParser.html#a922660c5e45414d2556782f27698f446',1,'Http::One::RequestParser::parsed_'],['../classParser_1_1BinaryTokenizer.html#a00dc68140076f85e938edd9d284958fc',1,'Parser::BinaryTokenizer::parsed_'],['../classParser_1_1Tokenizer.html#ad950974893a15479c433c594984f2cb9',1,'Parser::Tokenizer::parsed_']]],
   ['parsed_5fok_38',['parsed_ok',['../classHttp_1_1Stream.html#a19ce29fe9e19e5a7ea0f5dedc37895c2',1,'Http::Stream']]],
   ['parsedbumpedrequestcount_39',['parsedBumpedRequestCount',['../classConnStateData.html#aa8e7d3c1f7073ef1bcd21f91d53167a6',1,'ConnStateData']]],
-  ['parsedcount_40',['parsedcount',['../classHttpHeaderStat.html#ad520a6c10107beba8e0d619bce85a536',1,'HttpHeaderStat::parsedCount'],['../classHttpHdrRange.html#a4c2f0049bf3fa60936804b3c8f037656',1,'HttpHdrRange::ParsedCount']]],
+  ['parsedcount_40',['parsedcount',['../classHttpHdrRange.html#a4c2f0049bf3fa60936804b3c8f037656',1,'HttpHdrRange::ParsedCount'],['../classHttpHeaderStat.html#ad520a6c10107beba8e0d619bce85a536',1,'HttpHeaderStat::parsedCount']]],
   ['parsedcrl_41',['parsedCrl',['../classSecurity_1_1PeerOptions.html#a375473df387acbdd13b8aa23313cf5a5',1,'Security::PeerOptions']]],
   ['parseddhparams_42',['parsedDhParams',['../classSecurity_1_1ServerOptions.html#aa1d005f4ae3f97403278b24b36fa78eb',1,'Security::ServerOptions']]],
   ['parsedflags_43',['parsedFlags',['../classSecurity_1_1PeerOptions.html#a3963302e75b679b7c8ce1f38e0e354b9',1,'Security::PeerOptions']]],
