@@ -1,6 +1,5 @@
 var NAVTREEINDEX166 =
 {
-"ssl_2gadgets_8h.html#a364f10637b25ff6176f9cebbb2f25717":[10,0,0,5,31,15,4],
 "ssl_2gadgets_8h.html#a3bfba25b15c5254ae385f799348fbcfa":[10,0,0,5,31,15,9],
 "ssl_2gadgets_8h.html#a43e6998ba110ce6eb47c758eea5fb7fa":[10,0,0,5,31,15,0],
 "ssl_2gadgets_8h.html#a461b43d5bb04a3bb990826b943eeeef0":[10,0,0,5,31,15,15],
@@ -249,5 +248,6 @@ var NAVTREEINDEX166 =
 "store_8cc_source.html":[10,0,0,5,297],
 "store__client_8cc.html":[10,0,0,5,299],
 "store__client_8cc.html#a06631df680fe4de46f305a34874175f9":[10,0,0,5,299,7],
-"store__client_8cc.html#a1d6f3137e148014416e0812a317f853f":[10,0,0,5,299,1]
+"store__client_8cc.html#a1d6f3137e148014416e0812a317f853f":[10,0,0,5,299,1],
+"store__client_8cc.html#a2fd2037662d89a828948fdb1182b963b":[10,0,0,5,299,4]
 };

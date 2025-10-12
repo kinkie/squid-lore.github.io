@@ -11,7 +11,7 @@ var searchData=
   ['absolute_5f_8',['absolute_',['../classAnyP_1_1Uri.html#abdf4245564c9a130e7a0c93d89c5f631',1,'AnyP::Uri']]],
   ['absolutepath_5f_9',['absolutePath_',['../classAnyP_1_1Uri.html#a74442ad7b6365a66bc3e9e46bd6006f2',1,'AnyP::Uri']]],
   ['abuse_5fdetected_10',['abuse_detected',['../classHttp_1_1StateFlags.html#a78e5c53b2444b3a2df585f0078897f94',1,'Http::StateFlags']]],
-  ['accel_11',['accel',['../classSquidConfig.html#acf3a5393cee89bdde86ce50e0d15bbbd',1,'SquidConfig::Accel'],['../structClientHttpRequest_1_1Flags.html#a409fd4d5e3b72f06df2921bd417e0a5c',1,'ClientHttpRequest::Flags::accel']]],
+  ['accel_11',['accel',['../structClientHttpRequest_1_1Flags.html#a409fd4d5e3b72f06df2921bd417e0a5c',1,'ClientHttpRequest::Flags::accel'],['../classSquidConfig.html#acf3a5393cee89bdde86ce50e0d15bbbd',1,'SquidConfig::Accel']]],
   ['accelerated_12',['accelerated',['../classRequestFlags.html#a0e7db730c27abb7eac3b676961773797',1,'RequestFlags']]],
   ['accelsurrogate_13',['accelSurrogate',['../classAnyP_1_1TrafficMode.html#aa0f171063e54223defcc9bc0664156ec',1,'AnyP::TrafficMode']]],
   ['accept_5ffilter_14',['accept_filter',['../classSquidConfig.html#a42034dfa5edada430ff56dd8b28702f0',1,'SquidConfig']]],
