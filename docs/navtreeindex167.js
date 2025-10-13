@@ -245,8 +245,8 @@ var NAVTREEINDEX167 =
 "structClientInfo_1_1Protocol.html#aedaa41fe203c9c9bd8edbacea4a0809b":[9,0,177,1,2],
 "structComm_1_1ConnOpener_1_1Calls.html":[8,0,4,3,0],
 "structComm_1_1ConnOpener_1_1Calls.html":[9,0,4,3,0],
-"structComm_1_1ConnOpener_1_1Calls.html#aae8b6fcf9e2b055c1213aa71394ea5f9":[9,0,4,3,0,0],
 "structComm_1_1ConnOpener_1_1Calls.html#aae8b6fcf9e2b055c1213aa71394ea5f9":[8,0,4,3,0,0],
+"structComm_1_1ConnOpener_1_1Calls.html#aae8b6fcf9e2b055c1213aa71394ea5f9":[9,0,4,3,0,0],
 "structComm_1_1ConnOpener_1_1Calls.html#ac092d868fbaa99bad45b1c536e92150b":[8,0,4,3,0,1],
 "structComm_1_1ConnOpener_1_1Calls.html#ac092d868fbaa99bad45b1c536e92150b":[9,0,4,3,0,1],
 "structComm_1_1ConnOpener_1_1Calls.html#af9f586d204cf4379cc7bc8f9b10164b9":[8,0,4,3,0,2]
