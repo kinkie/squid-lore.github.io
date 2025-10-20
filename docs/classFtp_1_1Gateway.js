@@ -39,6 +39,7 @@ var classFtp_1_1Gateway =
     [ "dataComplete", "classFtp_1_1Gateway.html#a47b2b606d29c8e6f896d64a7eaa95176", null ],
     [ "dataConnection", "classFtp_1_1Gateway.html#abe247c57af2723e079c5dcef027a6209", null ],
     [ "dataRead", "classFtp_1_1Gateway.html#a290cd406dbdd4174f7591357d1a65805", null ],
+    [ "decodedRequestUriPath", "classFtp_1_1Gateway.html#a16944cd4c91908aff92c61f639f4661e", null ],
     [ "delayRead", "classFtp_1_1Gateway.html#a4938dc40a31e8b4d8ec7cf06e1ddcc20", null ],
     [ "deleteThis", "classFtp_1_1Gateway.html#a83973ca7a7663bb81ce0ba346b8bcd9f", null ],
     [ "done", "classFtp_1_1Gateway.html#aa50dcdcd8c3ab4a507ec3b2c3abe859a", null ],

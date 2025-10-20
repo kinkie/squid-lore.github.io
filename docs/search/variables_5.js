@@ -62,7 +62,7 @@ var searchData=
   ['err_5fstring_59',['err_string',['../ipc__win32_8cc.html#ae658a6baf68c1064bb4b880f944def46',1,'ipc_win32.cc']]],
   ['err_5ftype_5fstr_60',['err_type_str',['../stub__liberror_8cc.html#afe8c037be457b20a61004d716d9b2cd9',1,'err_type_str:&#160;stub_liberror.cc'],['../Error_8h.html#a990500e7cb37800698c00de693f7e7d4',1,'err_type_str:&#160;stub_liberror.cc']]],
   ['errcode_61',['errcode',['../classComm_1_1IoCallback.html#acdcff4e3bb8fe87dd1aca9da3d63a504',1,'Comm::IoCallback::errcode'],['../classComm_1_1TcpAcceptor.html#a78ce207ed444bc63b196c0af77e71766',1,'Comm::TcpAcceptor::errcode']]],
-  ['errcount_62',['errcount',['../classHttpHeaderFieldStat.html#af39269075e01d5148abec2fb6ca9c2de',1,'HttpHeaderFieldStat::errCount'],['../classEventLoop.html#a5ccd897f0545c14e5dd54ca34f633aa4',1,'EventLoop::errcount']]],
+  ['errcount_62',['errcount',['../classEventLoop.html#a5ccd897f0545c14e5dd54ca34f633aa4',1,'EventLoop::errcount'],['../classHttpHeaderFieldStat.html#af39269075e01d5148abec2fb6ca9c2de',1,'HttpHeaderFieldStat::errCount']]],
   ['errflag_63',['errflag',['../classStoreIOStateCb.html#abb9f6627441a2e261d65fe46d4f3c435',1,'StoreIOStateCb']]],
   ['errhtmltext_64',['errHtmlText',['../classSquidConfig.html#a063d0b52faea3b899ca8c58273cc182e',1,'SquidConfig']]],
   ['errindex_65',['errindex',['../structsnmp__pdu.html#a3e468d79c6ce84b37635e3895954947b',1,'snmp_pdu']]],
