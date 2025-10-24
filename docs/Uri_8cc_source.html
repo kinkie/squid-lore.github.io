@@ -764,478 +764,466 @@ $(document).ready(function(){initNavTree('Uri_8cc_source.html',''); initResizabl
 <div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
 <div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="comment">// no brackets implies we are looking at IPv4address or reg-name</span></div>
 <div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span> </div>
-<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_class" href="classCharacterSet.html">CharacterSet</a> IPv4chars = <a class="code hl_class" href="classCharacterSet.html">CharacterSet</a>(<span class="stringliteral">&quot;period&quot;</span>, <span class="stringliteral">&quot;.&quot;</span>) + <a class="code hl_variable" href="classCharacterSet.html#a578edbb48255e9df5e21dabb18cd8ab0">CharacterSet::DIGIT</a>;</div>
-<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <a class="code hl_class" href="classSBuf.html">SBuf</a> ipv4ish; <span class="comment">// IPv4address-ish</span></div>
-<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structtok.html">tok</a>.prefix(ipv4ish, IPv4chars)) {</div>
-<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>        <span class="comment">// This rejects non-IP addresses that our caller would have</span></div>
-<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>        <span class="comment">// otherwise mistaken for a domain name (e.g., &#39;127.0.0&#39; or &#39;1234.5&#39;).</span></div>
-<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>        <a class="code hl_class" href="classIp_1_1Address.html">Ip::Address</a> ipCheck;</div>
-<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>        <span class="keywordflow">if</span> (!ipCheck.<a class="code hl_function" href="classIp_1_1Address.html#a6eab37ec7f48b2d9461f38ab74488f5d">fromHost</a>(ipv4ish.<a class="code hl_function" href="classSBuf.html#a2a7fda503e54cb36b023dcaaab633f65">c_str</a>()))</div>
-<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;malformed IP address in uri-host&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span>    <span class="comment">// XXX: This code does not detect/reject some bad host values (e.g. `!#$%&amp;`).</span></div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    <span class="comment">// TODO: Add more checks here, after migrating the</span></div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    <span class="comment">// non-CONNECT uri-host parsing code to use us.</span></div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span> </div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    <a class="code hl_class" href="classSBuf.html">SBuf</a> otherHost; <span class="comment">// IPv4address-ish or reg-name-ish</span></div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    <span class="comment">// &quot;:&quot; is not in TCHAR so we will stop before any port specification</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structtok.html">tok</a>.prefix(otherHost, <a class="code hl_variable" href="classCharacterSet.html#a39ea7d258ef7016589124600be4f7c58">CharacterSet::TCHAR</a>))</div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>        <span class="keywordflow">return</span> otherHost;</div>
 <div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span> </div>
-<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>        <span class="keywordflow">return</span> ipv4ish;</div>
-<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>    }</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>    <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;malformed IPv4 address or host name in uri-host&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span>}</div>
+</div>
 <div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span> </div>
-<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    <span class="comment">// XXX: This code does not detect/reject some bad host values (e.g. &quot;!#$%&amp;&quot;).</span></div>
-<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    <span class="comment">// TODO: Add more checks here, after migrating the</span></div>
-<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    <span class="comment">// non-CONNECT uri-host parsing code to use us.</span></div>
-<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span> </div>
-<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    <a class="code hl_class" href="classSBuf.html">SBuf</a> otherHost; <span class="comment">// IPv4address-ish or reg-name-ish;</span></div>
-<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span>    <span class="comment">// &quot;:&quot; is not in TCHAR so we will stop before any port specification</span></div>
-<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structtok.html">tok</a>.prefix(otherHost, <a class="code hl_variable" href="classCharacterSet.html#a39ea7d258ef7016589124600be4f7c58">CharacterSet::TCHAR</a>))</div>
-<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>        <span class="keywordflow">return</span> otherHost;</div>
-<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span> </div>
-<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>    <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;malformed IPv4 address or host name in uri-host&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
-<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>}</div>
-</div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span><span class="keywordtype">int</span></div>
+<div class="foldopen" id="foldopen00690" data-start="{" data-end="}">
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a8966ac4c30797e6134204184dba13285">  690</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a8966ac4c30797e6134204184dba13285">AnyP::Uri::parsePort</a>(<a class="code hl_class" href="classParser_1_1Tokenizer.html">Parser::Tokenizer</a> &amp;<a class="code hl_struct" href="structtok.html">tok</a>)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structtok.html">tok</a>.skip(<span class="charliteral">&#39;0&#39;</span>))</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;zero or zero-prefixed port&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
 <div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span> </div>
-<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span><span class="keywordtype">int</span></div>
-<div class="foldopen" id="foldopen00702" data-start="{" data-end="}">
-<div class="line"><a id="l00702" name="l00702"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a8966ac4c30797e6134204184dba13285">  702</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a8966ac4c30797e6134204184dba13285">AnyP::Uri::parsePort</a>(<a class="code hl_class" href="classParser_1_1Tokenizer.html">Parser::Tokenizer</a> &amp;<a class="code hl_struct" href="structtok.html">tok</a>)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>    <span class="keywordflow">if</span> (<a class="code hl_struct" href="structtok.html">tok</a>.skip(<span class="charliteral">&#39;0&#39;</span>))</div>
-<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;zero or zero-prefixed port&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
-<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span> </div>
-<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    int64_t rawPort = 0;</div>
-<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    <span class="keywordflow">if</span> (!<a class="code hl_struct" href="structtok.html">tok</a>.int64(rawPort, 10, <span class="keyword">false</span>)) <span class="comment">// port = *DIGIT</span></div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;malformed or missing port&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>    int64_t rawPort = 0;</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span>    <span class="keywordflow">if</span> (!<a class="code hl_struct" href="structtok.html">tok</a>.int64(rawPort, 10, <span class="keyword">false</span>)) <span class="comment">// port = *DIGIT</span></div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;malformed or missing port&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span> </div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>    <a class="code hl_define" href="Assure_8h.html#a1fcca4cd6cfc3b9f835aa3652eb0c2f5">Assure</a>(rawPort &gt; 0);</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>    <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespaceAnyP.html#ab24b85a8b8fc74bc945707195c85d228">KnownPort</a> portMax = 65535; <span class="comment">// TODO: Make this a class-scope constant and REuse it.</span></div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>    <span class="keyword">constexpr</span> <span class="keyword">auto</span> portStorageMax = std::numeric_limits&lt;Port::value_type&gt;::max();</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>    <span class="keyword">static_assert</span>(!<a class="code hl_function" href="SquidMath_8h.html#ae851012a120157350a79dbdd4e9d87fd">Less</a>(portStorageMax, portMax), <span class="stringliteral">&quot;Port type can represent the maximum valid port number&quot;</span>);</div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="SquidMath_8h.html#ae851012a120157350a79dbdd4e9d87fd">Less</a>(portMax, rawPort))</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;huge port&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span> </div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>    <span class="comment">// TODO: Return KnownPort after migrating the non-CONNECT uri-host parsing</span></div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>    <span class="comment">// code to use us (so that foundPort &quot;int&quot; disappears or starts using Port).</span></div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>    <span class="keywordflow">return</span> NaturalCast&lt;int&gt;(rawPort);</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>}</div>
+</div>
 <div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span> </div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>    <a class="code hl_define" href="Assure_8h.html#a1fcca4cd6cfc3b9f835aa3652eb0c2f5">Assure</a>(rawPort &gt; 0);</div>
-<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>    <span class="keyword">constexpr</span> <a class="code hl_typedef" href="namespaceAnyP.html#ab24b85a8b8fc74bc945707195c85d228">KnownPort</a> portMax = 65535; <span class="comment">// TODO: Make this a class-scope constant and REuse it.</span></div>
-<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>    <span class="keyword">constexpr</span> <span class="keyword">auto</span> portStorageMax = std::numeric_limits&lt;Port::value_type&gt;::max();</div>
-<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>    <span class="keyword">static_assert</span>(!<a class="code hl_function" href="SquidMath_8h.html#ae851012a120157350a79dbdd4e9d87fd">Less</a>(portStorageMax, portMax), <span class="stringliteral">&quot;Port type can represent the maximum valid port number&quot;</span>);</div>
-<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="SquidMath_8h.html#ae851012a120157350a79dbdd4e9d87fd">Less</a>(portMax, rawPort))</div>
-<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classTextException.html">TextException</a>(<span class="stringliteral">&quot;huge port&quot;</span>, <a class="code hl_define" href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a>());</div>
-<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span> </div>
-<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>    <span class="comment">// TODO: Return KnownPort after migrating the non-CONNECT uri-host parsing</span></div>
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>    <span class="comment">// code to use us (so that foundPort &quot;int&quot; disappears or starts using Port).</span></div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>    <span class="keywordflow">return</span> NaturalCast&lt;int&gt;(rawPort);</div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>}</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span><span class="keywordtype">void</span></div>
+<div class="foldopen" id="foldopen00712" data-start="{" data-end="}">
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a27ce3a39f2386734d173d9ae97b614e0">  712</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a27ce3a39f2386734d173d9ae97b614e0">AnyP::Uri::touch</a>()</div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>{</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>    absolute_.clear();</div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>    authorityHttp_.clear();</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>    authorityWithPort_.clear();</div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>    absolutePath_.clear();</div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>}</div>
 </div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span> </div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span><span class="keywordtype">void</span></div>
-<div class="foldopen" id="foldopen00724" data-start="{" data-end="}">
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a27ce3a39f2386734d173d9ae97b614e0">  724</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a27ce3a39f2386734d173d9ae97b614e0">AnyP::Uri::touch</a>()</div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>{</div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>    absolute_.clear();</div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>    authorityHttp_.clear();</div>
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>    authorityWithPort_.clear();</div>
-<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>    absolutePath_.clear();</div>
-<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>}</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span> </div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span><a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;</div>
+<div class="foldopen" id="foldopen00721" data-start="{" data-end="}">
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a2c86b2285f5a7f86cd1862e8d7b8fe48">  721</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a2c86b2285f5a7f86cd1862e8d7b8fe48">AnyP::Uri::authority</a>(<span class="keywordtype">bool</span> requirePort)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>    <span class="keywordflow">if</span> (authorityHttp_.isEmpty()) {</div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span> </div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>        <span class="comment">// both formats contain Host/IP</span></div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>        authorityWithPort_.<a class="code hl_function" href="classSBuf.html#aa12ede16b167c60722946fc8fe9292da">append</a>(host());</div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>        authorityHttp_ = authorityWithPort_;</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span> </div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="eDirectory_2ldap__backend_8cc.html#a63c89c04d1feae07ca35558055155ffb">port</a>().has_value()) {</div>
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>            authorityWithPort_.<a class="code hl_function" href="classSBuf.html#a511d819cac33f02d5c50352d4a87c963">appendf</a>(<span class="stringliteral">&quot;:%hu&quot;</span>, *<a class="code hl_variable" href="eDirectory_2ldap__backend_8cc.html#a63c89c04d1feae07ca35558055155ffb">port</a>());</div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>            <span class="comment">// authorityHttp_ only has :port for known non-default ports</span></div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="eDirectory_2ldap__backend_8cc.html#a63c89c04d1feae07ca35558055155ffb">port</a>() != getScheme().defaultPort())</div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>                authorityHttp_ = authorityWithPort_;</div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>        }</div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>        <span class="comment">// else XXX: We made authorityWithPort_ that does not have a port.</span></div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span>        <span class="comment">// TODO: Audit callers and refuse to give out broken authorityWithPort_.</span></div>
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>    }</div>
+<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span> </div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>    <span class="keywordflow">return</span> requirePort ? authorityWithPort_ : authorityHttp_;</div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>}</div>
 </div>
-<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span> </div>
-<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span><a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;</div>
-<div class="foldopen" id="foldopen00733" data-start="{" data-end="}">
-<div class="line"><a id="l00733" name="l00733"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a2c86b2285f5a7f86cd1862e8d7b8fe48">  733</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a2c86b2285f5a7f86cd1862e8d7b8fe48">AnyP::Uri::authority</a>(<span class="keywordtype">bool</span> requirePort)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>    <span class="keywordflow">if</span> (authorityHttp_.isEmpty()) {</div>
-<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span> </div>
-<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>        <span class="comment">// both formats contain Host/IP</span></div>
-<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>        authorityWithPort_.<a class="code hl_function" href="classSBuf.html#aa12ede16b167c60722946fc8fe9292da">append</a>(host());</div>
-<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>        authorityHttp_ = authorityWithPort_;</div>
-<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span> </div>
-<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="eDirectory_2ldap__backend_8cc.html#a63c89c04d1feae07ca35558055155ffb">port</a>().has_value()) {</div>
-<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>            authorityWithPort_.<a class="code hl_function" href="classSBuf.html#a511d819cac33f02d5c50352d4a87c963">appendf</a>(<span class="stringliteral">&quot;:%hu&quot;</span>, *<a class="code hl_variable" href="eDirectory_2ldap__backend_8cc.html#a63c89c04d1feae07ca35558055155ffb">port</a>());</div>
-<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>            <span class="comment">// authorityHttp_ only has :port for known non-default ports</span></div>
-<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="eDirectory_2ldap__backend_8cc.html#a63c89c04d1feae07ca35558055155ffb">port</a>() != getScheme().defaultPort())</div>
-<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>                authorityHttp_ = authorityWithPort_;</div>
-<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>        }</div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>        <span class="comment">// else XXX: We made authorityWithPort_ that does not have a port.</span></div>
-<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>        <span class="comment">// TODO: Audit callers and refuse to give out broken authorityWithPort_.</span></div>
-<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>    }</div>
-<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span> </div>
-<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>    <span class="keywordflow">return</span> requirePort ? authorityWithPort_ : authorityHttp_;</div>
-<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>}</div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span> </div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span><a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;</div>
+<div class="foldopen" id="foldopen00743" data-start="{" data-end="}">
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a8d1454e7c8fc60b45e27cf7d1f472220">  743</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a8d1454e7c8fc60b45e27cf7d1f472220">AnyP::Uri::absolute</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>    <span class="keywordflow">if</span> (absolute_.isEmpty()) {</div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>        <span class="comment">// TODO: most URL will be much shorter, avoid allocating this much</span></div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>        absolute_.<a class="code hl_function" href="classSBuf.html#a2fe40815c617fb102057c2e3028977a7">reserveCapacity</a>(<a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span> </div>
+<div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span>        absolute_.append(getScheme().image());</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>        absolute_.append(<span class="stringliteral">&quot;:&quot;</span>,1);</div>
+<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>        <span class="keywordflow">if</span> (getScheme() != <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>) {</div>
+<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>            absolute_.append(<span class="stringliteral">&quot;//&quot;</span>, 2);</div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>            <span class="keyword">const</span> <span class="keywordtype">bool</span> allowUserInfo = getScheme() == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca6b36255bc8fc8723bdfa8d419847697c">AnyP::PROTO_FTP</a> ||</div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>                                       getScheme() == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca131ab7baed4492ec1b3ab194be4cb61d">AnyP::PROTO_UNKNOWN</a>;</div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span> </div>
+<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>            <span class="keywordflow">if</span> (allowUserInfo &amp;&amp; !userInfo().isEmpty()) {</div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>                <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_class" href="classCharacterSet.html">CharacterSet</a> uiChars = <a class="code hl_class" href="classCharacterSet.html">CharacterSet</a>(<a class="code hl_function" href="Uri_8cc.html#a9cfa070b0d0b122da94cce04dc49290c">UserInfoChars</a>())</div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>                                                    .<a class="code hl_function" href="classCharacterSet.html#a9b0a535adc054f597407bc1beccad04f">remove</a>(<span class="charliteral">&#39;%&#39;</span>)</div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>                                                    .<a class="code hl_function" href="classCharacterSet.html#a4027df049b36826068f6dd50ffb51966">rename</a>(<span class="stringliteral">&quot;userinfo-reserved&quot;</span>);</div>
+<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>                absolute_.append(Encode(userInfo(), uiChars));</div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>                absolute_.append(<span class="stringliteral">&quot;@&quot;</span>, 1);</div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>            }</div>
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>            absolute_.append(authority());</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>            absolute_.append(host());</div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>            absolute_.append(<span class="stringliteral">&quot;:&quot;</span>, 1);</div>
+<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>        }</div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>        absolute_.append(absolutePath());</div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>    }</div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span> </div>
+<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>    <span class="keywordflow">return</span> absolute_;</div>
+<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>}</div>
 </div>
-<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span> </div>
-<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span><a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;</div>
-<div class="foldopen" id="foldopen00755" data-start="{" data-end="}">
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a8d1454e7c8fc60b45e27cf7d1f472220">  755</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a8d1454e7c8fc60b45e27cf7d1f472220">AnyP::Uri::absolute</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>    <span class="keywordflow">if</span> (absolute_.isEmpty()) {</div>
-<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>        <span class="comment">// TODO: most URL will be much shorter, avoid allocating this much</span></div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>        absolute_.<a class="code hl_function" href="classSBuf.html#a2fe40815c617fb102057c2e3028977a7">reserveCapacity</a>(<a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span> </div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>        absolute_.append(getScheme().image());</div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>        absolute_.append(<span class="stringliteral">&quot;:&quot;</span>,1);</div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>        <span class="keywordflow">if</span> (getScheme() != <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>) {</div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>            absolute_.append(<span class="stringliteral">&quot;//&quot;</span>, 2);</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>            <span class="keyword">const</span> <span class="keywordtype">bool</span> allowUserInfo = getScheme() == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca6b36255bc8fc8723bdfa8d419847697c">AnyP::PROTO_FTP</a> ||</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>                                       getScheme() == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca131ab7baed4492ec1b3ab194be4cb61d">AnyP::PROTO_UNKNOWN</a>;</div>
-<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span> </div>
-<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>            <span class="keywordflow">if</span> (allowUserInfo &amp;&amp; !userInfo().isEmpty()) {</div>
-<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>                <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_class" href="classCharacterSet.html">CharacterSet</a> uiChars = <a class="code hl_class" href="classCharacterSet.html">CharacterSet</a>(<a class="code hl_function" href="Uri_8cc.html#a9cfa070b0d0b122da94cce04dc49290c">UserInfoChars</a>())</div>
-<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>                                                    .<a class="code hl_function" href="classCharacterSet.html#a9b0a535adc054f597407bc1beccad04f">remove</a>(<span class="charliteral">&#39;%&#39;</span>)</div>
-<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>                                                    .<a class="code hl_function" href="classCharacterSet.html#a4027df049b36826068f6dd50ffb51966">rename</a>(<span class="stringliteral">&quot;userinfo-reserved&quot;</span>);</div>
-<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>                absolute_.append(Encode(userInfo(), uiChars));</div>
-<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>                absolute_.append(<span class="stringliteral">&quot;@&quot;</span>, 1);</div>
-<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>            }</div>
-<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>            absolute_.append(authority());</div>
-<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>            absolute_.append(host());</div>
-<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>            absolute_.append(<span class="stringliteral">&quot;:&quot;</span>, 1);</div>
-<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        }</div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>        absolute_.append(absolutePath());</div>
-<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>    }</div>
-<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span> </div>
-<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>    <span class="keywordflow">return</span> absolute_;</div>
-<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>}</div>
+<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span> </div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span><a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;</div>
+<div class="foldopen" id="foldopen00775" data-start="{" data-end="}">
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a6001fb9d79869cb3819070d36414318c">  775</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a6001fb9d79869cb3819070d36414318c">AnyP::Uri::absolutePath</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>    <span class="keywordflow">if</span> (absolutePath_.isEmpty()) {</div>
+<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>        <span class="comment">// TODO: Encode each URI subcomponent in path_ as needed.</span></div>
+<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        absolutePath_ = Encode(path(), <a class="code hl_function" href="Uri_8cc.html#a71c358c57989f834d6c54b22d1321485">PathChars</a>());</div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>    }</div>
+<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span> </div>
+<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>    <span class="keywordflow">return</span> absolutePath_;</div>
+<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>}</div>
 </div>
-<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span> </div>
-<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span><a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;</div>
-<div class="foldopen" id="foldopen00787" data-start="{" data-end="}">
-<div class="line"><a id="l00787" name="l00787"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a6001fb9d79869cb3819070d36414318c">  787</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a6001fb9d79869cb3819070d36414318c">AnyP::Uri::absolutePath</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>    <span class="keywordflow">if</span> (absolutePath_.isEmpty()) {</div>
-<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>        <span class="comment">// TODO: Encode each URI subcomponent in path_ as needed.</span></div>
-<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>        absolutePath_ = Encode(path(), <a class="code hl_function" href="Uri_8cc.html#a71c358c57989f834d6c54b22d1321485">PathChars</a>());</div>
-<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>    }</div>
+<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span> </div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span><span class="comment">/* XXX: Performance: This is an *almost* duplicate of HttpRequest::effectiveRequestUri(). But elides the query-string.</span></div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span><span class="comment"> *        After copying it on in the first place! Would be less code to merge the two with a flag parameter.</span></div>
+<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span><span class="comment"> *        and never copy the query-string part in the first place</span></div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span><span class="keywordtype">char</span> *</div>
+<div class="foldopen" id="foldopen00790" data-start="{" data-end="}">
+<div class="line"><a id="l00790" name="l00790"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a7bced763e70ec14e5e5ef88173302b6b">  790</a></span><a class="code hl_function" href="Uri_8cc.html#a7bced763e70ec14e5e5ef88173302b6b">urlCanonicalCleanWithoutRequest</a>(<span class="keyword">const</span> <a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;url, <span class="keyword">const</span> <a class="code hl_class" href="classHttpRequestMethod.html">HttpRequestMethod</a> &amp;method, <span class="keyword">const</span> <a class="code hl_class" href="classAnyP_1_1UriScheme.html">AnyP::UriScheme</a> &amp;scheme)</div>
+<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>{</div>
+<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>    <a class="code hl_define" href="squid_8h.html#a9b17dd86bdde2e8cb89abe153a0f4f23">LOCAL_ARRAY</a>(<span class="keywordtype">char</span>, buf, <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
 <div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span> </div>
-<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>    <span class="keywordflow">return</span> absolutePath_;</div>
-<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>}</div>
-</div>
+<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>    snprintf(buf, <span class="keyword">sizeof</span>(buf), <a class="code hl_define" href="SBuf_8h.html#a225d674d14bd9377da94fdb0edc08ecc">SQUIDSBUFPH</a>, <a class="code hl_define" href="SBuf_8h.html#aba15ad960fbece70b7940c8d3a5c344b">SQUIDSBUFPRINT</a>(url));</div>
+<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>    buf[<span class="keyword">sizeof</span>(buf)-1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span> </div>
-<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span><span class="comment">/* XXX: Performance: This is an *almost* duplicate of HttpRequest::effectiveRequestUri(). But elides the query-string.</span></div>
-<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span><span class="comment"> *        After copying it on in the first place! Would be less code to merge the two with a flag parameter.</span></div>
-<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span><span class="comment"> *        and never copy the query-string part in the first place</span></div>
-<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span><span class="keywordtype">char</span> *</div>
-<div class="foldopen" id="foldopen00802" data-start="{" data-end="}">
-<div class="line"><a id="l00802" name="l00802"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a7bced763e70ec14e5e5ef88173302b6b">  802</a></span><a class="code hl_function" href="Uri_8cc.html#a7bced763e70ec14e5e5ef88173302b6b">urlCanonicalCleanWithoutRequest</a>(<span class="keyword">const</span> <a class="code hl_class" href="classSBuf.html">SBuf</a> &amp;url, <span class="keyword">const</span> <a class="code hl_class" href="classHttpRequestMethod.html">HttpRequestMethod</a> &amp;method, <span class="keyword">const</span> <a class="code hl_class" href="classAnyP_1_1UriScheme.html">AnyP::UriScheme</a> &amp;scheme)</div>
-<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>{</div>
-<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    <a class="code hl_define" href="squid_8h.html#a9b17dd86bdde2e8cb89abe153a0f4f23">LOCAL_ARRAY</a>(<span class="keywordtype">char</span>, buf, <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>    <span class="comment">// URN, CONNECT method, and non-stripped URIs can go straight out</span></div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="SquidConfig_8cc.html#a75b136e6a1eef61424d84596a404aafe">Config</a>.<a class="code hl_variable" href="classSquidConfig.html#a89bec7bc02d66eb2ab65c74c3f6b13ac">onoff</a>.<a class="code hl_variable" href="classSquidConfig.html#a46184ef8e86f5599c33dcb8f077cc158">strip_query_terms</a> &amp;&amp; !(method == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a8ecea905b7d7b048a979e590cb11b9d7">Http::METHOD_CONNECT</a> || scheme == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>)) {</div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>        <span class="comment">// strip anything AFTER a question-mark</span></div>
+<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span>        <span class="comment">// leaving the &#39;?&#39; in place</span></div>
+<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> t = strchr(buf, <span class="charliteral">&#39;?&#39;</span>)) {</div>
+<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>            *(++t) = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>        }</div>
+<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    }</div>
 <div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span> </div>
-<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>    snprintf(buf, <span class="keyword">sizeof</span>(buf), <a class="code hl_define" href="SBuf_8h.html#a225d674d14bd9377da94fdb0edc08ecc">SQUIDSBUFPH</a>, <a class="code hl_define" href="SBuf_8h.html#aba15ad960fbece70b7940c8d3a5c344b">SQUIDSBUFPRINT</a>(url));</div>
-<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>    buf[<span class="keyword">sizeof</span>(buf)-1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="SquidString_8h.html#abbb6179dd84b7d0df2160977a7c076a0">stringHasCntl</a>(buf))</div>
+<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>        <a class="code hl_function" href="xstring_8cc.html#a14dfc5efacfd3d4cbccd03827103ac54">xstrncpy</a>(buf, <a class="code hl_define" href="rfc1738_8h.html#aac1210d2cdbff9d38d2dff20cd8e2a7e">rfc1738_escape_unescaped</a>(buf), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
 <div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span> </div>
-<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>    <span class="comment">// URN, CONNECT method, and non-stripped URIs can go straight out</span></div>
-<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="SquidConfig_8cc.html#a75b136e6a1eef61424d84596a404aafe">Config</a>.<a class="code hl_variable" href="classSquidConfig.html#a89bec7bc02d66eb2ab65c74c3f6b13ac">onoff</a>.<a class="code hl_variable" href="classSquidConfig.html#a46184ef8e86f5599c33dcb8f077cc158">strip_query_terms</a> &amp;&amp; !(method == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a8ecea905b7d7b048a979e590cb11b9d7">Http::METHOD_CONNECT</a> || scheme == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>)) {</div>
-<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span>        <span class="comment">// strip anything AFTER a question-mark</span></div>
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>        <span class="comment">// leaving the &#39;?&#39; in place</span></div>
-<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> t = strchr(buf, <span class="charliteral">&#39;?&#39;</span>)) {</div>
-<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>            *(++t) = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>        }</div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>    }</div>
-<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span> </div>
-<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="SquidString_8h.html#abbb6179dd84b7d0df2160977a7c076a0">stringHasCntl</a>(buf))</div>
-<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>        <a class="code hl_function" href="xstring_8cc.html#a14dfc5efacfd3d4cbccd03827103ac54">xstrncpy</a>(buf, <a class="code hl_define" href="rfc1738_8h.html#aac1210d2cdbff9d38d2dff20cd8e2a7e">rfc1738_escape_unescaped</a>(buf), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span> </div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>    <span class="keywordflow">return</span> buf;</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>}</div>
+<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>    <span class="keywordflow">return</span> buf;</div>
+<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>}</div>
 </div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span> </div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span><span class="keyword">const</span> <span class="keywordtype">char</span> *</div>
-<div class="foldopen" id="foldopen00831" data-start="{" data-end="}">
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno"><a class="line" href="Uri_8cc.html#acd8c44f57f7edda140bea50b01a37fd4">  831</a></span><a class="code hl_function" href="Uri_8cc.html#acd8c44f57f7edda140bea50b01a37fd4">urlCanonicalFakeHttps</a>(<span class="keyword">const</span> <a class="code hl_class" href="classHttpRequest.html">HttpRequest</a> * request)</div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>{</div>
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>    <a class="code hl_define" href="squid_8h.html#a9b17dd86bdde2e8cb89abe153a0f4f23">LOCAL_ARRAY</a>(<span class="keywordtype">char</span>, buf, <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span> </div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>    <span class="comment">// method CONNECT and port HTTPS</span></div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>    <span class="keywordflow">if</span> (request-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a8ecea905b7d7b048a979e590cb11b9d7">Http::METHOD_CONNECT</a> &amp;&amp; request-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#aa09ef977328523ec48e7440c83d728d3">port</a>() == 443) {</div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>        snprintf(buf, <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>, <span class="stringliteral">&quot;https://%s/*&quot;</span>, request-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#aab379cecc273683d9744197a8a2efe3f">host</a>());</div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>        <span class="keywordflow">return</span> buf;</div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>    }</div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span> </div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    <span class="comment">// else do the normal complete canonical thing.</span></div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>    <span class="keywordflow">return</span> request-&gt;<a class="code hl_function" href="classHttpRequest.html#ac0c4711b9c47a56e565c14b763d86214">canonicalCleanUrl</a>();</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>}</div>
+<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span> </div>
+<div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span><span class="keyword">const</span> <span class="keywordtype">char</span> *</div>
+<div class="foldopen" id="foldopen00819" data-start="{" data-end="}">
+<div class="line"><a id="l00819" name="l00819"></a><span class="lineno"><a class="line" href="Uri_8cc.html#acd8c44f57f7edda140bea50b01a37fd4">  819</a></span><a class="code hl_function" href="Uri_8cc.html#acd8c44f57f7edda140bea50b01a37fd4">urlCanonicalFakeHttps</a>(<span class="keyword">const</span> <a class="code hl_class" href="classHttpRequest.html">HttpRequest</a> * request)</div>
+<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>{</div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>    <a class="code hl_define" href="squid_8h.html#a9b17dd86bdde2e8cb89abe153a0f4f23">LOCAL_ARRAY</a>(<span class="keywordtype">char</span>, buf, <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span> </div>
+<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>    <span class="comment">// method CONNECT and port HTTPS</span></div>
+<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>    <span class="keywordflow">if</span> (request-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a8ecea905b7d7b048a979e590cb11b9d7">Http::METHOD_CONNECT</a> &amp;&amp; request-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#aa09ef977328523ec48e7440c83d728d3">port</a>() == 443) {</div>
+<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>        snprintf(buf, <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>, <span class="stringliteral">&quot;https://%s/*&quot;</span>, request-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#aab379cecc273683d9744197a8a2efe3f">host</a>());</div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>        <span class="keywordflow">return</span> buf;</div>
+<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>    }</div>
+<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span> </div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>    <span class="comment">// else do the normal complete canonical thing.</span></div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>    <span class="keywordflow">return</span> request-&gt;<a class="code hl_function" href="classHttpRequest.html#ac0c4711b9c47a56e565c14b763d86214">canonicalCleanUrl</a>();</div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>}</div>
 </div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span> </div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span><span class="keywordtype">bool</span></div>
-<div class="foldopen" id="foldopen00858" data-start="{" data-end="}">
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a22de62ca065a13019171abd27ea70cbe">  858</a></span><a class="code hl_function" href="Uri_8cc.html#a22de62ca065a13019171abd27ea70cbe">urlIsRelative</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *url)</div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>{</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>    <span class="keywordflow">if</span> (!url)</div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no URL</span></div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span> </div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span><span class="comment">     * RFC 3986 section 5.2.3</span></div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span><span class="comment">     * path          = path-abempty    ; begins with &quot;/&quot; or is empty</span></div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span><span class="comment">     *               / path-absolute   ; begins with &quot;/&quot; but not &quot;//&quot;</span></div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span><span class="comment">     *               / path-noscheme   ; begins with a non-colon segment</span></div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span><span class="comment">     *               / path-rootless   ; begins with a segment</span></div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span><span class="comment">     *               / path-empty      ; zero characters</span></div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span> </div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    <span class="keywordflow">if</span> (*url == <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// path-empty</span></div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span> </div>
-<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>    <span class="keywordflow">if</span> (*url == <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>        <span class="comment">// network-path reference (a.k.a. &#39;scheme-relative URI&#39;) or</span></div>
-<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>        <span class="comment">// path-absolute (a.k.a. &#39;absolute-path reference&#39;)</span></div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>    }</div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span> </div>
-<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *p = url; *p != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;/&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;?&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;#&#39;</span>; ++p) {</div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>        <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;:&#39;</span>)</div>
-<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// colon is forbidden in first segment</span></div>
-<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>    }</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span> </div>
+<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span><span class="keywordtype">bool</span></div>
+<div class="foldopen" id="foldopen00846" data-start="{" data-end="}">
+<div class="line"><a id="l00846" name="l00846"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a22de62ca065a13019171abd27ea70cbe">  846</a></span><a class="code hl_function" href="Uri_8cc.html#a22de62ca065a13019171abd27ea70cbe">urlIsRelative</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *url)</div>
+<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>{</div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>    <span class="keywordflow">if</span> (!url)</div>
+<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no URL</span></div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span> </div>
+<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span><span class="comment">     * RFC 3986 section 5.2.3</span></div>
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span><span class="comment">     * path          = path-abempty    ; begins with &quot;/&quot; or is empty</span></div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span><span class="comment">     *               / path-absolute   ; begins with &quot;/&quot; but not &quot;//&quot;</span></div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span><span class="comment">     *               / path-noscheme   ; begins with a non-colon segment</span></div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span><span class="comment">     *               / path-rootless   ; begins with a segment</span></div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span><span class="comment">     *               / path-empty      ; zero characters</span></div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span> </div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    <span class="keywordflow">if</span> (*url == <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// path-empty</span></div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span> </div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>    <span class="keywordflow">if</span> (*url == <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>        <span class="comment">// network-path reference (a.k.a. &#39;scheme-relative URI&#39;) or</span></div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>        <span class="comment">// path-absolute (a.k.a. &#39;absolute-path reference&#39;)</span></div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>    }</div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span> </div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> *p = url; *p != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;/&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;?&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;#&#39;</span>; ++p) {</div>
+<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>        <span class="keywordflow">if</span> (*p == <span class="charliteral">&#39;:&#39;</span>)</div>
+<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// colon is forbidden in first segment</span></div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    }</div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span> </div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// path-noscheme, path-abempty, path-rootless</span></div>
+<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>}</div>
+</div>
+<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span> </div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span><span class="keywordtype">void</span></div>
+<div class="foldopen" id="foldopen00879" data-start="{" data-end="}">
+<div class="line"><a id="l00879" name="l00879"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a81085a81e41edcdbe901e5f0da3a84e4">  879</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a81085a81e41edcdbe901e5f0da3a84e4">AnyP::Uri::addRelativePath</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *relUrl)</div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>{</div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>    <span class="comment">// URN cannot be merged</span></div>
+<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>    <span class="keywordflow">if</span> (getScheme() == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>)</div>
+<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span> </div>
+<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>    <span class="comment">// TODO: Handle . and .. segment normalization</span></div>
 <div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span> </div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// path-noscheme, path-abempty, path-rootless</span></div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>}</div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <span class="keyword">const</span> <span class="keyword">auto</span> lastSlashPos = path_.rfind(<span class="charliteral">&#39;/&#39;</span>);</div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>    <span class="comment">// TODO: To optimize and simplify, add and use SBuf::replace().</span></div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>    <span class="keyword">const</span> <span class="keyword">auto</span> relUrlLength = strlen(relUrl);</div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>    <span class="keywordflow">if</span> (lastSlashPos == <a class="code hl_variable" href="classSBuf.html#a1db91b2f039b38745f7d73b56ac9311f">SBuf::npos</a>) {</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        <span class="comment">// start replacing the whole path</span></div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>        path_.reserveCapacity(1 + relUrlLength);</div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>        path_.assign(<span class="stringliteral">&quot;/&quot;</span>, 1);</div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        <span class="comment">// start replacing just the last segment</span></div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>        path_.reserveCapacity(lastSlashPos + 1 + relUrlLength);</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        path_.chop(0, lastSlashPos+1);</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>    }</div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>    path_.append(relUrl, relUrlLength);</div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>}</div>
 </div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span> </div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span><span class="keywordtype">void</span></div>
-<div class="foldopen" id="foldopen00891" data-start="{" data-end="}">
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a81085a81e41edcdbe901e5f0da3a84e4">  891</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a81085a81e41edcdbe901e5f0da3a84e4">AnyP::Uri::addRelativePath</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *relUrl)</div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>{</div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>    <span class="comment">// URN cannot be merged</span></div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>    <span class="keywordflow">if</span> (getScheme() == <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>)</div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span> </div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>    <span class="comment">// TODO: Handle . and .. segment normalization</span></div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span> </div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>    <span class="keyword">const</span> <span class="keyword">auto</span> lastSlashPos = path_.rfind(<span class="charliteral">&#39;/&#39;</span>);</div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    <span class="comment">// TODO: To optimize and simplify, add and use SBuf::replace().</span></div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>    <span class="keyword">const</span> <span class="keyword">auto</span> relUrlLength = strlen(relUrl);</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>    <span class="keywordflow">if</span> (lastSlashPos == <a class="code hl_variable" href="classSBuf.html#a1db91b2f039b38745f7d73b56ac9311f">SBuf::npos</a>) {</div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>        <span class="comment">// start replacing the whole path</span></div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>        path_.reserveCapacity(1 + relUrlLength);</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>        path_.assign(<span class="stringliteral">&quot;/&quot;</span>, 1);</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>        <span class="comment">// start replacing just the last segment</span></div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>        path_.reserveCapacity(lastSlashPos + 1 + relUrlLength);</div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>        path_.chop(0, lastSlashPos+1);</div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>    }</div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>    path_.append(relUrl, relUrlLength);</div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>}</div>
-</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span> </div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span><span class="keywordtype">int</span></div>
+<div class="foldopen" id="foldopen00903" data-start="{" data-end="}">
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a7b3d400c54dd0ce685ac6c136ae73fe3">  903</a></span><a class="code hl_function" href="Uri_8cc.html#a7b3d400c54dd0ce685ac6c136ae73fe3">matchDomainName</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *h, <span class="keyword">const</span> <span class="keywordtype">char</span> *d, <a class="code hl_enumeration" href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfd">MatchDomainNameFlags</a> flags)</div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>{</div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>    <span class="keywordtype">int</span> dl;</div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>    <span class="keywordtype">int</span> hl;</div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span> </div>
+<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> hostIncludesSubdomains = (*h == <span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>    <span class="keywordflow">while</span> (<span class="charliteral">&#39;.&#39;</span> == *h)</div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>        ++h;</div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span> </div>
+<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>    hl = strlen(h);</div>
 <div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span> </div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span><span class="keywordtype">int</span></div>
-<div class="foldopen" id="foldopen00915" data-start="{" data-end="}">
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a7b3d400c54dd0ce685ac6c136ae73fe3">  915</a></span><a class="code hl_function" href="Uri_8cc.html#a7b3d400c54dd0ce685ac6c136ae73fe3">matchDomainName</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *h, <span class="keyword">const</span> <span class="keywordtype">char</span> *d, <a class="code hl_enumeration" href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfd">MatchDomainNameFlags</a> flags)</div>
-<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>{</div>
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>    <span class="keywordtype">int</span> dl;</div>
-<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>    <span class="keywordtype">int</span> hl;</div>
-<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span> </div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> hostIncludesSubdomains = (*h == <span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>    <span class="keywordflow">while</span> (<span class="charliteral">&#39;.&#39;</span> == *h)</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>        ++h;</div>
-<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span> </div>
-<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>    hl = strlen(h);</div>
-<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span> </div>
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>    <span class="keywordflow">if</span> (hl == 0)</div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span> </div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>    dl = strlen(d);</div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>    <span class="keywordflow">if</span> (dl == 0)</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span> </div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span><span class="comment">     * Start at the ends of the two strings and work towards the</span></div>
-<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span><span class="comment">     * beginning.</span></div>
-<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>    <span class="keywordflow">while</span> (<a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(h[--hl]) == <a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(d[--dl])) {</div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>        <span class="keywordflow">if</span> (hl == 0 &amp;&amp; dl == 0) {</div>
-<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>            <span class="comment">/*</span></div>
-<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span><span class="comment">             * We made it all the way to the beginning of both</span></div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span><span class="comment">             * strings without finding any difference.</span></div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span><span class="comment">             */</span></div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>        }</div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span> </div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>        <span class="keywordflow">if</span> (0 == hl) {</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>            <span class="comment">/*</span></div>
-<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span><span class="comment">             * The host string is shorter than the domain string.</span></div>
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span><span class="comment">             * There is only one case when this can be a match.</span></div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span><span class="comment">             * If the domain is just one character longer, and if</span></div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span><span class="comment">             * that character is a leading &#39;.&#39; then we call it a</span></div>
-<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span><span class="comment">             * match.</span></div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span><span class="comment">             */</span></div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span> </div>
-<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>            <span class="keywordflow">if</span> (1 == dl &amp;&amp; <span class="charliteral">&#39;.&#39;</span> == d[0])</div>
-<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>                <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>        }</div>
-<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span> </div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>        <span class="keywordflow">if</span> (0 == dl) {</div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>            <span class="comment">/*</span></div>
-<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span><span class="comment">             * The domain string is shorter than the host string.</span></div>
-<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span><span class="comment">             * This is a match only if the first domain character</span></div>
-<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span><span class="comment">             * is a leading &#39;.&#39;.</span></div>
-<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span><span class="comment">             */</span></div>
-<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span> </div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>            <span class="keywordflow">if</span> (<span class="charliteral">&#39;.&#39;</span> == d[0]) {</div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>                <span class="keywordflow">if</span> (flags &amp; <a class="code hl_enumvalue" href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfdabcef23a32bc2b075002b9033a5f78840">mdnRejectSubsubDomains</a>) {</div>
-<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>                    <span class="comment">// Check for sub-sub domain and reject</span></div>
-<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>                    <span class="keywordflow">while</span>(--hl &gt;= 0 &amp;&amp; h[hl] != <span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>                    <span class="keywordflow">if</span> (hl &lt; 0) {</div>
-<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span>                        <span class="comment">// No sub-sub domain found, but reject if there is a</span></div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>                        <span class="comment">// leading dot in given host string (which is removed</span></div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>                        <span class="comment">// before the check is started).</span></div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>                        <span class="keywordflow">return</span> hostIncludesSubdomains ? 1 : 0;</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>                    } <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>                        <span class="keywordflow">return</span> 1; <span class="comment">// sub-sub domain, reject</span></div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>                } <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>                    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>            } <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>        }</div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>    }</div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span> </div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span><span class="comment">     * We found different characters in the same position (from the end).</span></div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>    <span class="keywordflow">if</span> (hl == 0)</div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span> </div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>    dl = strlen(d);</div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>    <span class="keywordflow">if</span> (dl == 0)</div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span> </div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span><span class="comment">     * Start at the ends of the two strings and work towards the</span></div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span><span class="comment">     * beginning.</span></div>
+<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>    <span class="keywordflow">while</span> (<a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(h[--hl]) == <a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(d[--dl])) {</div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>        <span class="keywordflow">if</span> (hl == 0 &amp;&amp; dl == 0) {</div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>            <span class="comment">/*</span></div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span><span class="comment">             * We made it all the way to the beginning of both</span></div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span><span class="comment">             * strings without finding any difference.</span></div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span><span class="comment">             */</span></div>
+<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span>        }</div>
+<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span> </div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>        <span class="keywordflow">if</span> (0 == hl) {</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>            <span class="comment">/*</span></div>
+<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span><span class="comment">             * The host string is shorter than the domain string.</span></div>
+<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span><span class="comment">             * There is only one case when this can be a match.</span></div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span><span class="comment">             * If the domain is just one character longer, and if</span></div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span><span class="comment">             * that character is a leading &#39;.&#39; then we call it a</span></div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span><span class="comment">             * match.</span></div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span><span class="comment">             */</span></div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span> </div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>            <span class="keywordflow">if</span> (1 == dl &amp;&amp; <span class="charliteral">&#39;.&#39;</span> == d[0])</div>
+<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>        }</div>
+<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span> </div>
+<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>        <span class="keywordflow">if</span> (0 == dl) {</div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>            <span class="comment">/*</span></div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span><span class="comment">             * The domain string is shorter than the host string.</span></div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span><span class="comment">             * This is a match only if the first domain character</span></div>
+<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span><span class="comment">             * is a leading &#39;.&#39;.</span></div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span><span class="comment">             */</span></div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span> </div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span>            <span class="keywordflow">if</span> (<span class="charliteral">&#39;.&#39;</span> == d[0]) {</div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>                <span class="keywordflow">if</span> (flags &amp; <a class="code hl_enumvalue" href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfdabcef23a32bc2b075002b9033a5f78840">mdnRejectSubsubDomains</a>) {</div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>                    <span class="comment">// Check for sub-sub domain and reject</span></div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>                    <span class="keywordflow">while</span>(--hl &gt;= 0 &amp;&amp; h[hl] != <span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>                    <span class="keywordflow">if</span> (hl &lt; 0) {</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span>                        <span class="comment">// No sub-sub domain found, but reject if there is a</span></div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>                        <span class="comment">// leading dot in given host string (which is removed</span></div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>                        <span class="comment">// before the check is started).</span></div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>                        <span class="keywordflow">return</span> hostIncludesSubdomains ? 1 : 0;</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>                    } <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span>                        <span class="keywordflow">return</span> 1; <span class="comment">// sub-sub domain, reject</span></div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>                } <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>                    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>            } <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span>        }</div>
+<div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>    }</div>
+<div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span> </div>
+<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span><span class="comment">     * We found different characters in the same position (from the end).</span></div>
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span> </div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    <span class="comment">// If the h has a form of &quot;*.foo.com&quot; and d has a form of &quot;x.foo.com&quot;</span></div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>    <span class="comment">// then the h[hl] points to &#39;*&#39;, h[hl+1] to &#39;.&#39; and d[dl] to &#39;x&#39;</span></div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    <span class="comment">// The following checks are safe, the &quot;h[hl + 1]&quot; in the worst case is &#39;\0&#39;.</span></div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    <span class="keywordflow">if</span> ((flags &amp; <a class="code hl_enumvalue" href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfdae219c37e54a5d65d7587155a421b8b7e">mdnHonorWildcards</a>) &amp;&amp; h[hl] == <span class="charliteral">&#39;*&#39;</span> &amp;&amp; h[hl + 1] == <span class="charliteral">&#39;.&#39;</span>)</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span> </div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span><span class="comment">     * If one of those character is &#39;.&#39; then its special.  In order</span></div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span><span class="comment">     * for splay tree sorting to work properly, &quot;x-foo.com&quot; must</span></div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span><span class="comment">     * be greater than &quot;.foo.com&quot; even though &#39;-&#39; is less than &#39;.&#39;.</span></div>
 <div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span> </div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>    <span class="comment">// If the h has a form of &quot;*.foo.com&quot; and d has a form of &quot;x.foo.com&quot;</span></div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>    <span class="comment">// then the h[hl] points to &#39;*&#39;, h[hl+1] to &#39;.&#39; and d[dl] to &#39;x&#39;</span></div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>    <span class="comment">// The following checks are safe, the &quot;h[hl + 1]&quot; in the worst case is &#39;\0&#39;.</span></div>
-<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>    <span class="keywordflow">if</span> ((flags &amp; <a class="code hl_enumvalue" href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfdae219c37e54a5d65d7587155a421b8b7e">mdnHonorWildcards</a>) &amp;&amp; h[hl] == <span class="charliteral">&#39;*&#39;</span> &amp;&amp; h[hl + 1] == <span class="charliteral">&#39;.&#39;</span>)</div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span> </div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span><span class="comment">     * If one of those character is &#39;.&#39; then its special.  In order</span></div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span><span class="comment">     * for splay tree sorting to work properly, &quot;x-foo.com&quot; must</span></div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span><span class="comment">     * be greater than &quot;.foo.com&quot; even though &#39;-&#39; is less than &#39;.&#39;.</span></div>
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span><span class="comment">     */</span></div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>    <span class="keywordflow">if</span> (<span class="charliteral">&#39;.&#39;</span> == d[dl])</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span> </div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>    <span class="keywordflow">if</span> (<span class="charliteral">&#39;.&#39;</span> == h[hl])</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span>        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span> </div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>    <span class="keywordflow">return</span> (<a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(h[hl]) - <a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(d[dl]));</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>}</div>
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span>    <span class="keywordflow">if</span> (<span class="charliteral">&#39;.&#39;</span> == d[dl])</div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span> </div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span>    <span class="keywordflow">if</span> (<span class="charliteral">&#39;.&#39;</span> == h[hl])</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span> </div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>    <span class="keywordflow">return</span> (<a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(h[hl]) - <a class="code hl_define" href="xis_8h.html#a99271806e10cad553e581cd3aa7c8c33">xtolower</a>(d[dl]));</div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>}</div>
 </div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span> </div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span><span class="comment">/*</span></div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span><span class="comment"> * return true if we can serve requests for this method.</span></div>
-<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span><span class="comment"> */</span></div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span><span class="keywordtype">bool</span></div>
-<div class="foldopen" id="foldopen01014" data-start="{" data-end="}">
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a0aaaea124c22af6f1bc00947934f67f5"> 1014</a></span><a class="code hl_function" href="Uri_8cc.html#a0aaaea124c22af6f1bc00947934f67f5">urlCheckRequest</a>(<span class="keyword">const</span> <a class="code hl_class" href="classHttpRequest.html">HttpRequest</a> * r)</div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>{</div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>    <span class="comment">/* protocol &quot;independent&quot; methods</span></div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span><span class="comment">     *</span></div>
-<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span><span class="comment">     * actually these methods are specific to HTTP:</span></div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span><span class="comment">     * they are methods we receive on our HTTP port,</span></div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span><span class="comment">     * and if we had a FTP listener would not be relevant</span></div>
-<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span><span class="comment">     * there.</span></div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span><span class="comment">     *</span></div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span><span class="comment">     * So, we should delegate them to HTTP. The problem is that we</span></div>
-<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span><span class="comment">     * do not have a default protocol from the client side of HTTP.</span></div>
-<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span><span class="comment">     */</span></div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span> </div>
-<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a8ecea905b7d7b048a979e590cb11b9d7">Http::METHOD_CONNECT</a>)</div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span> </div>
-<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>    <span class="comment">// we support OPTIONS and TRACE directed at us (with a 501 reply, for now)</span></div>
-<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>    <span class="comment">// we also support forwarding OPTIONS and TRACE, except for the *-URI ones</span></div>
-<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>    <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a4fbb358ee66d6fe96e79cb8cf49b260a">Http::METHOD_OPTIONS</a> || r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a048d612501964b8d3f0d41ede55395f3">Http::METHOD_TRACE</a>)</div>
-<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>        <span class="keywordflow">return</span> (r-&gt;<a class="code hl_variable" href="classHttp_1_1Message.html#a79ae935ff618211b139dcfdd8a5277ec">header</a>.<a class="code hl_function" href="classHttpHeader.html#abf9ae83ecee9c6ee5de511131993567b">getInt64</a>(<a class="code hl_enumvalue" href="namespaceHttp.html#a92faa3c60e0b457c167759389ae061a4a78311c3bedd99c69c01b5ada747f1de4">Http::HdrType::MAX_FORWARDS</a>) == 0 || r-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#a4499a7819274e2dbe4ceb399e77e250d">path</a>() != <a class="code hl_function" href="classAnyP_1_1Uri.html#a94b8c4cdbf6b7252217fb20d974af104">AnyP::Uri::Asterisk</a>());</div>
-<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span> </div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>    <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787ac284f1b2d0b0429b55542e9ca3be28d4">Http::METHOD_PURGE</a>)</div>
-<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span> </div>
-<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    <span class="comment">/* does method match the protocol? */</span></div>
-<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    <span class="keywordflow">switch</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#a267687947070d739a63da8a42969f12c">getScheme</a>()) {</div>
-<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span> </div>
-<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>:</div>
-<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca62d94ce7433f7892fb4541f72ac4ac7d">AnyP::PROTO_HTTP</a>:</div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span> </div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca6b36255bc8fc8723bdfa8d419847697c">AnyP::PROTO_FTP</a>:</div>
-<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>        <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a3eff063fbded3d15e4cea500e09c2de3">Http::METHOD_PUT</a> ||</div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>                r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787abf0f2b96078c49aefdf7ab3ef183a5de">Http::METHOD_GET</a> ||</div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>                r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787ae59da8aa7332b02b6e84725be140028b">Http::METHOD_HEAD</a> )</div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span> </div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accaecdd82dd2be0d8cae828bf48b529ec8a">AnyP::PROTO_WAIS</a>:</div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca8cb0b9c9766c16c491b716e49e7fed5d">AnyP::PROTO_WHOIS</a>:</div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>        <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787abf0f2b96078c49aefdf7ab3ef183a5de">Http::METHOD_GET</a> ||</div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>                r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787ae59da8aa7332b02b6e84725be140028b">Http::METHOD_HEAD</a>)</div>
-<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span> </div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span><span class="comment"> * return true if we can serve requests for this method.</span></div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span><span class="comment"> */</span></div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span><span class="keywordtype">bool</span></div>
+<div class="foldopen" id="foldopen01002" data-start="{" data-end="}">
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"><a class="line" href="Uri_8cc.html#a0aaaea124c22af6f1bc00947934f67f5"> 1002</a></span><a class="code hl_function" href="Uri_8cc.html#a0aaaea124c22af6f1bc00947934f67f5">urlCheckRequest</a>(<span class="keyword">const</span> <a class="code hl_class" href="classHttpRequest.html">HttpRequest</a> * r)</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span>{</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>    <span class="comment">/* protocol &quot;independent&quot; methods</span></div>
+<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"> 1005</span><span class="comment">     *</span></div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span><span class="comment">     * actually these methods are specific to HTTP:</span></div>
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span><span class="comment">     * they are methods we receive on our HTTP port,</span></div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span><span class="comment">     * and if we had a FTP listener would not be relevant</span></div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span><span class="comment">     * there.</span></div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span><span class="comment">     *</span></div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span><span class="comment">     * So, we should delegate them to HTTP. The problem is that we</span></div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span><span class="comment">     * do not have a default protocol from the client side of HTTP.</span></div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span><span class="comment">     */</span></div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span> </div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>    <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a8ecea905b7d7b048a979e590cb11b9d7">Http::METHOD_CONNECT</a>)</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span> </div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>    <span class="comment">// we support OPTIONS and TRACE directed at us (with a 501 reply, for now)</span></div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>    <span class="comment">// we also support forwarding OPTIONS and TRACE, except for the *-URI ones</span></div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>    <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a4fbb358ee66d6fe96e79cb8cf49b260a">Http::METHOD_OPTIONS</a> || r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a048d612501964b8d3f0d41ede55395f3">Http::METHOD_TRACE</a>)</div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>        <span class="keywordflow">return</span> (r-&gt;<a class="code hl_variable" href="classHttp_1_1Message.html#a79ae935ff618211b139dcfdd8a5277ec">header</a>.<a class="code hl_function" href="classHttpHeader.html#abf9ae83ecee9c6ee5de511131993567b">getInt64</a>(<a class="code hl_enumvalue" href="namespaceHttp.html#a92faa3c60e0b457c167759389ae061a4a78311c3bedd99c69c01b5ada747f1de4">Http::HdrType::MAX_FORWARDS</a>) == 0 || r-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#a4499a7819274e2dbe4ceb399e77e250d">path</a>() != <a class="code hl_function" href="classAnyP_1_1Uri.html#a94b8c4cdbf6b7252217fb20d974af104">AnyP::Uri::Asterisk</a>());</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span> </div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span>    <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787ac284f1b2d0b0429b55542e9ca3be28d4">Http::METHOD_PURGE</a>)</div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span> </div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>    <span class="comment">/* does method match the protocol? */</span></div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    <span class="keywordflow">switch</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#af191362e7cf9b99f7f15dd20a0076e89">url</a>.<a class="code hl_function" href="classAnyP_1_1Uri.html#a267687947070d739a63da8a42969f12c">getScheme</a>()) {</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span> </div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accae51fa1ab78fe6308e5228a718c17ca69">AnyP::PROTO_URN</a>:</div>
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca62d94ce7433f7892fb4541f72ac4ac7d">AnyP::PROTO_HTTP</a>:</div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span> </div>
+<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca6b36255bc8fc8723bdfa8d419847697c">AnyP::PROTO_FTP</a>:</div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>        <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787a3eff063fbded3d15e4cea500e09c2de3">Http::METHOD_PUT</a> ||</div>
+<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>                r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787abf0f2b96078c49aefdf7ab3ef183a5de">Http::METHOD_GET</a> ||</div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>                r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787ae59da8aa7332b02b6e84725be140028b">Http::METHOD_HEAD</a> )</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span> </div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7accaecdd82dd2be0d8cae828bf48b529ec8a">AnyP::PROTO_WAIS</a>:</div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca8cb0b9c9766c16c491b716e49e7fed5d">AnyP::PROTO_WHOIS</a>:</div>
+<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>        <span class="keywordflow">if</span> (r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787abf0f2b96078c49aefdf7ab3ef183a5de">Http::METHOD_GET</a> ||</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>                r-&gt;<a class="code hl_variable" href="classHttpRequest.html#a1f0af82ff15e9a29d15319fc3cf05a54">method</a> == <a class="code hl_enumvalue" href="namespaceHttp.html#a84eb275fbe86f9dcc2a0ce9164a60787ae59da8aa7332b02b6e84725be140028b">Http::METHOD_HEAD</a>)</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span> </div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca0f99ccafd63891be16873f9f2abe94ba">AnyP::PROTO_HTTPS</a>:</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span><span class="preprocessor">#if USE_OPENSSL || HAVE_LIBGNUTLS</span></div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span><span class="comment">         * Squid can&#39;t originate an SSL connection, so it should</span></div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span><span class="comment">         * never receive an &quot;https:&quot; URL.  It should always be</span></div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span><span class="comment">         * CONNECT instead.</span></div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span><span class="comment">         */</span></div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span> </div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceAnyP.html#af0ba7042d4344a04b758836b3e6e7acca0f99ccafd63891be16873f9f2abe94ba">AnyP::PROTO_HTTPS</a>:</div>
-<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span><span class="preprocessor">#if USE_OPENSSL || HAVE_LIBGNUTLS</span></div>
-<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>        <span class="comment">/*</span></div>
-<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span><span class="comment">         * Squid can&#39;t originate an SSL connection, so it should</span></div>
-<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span><span class="comment">         * never receive an &quot;https:&quot; URL.  It should always be</span></div>
-<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span><span class="comment">         * CONNECT instead.</span></div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span><span class="comment">         */</span></div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span> </div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    }</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span> </div>
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>    <span class="comment">/* notreached */</span></div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>}</div>
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>    }</div>
+<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span> </div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>    <span class="comment">/* notreached */</span></div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>}</div>
 </div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span> </div>
-<div class="foldopen" id="foldopen01079" data-start="{" data-end="}">
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a5fb5b416d26367c782364942c691d6fa"> 1079</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a65774dcda18717415a5f6eff6213ef7e">AnyP::Uri::Uri</a>(<a class="code hl_class" href="classAnyP_1_1UriScheme.html">AnyP::UriScheme</a> <span class="keyword">const</span> &amp;aScheme) :</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    scheme_(aScheme),</div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>    hostIsNumeric_(false)</div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>{</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    *<a class="code hl_variable" href="classAnyP_1_1Uri.html#a4890e5579e52561b1a3ed5403028a6c9">host_</a>=0;</div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>}</div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span> </div>
+<div class="foldopen" id="foldopen01067" data-start="{" data-end="}">
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a5fb5b416d26367c782364942c691d6fa"> 1067</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a65774dcda18717415a5f6eff6213ef7e">AnyP::Uri::Uri</a>(<a class="code hl_class" href="classAnyP_1_1UriScheme.html">AnyP::UriScheme</a> <span class="keyword">const</span> &amp;aScheme) :</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>    scheme_(aScheme),</div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>    hostIsNumeric_(false)</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>{</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>    *<a class="code hl_variable" href="classAnyP_1_1Uri.html#a4890e5579e52561b1a3ed5403028a6c9">host_</a>=0;</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>}</div>
 </div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span> </div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span><span class="comment">// TODO: fix code duplication with AnyP::Uri::parse()</span></div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span><span class="keywordtype">char</span> *</div>
+<div class="foldopen" id="foldopen01076" data-start="{" data-end="}">
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a77bfb036e33e7d6d3a9c0fd7ae1451fc"> 1076</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a77bfb036e33e7d6d3a9c0fd7ae1451fc">AnyP::Uri::cleanup</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *uri)</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>{</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>    <span class="keywordtype">char</span> *cleanedUri = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="SquidConfig_8cc.html#a75b136e6a1eef61424d84596a404aafe">Config</a>.<a class="code hl_variable" href="classSquidConfig.html#a6419be534ae952210e5072780135a02d">uri_whitespace</a>) {</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a5255eddab37c5adb9c4b153d543a66eb">URI_WHITESPACE_ALLOW</a>: {</div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>        <span class="keyword">const</span> <span class="keyword">auto</span> flags = <a class="code hl_define" href="rfc1738_8h.html#a613978ce289223fe435998397dd5891d">RFC1738_ESCAPE_NOSPACE</a> | <a class="code hl_define" href="rfc1738_8h.html#aa693a78eb62509fddfd2a9da6634c0f8">RFC1738_ESCAPE_UNESCAPED</a>;</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_function" href="rfc1738_8h.html#a99ceb7c3adc96b1424f47ce962e792c1">rfc1738_do_escape</a>(uri, flags), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>    }</div>
 <div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span> </div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span><span class="comment">// TODO: fix code duplication with AnyP::Uri::parse()</span></div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span><span class="keywordtype">char</span> *</div>
-<div class="foldopen" id="foldopen01088" data-start="{" data-end="}">
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"><a class="line" href="classAnyP_1_1Uri.html#a77bfb036e33e7d6d3a9c0fd7ae1451fc"> 1088</a></span><a class="code hl_function" href="classAnyP_1_1Uri.html#a77bfb036e33e7d6d3a9c0fd7ae1451fc">AnyP::Uri::cleanup</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *uri)</div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>{</div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>    <span class="keywordtype">char</span> *cleanedUri = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="SquidConfig_8cc.html#a75b136e6a1eef61424d84596a404aafe">Config</a>.<a class="code hl_variable" href="classSquidConfig.html#a6419be534ae952210e5072780135a02d">uri_whitespace</a>) {</div>
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a5255eddab37c5adb9c4b153d543a66eb">URI_WHITESPACE_ALLOW</a>: {</div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>        <span class="keyword">const</span> <span class="keyword">auto</span> flags = <a class="code hl_define" href="rfc1738_8h.html#a613978ce289223fe435998397dd5891d">RFC1738_ESCAPE_NOSPACE</a> | <a class="code hl_define" href="rfc1738_8h.html#aa693a78eb62509fddfd2a9da6634c0f8">RFC1738_ESCAPE_UNESCAPED</a>;</div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_function" href="rfc1738_8h.html#a99ceb7c3adc96b1424f47ce962e792c1">rfc1738_do_escape</a>(uri, flags), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>    }</div>
-<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span> </div>
-<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a691ee25c55b4da82396ffc0bebe2994e">URI_WHITESPACE_ENCODE</a>:</div>
-<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_function" href="rfc1738_8h.html#a99ceb7c3adc96b1424f47ce962e792c1">rfc1738_do_escape</a>(uri, <a class="code hl_define" href="rfc1738_8h.html#aa693a78eb62509fddfd2a9da6634c0f8">RFC1738_ESCAPE_UNESCAPED</a>), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a691ee25c55b4da82396ffc0bebe2994e">URI_WHITESPACE_ENCODE</a>:</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_function" href="rfc1738_8h.html#a99ceb7c3adc96b1424f47ce962e792c1">rfc1738_do_escape</a>(uri, <a class="code hl_define" href="rfc1738_8h.html#aa693a78eb62509fddfd2a9da6634c0f8">RFC1738_ESCAPE_UNESCAPED</a>), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span> </div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a0aec6e1bc5f19d5730c987b500fcc490">URI_WHITESPACE_CHOP</a>: {</div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>        <span class="keyword">const</span> <span class="keyword">auto</span> pos = strcspn(uri, <a class="code hl_define" href="compat__shared_8h.html#af172ea808e99a9f4d4cc3631a496f246">w_space</a>);</div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>        <span class="keywordtype">char</span> *choppedUri = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>        <span class="keywordflow">if</span> (pos &lt; strlen(uri))</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>            choppedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(uri, pos + 1);</div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_function" href="rfc1738_8h.html#a99ceb7c3adc96b1424f47ce962e792c1">rfc1738_do_escape</a>(choppedUri ? choppedUri : uri,</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span>                                                <a class="code hl_define" href="rfc1738_8h.html#aa693a78eb62509fddfd2a9da6634c0f8">RFC1738_ESCAPE_UNESCAPED</a>), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>        cleanedUri[pos] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span>        <a class="code hl_define" href="negotiate__wrapper_8cc.html#a2c3897f7c46ca54a2e0dd7b24a40c7cb">xfree</a>(choppedUri);</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span>    }</div>
 <div class="line"><a id="l01101" name="l01101"></a><span class="lineno"> 1101</span> </div>
-<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a0aec6e1bc5f19d5730c987b500fcc490">URI_WHITESPACE_CHOP</a>: {</div>
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>        <span class="keyword">const</span> <span class="keyword">auto</span> pos = strcspn(uri, <a class="code hl_define" href="compat__shared_8h.html#af172ea808e99a9f4d4cc3631a496f246">w_space</a>);</div>
-<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>        <span class="keywordtype">char</span> *choppedUri = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>        <span class="keywordflow">if</span> (pos &lt; strlen(uri))</div>
-<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>            choppedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(uri, pos + 1);</div>
-<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_function" href="rfc1738_8h.html#a99ceb7c3adc96b1424f47ce962e792c1">rfc1738_do_escape</a>(choppedUri ? choppedUri : uri,</div>
-<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>                                                <a class="code hl_define" href="rfc1738_8h.html#aa693a78eb62509fddfd2a9da6634c0f8">RFC1738_ESCAPE_UNESCAPED</a>), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>        cleanedUri[pos] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>        <a class="code hl_define" href="negotiate__wrapper_8cc.html#a2c3897f7c46ca54a2e0dd7b24a40c7cb">xfree</a>(choppedUri);</div>
-<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span>    }</div>
-<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span> </div>
-<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a4008092c7d768a5e81803e80ff7654e9">URI_WHITESPACE_DENY</a>:</div>
-<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a1670055d93c7767c1c71a3cddca9c5d9">URI_WHITESPACE_STRIP</a>:</div>
-<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>    <span class="keywordflow">default</span>: {</div>
-<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span>        <span class="comment">// TODO: avoid duplication with urlParse()</span></div>
-<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *t;</div>
-<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>        <span class="keywordtype">char</span> *tmp_uri = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a class="code hl_define" href="negotiate__wrapper_8cc.html#a6af5faec3f9662b20ffc9903f923dec0">xmalloc</a>(strlen(uri) + 1));</div>
-<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>        <span class="keywordtype">char</span> *q = tmp_uri;</div>
-<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span>        t = uri;</div>
-<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span>        <span class="keywordflow">while</span> (*t) {</div>
-<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>            <span class="keywordflow">if</span> (!<a class="code hl_define" href="xis_8h.html#a1ddc35653ddbcf46386d5c824a83a150">xisspace</a>(*t)) {</div>
-<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span>                *q = *t;</div>
-<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span>                ++q;</div>
-<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span>            }</div>
-<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span>            ++t;</div>
-<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span>        }</div>
-<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span>        *q = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_define" href="rfc1738_8h.html#aac1210d2cdbff9d38d2dff20cd8e2a7e">rfc1738_escape_unescaped</a>(tmp_uri), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"> 1131</span>        <a class="code hl_define" href="negotiate__wrapper_8cc.html#a2c3897f7c46ca54a2e0dd7b24a40c7cb">xfree</a>(tmp_uri);</div>
-<div class="line"><a id="l01132" name="l01132"></a><span class="lineno"> 1132</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>    }</div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span>    }</div>
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span> </div>
-<div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>    <a class="code hl_define" href="assert_8h.html#a33fa45e42155e69ce8d0da0fd978b351">assert</a>(cleanedUri);</div>
-<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>    <span class="keywordflow">return</span> cleanedUri;</div>
-<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>}</div>
+<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a4008092c7d768a5e81803e80ff7654e9">URI_WHITESPACE_DENY</a>:</div>
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span>    <span class="keywordflow">case</span> <a class="code hl_define" href="defines_8h.html#a1670055d93c7767c1c71a3cddca9c5d9">URI_WHITESPACE_STRIP</a>:</div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>    <span class="keywordflow">default</span>: {</div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>        <span class="comment">// TODO: avoid duplication with urlParse()</span></div>
+<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *t;</div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>        <span class="keywordtype">char</span> *tmp_uri = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a class="code hl_define" href="negotiate__wrapper_8cc.html#a6af5faec3f9662b20ffc9903f923dec0">xmalloc</a>(strlen(uri) + 1));</div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>        <span class="keywordtype">char</span> *q = tmp_uri;</div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span>        t = uri;</div>
+<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>        <span class="keywordflow">while</span> (*t) {</div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"> 1111</span>            <span class="keywordflow">if</span> (!<a class="code hl_define" href="xis_8h.html#a1ddc35653ddbcf46386d5c824a83a150">xisspace</a>(*t)) {</div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span>                *q = *t;</div>
+<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>                ++q;</div>
+<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>            }</div>
+<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span>            ++t;</div>
+<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>        }</div>
+<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span>        *q = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>        cleanedUri = <a class="code hl_function" href="xstring_8cc.html#a4282f37eaa4a260c714ac6d1bf6a200f">xstrndup</a>(<a class="code hl_define" href="rfc1738_8h.html#aac1210d2cdbff9d38d2dff20cd8e2a7e">rfc1738_escape_unescaped</a>(tmp_uri), <a class="code hl_define" href="defines_8h.html#afcbf7727d6416354930cd43f1c1e480c">MAX_URL</a>);</div>
+<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span>        <a class="code hl_define" href="negotiate__wrapper_8cc.html#a2c3897f7c46ca54a2e0dd7b24a40c7cb">xfree</a>(tmp_uri);</div>
+<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span>    }</div>
+<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span>    }</div>
+<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span> </div>
+<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span>    <a class="code hl_define" href="assert_8h.html#a33fa45e42155e69ce8d0da0fd978b351">assert</a>(cleanedUri);</div>
+<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span>    <span class="keywordflow">return</span> cleanedUri;</div>
+<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span>}</div>
 </div>
-<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span> </div>
+<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span> </div>
 <div class="ttc" id="aAssure_8h_html_a1fcca4cd6cfc3b9f835aa3652eb0c2f5"><div class="ttname"><a href="Assure_8h.html#a1fcca4cd6cfc3b9f835aa3652eb0c2f5">Assure</a></div><div class="ttdeci">#define Assure(condition)</div><div class="ttdef"><b>Definition</b> <a href="Assure_8h_source.html#l00035">Assure.h:35</a></div></div>
 <div class="ttc" id="aHere_8h_html_ae4d205e9d525856fbdfd44f7eccb309b"><div class="ttname"><a href="Here_8h.html#ae4d205e9d525856fbdfd44f7eccb309b">Here</a></div><div class="ttdeci">#define Here()</div><div class="ttdoc">source code location of the caller</div><div class="ttdef"><b>Definition</b> <a href="Here_8h_source.html#l00015">Here.h:15</a></div></div>
 <div class="ttc" id="aHttpRequest_8h_html"><div class="ttname"><a href="HttpRequest_8h.html">HttpRequest.h</a></div></div>
@@ -1250,17 +1238,17 @@ $(document).ready(function(){initNavTree('Uri_8cc_source.html',''); initResizabl
 <div class="ttc" id="aSquidString_8h_html_a067ecdb7fda01fabe1eb49a488a96c4c"><div class="ttname"><a href="SquidString_8h.html#a067ecdb7fda01fabe1eb49a488a96c4c">stringHasWhitespace</a></div><div class="ttdeci">int stringHasWhitespace(const char *)</div><div class="ttdef"><b>Definition</b> <a href="String_8cc_source.html#l00294">String.cc:294</a></div></div>
 <div class="ttc" id="aSquidString_8h_html_abbb6179dd84b7d0df2160977a7c076a0"><div class="ttname"><a href="SquidString_8h.html#abbb6179dd84b7d0df2160977a7c076a0">stringHasCntl</a></div><div class="ttdeci">int stringHasCntl(const char *)</div><div class="ttdef"><b>Definition</b> <a href="String_8cc_source.html#l00301">String.cc:301</a></div></div>
 <div class="ttc" id="aTextException_8cc_html_aa73ff10b84f321d18602cf47b8695dd5"><div class="ttname"><a href="TextException_8cc.html#aa73ff10b84f321d18602cf47b8695dd5">CurrentException</a></div><div class="ttdeci">std::ostream &amp; CurrentException(std::ostream &amp;os)</div><div class="ttdoc">prints active (i.e., thrown but not yet handled) exception</div><div class="ttdef"><b>Definition</b> <a href="TextException_8cc_source.html#l00088">TextException.cc:88</a></div></div>
-<div class="ttc" id="aUri_8cc_html_a0aaaea124c22af6f1bc00947934f67f5"><div class="ttname"><a href="Uri_8cc.html#a0aaaea124c22af6f1bc00947934f67f5">urlCheckRequest</a></div><div class="ttdeci">bool urlCheckRequest(const HttpRequest *r)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l01014">Uri.cc:1014</a></div></div>
+<div class="ttc" id="aUri_8cc_html_a0aaaea124c22af6f1bc00947934f67f5"><div class="ttname"><a href="Uri_8cc.html#a0aaaea124c22af6f1bc00947934f67f5">urlCheckRequest</a></div><div class="ttdeci">bool urlCheckRequest(const HttpRequest *r)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l01002">Uri.cc:1002</a></div></div>
 <div class="ttc" id="aUri_8cc_html_a1c0105767e8bfd92144d7f774302d7f7"><div class="ttname"><a href="Uri_8cc.html#a1c0105767e8bfd92144d7f774302d7f7">valid_hostname_chars</a></div><div class="ttdeci">static const char valid_hostname_chars[]</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00028">Uri.cc:28</a></div></div>
 <div class="ttc" id="aUri_8cc_html_a207ccd9dcef94ddf31d49c43ac98412c"><div class="ttname"><a href="Uri_8cc.html#a207ccd9dcef94ddf31d49c43ac98412c">valid_hostname_chars_u</a></div><div class="ttdeci">static const char valid_hostname_chars_u[]</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00022">Uri.cc:22</a></div></div>
-<div class="ttc" id="aUri_8cc_html_a22de62ca065a13019171abd27ea70cbe"><div class="ttname"><a href="Uri_8cc.html#a22de62ca065a13019171abd27ea70cbe">urlIsRelative</a></div><div class="ttdeci">bool urlIsRelative(const char *url)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00858">Uri.cc:858</a></div></div>
+<div class="ttc" id="aUri_8cc_html_a22de62ca065a13019171abd27ea70cbe"><div class="ttname"><a href="Uri_8cc.html#a22de62ca065a13019171abd27ea70cbe">urlIsRelative</a></div><div class="ttdeci">bool urlIsRelative(const char *url)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00846">Uri.cc:846</a></div></div>
 <div class="ttc" id="aUri_8cc_html_a2778b5c376cbe5c580bf0c5d6a916b10"><div class="ttname"><a href="Uri_8cc.html#a2778b5c376cbe5c580bf0c5d6a916b10">urlInitialize</a></div><div class="ttdeci">void urlInitialize(void)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00212">Uri.cc:212</a></div></div>
 <div class="ttc" id="aUri_8cc_html_a71c358c57989f834d6c54b22d1321485"><div class="ttname"><a href="Uri_8cc.html#a71c358c57989f834d6c54b22d1321485">PathChars</a></div><div class="ttdeci">static const CharacterSet &amp; PathChars()</div><div class="ttdoc">Characters which are valid within a URI path section.</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00055">Uri.cc:55</a></div></div>
-<div class="ttc" id="aUri_8cc_html_a7b3d400c54dd0ce685ac6c136ae73fe3"><div class="ttname"><a href="Uri_8cc.html#a7b3d400c54dd0ce685ac6c136ae73fe3">matchDomainName</a></div><div class="ttdeci">int matchDomainName(const char *h, const char *d, MatchDomainNameFlags flags)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00915">Uri.cc:915</a></div></div>
-<div class="ttc" id="aUri_8cc_html_a7bced763e70ec14e5e5ef88173302b6b"><div class="ttname"><a href="Uri_8cc.html#a7bced763e70ec14e5e5ef88173302b6b">urlCanonicalCleanWithoutRequest</a></div><div class="ttdeci">char * urlCanonicalCleanWithoutRequest(const SBuf &amp;url, const HttpRequestMethod &amp;method, const AnyP::UriScheme &amp;scheme)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00802">Uri.cc:802</a></div></div>
+<div class="ttc" id="aUri_8cc_html_a7b3d400c54dd0ce685ac6c136ae73fe3"><div class="ttname"><a href="Uri_8cc.html#a7b3d400c54dd0ce685ac6c136ae73fe3">matchDomainName</a></div><div class="ttdeci">int matchDomainName(const char *h, const char *d, MatchDomainNameFlags flags)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00903">Uri.cc:903</a></div></div>
+<div class="ttc" id="aUri_8cc_html_a7bced763e70ec14e5e5ef88173302b6b"><div class="ttname"><a href="Uri_8cc.html#a7bced763e70ec14e5e5ef88173302b6b">urlCanonicalCleanWithoutRequest</a></div><div class="ttdeci">char * urlCanonicalCleanWithoutRequest(const SBuf &amp;url, const HttpRequestMethod &amp;method, const AnyP::UriScheme &amp;scheme)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00790">Uri.cc:790</a></div></div>
 <div class="ttc" id="aUri_8cc_html_a8f2b02c6e014d5d1dd6a67dc8d1c7e7f"><div class="ttname"><a href="Uri_8cc.html#a8f2b02c6e014d5d1dd6a67dc8d1c7e7f">uriParseScheme</a></div><div class="ttdeci">static AnyP::UriScheme uriParseScheme(Parser::Tokenizer &amp;tok)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00267">Uri.cc:267</a></div></div>
 <div class="ttc" id="aUri_8cc_html_a9cfa070b0d0b122da94cce04dc49290c"><div class="ttname"><a href="Uri_8cc.html#a9cfa070b0d0b122da94cce04dc49290c">UserInfoChars</a></div><div class="ttdeci">static const CharacterSet &amp; UserInfoChars()</div><div class="ttdoc">Characters which are valid within a URI userinfo section.</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00037">Uri.cc:37</a></div></div>
-<div class="ttc" id="aUri_8cc_html_acd8c44f57f7edda140bea50b01a37fd4"><div class="ttname"><a href="Uri_8cc.html#acd8c44f57f7edda140bea50b01a37fd4">urlCanonicalFakeHttps</a></div><div class="ttdeci">const char * urlCanonicalFakeHttps(const HttpRequest *request)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00831">Uri.cc:831</a></div></div>
+<div class="ttc" id="aUri_8cc_html_acd8c44f57f7edda140bea50b01a37fd4"><div class="ttname"><a href="Uri_8cc.html#acd8c44f57f7edda140bea50b01a37fd4">urlCanonicalFakeHttps</a></div><div class="ttdeci">const char * urlCanonicalFakeHttps(const HttpRequest *request)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00819">Uri.cc:819</a></div></div>
 <div class="ttc" id="aUri_8cc_html_adf12b49811c607c1a3b4a414f9760d2f"><div class="ttname"><a href="Uri_8cc.html#adf12b49811c607c1a3b4a414f9760d2f">urlAppendDomain</a></div><div class="ttdeci">bool urlAppendDomain(char *host)</div><div class="ttdoc">apply append_domain config to the given hostname</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00297">Uri.cc:297</a></div></div>
 <div class="ttc" id="aUri_8h_html"><div class="ttname"><a href="Uri_8h.html">Uri.h</a></div></div>
 <div class="ttc" id="aUri_8h_html_a1c7d80fad9e5024e4642f0be2c535bfd"><div class="ttname"><a href="Uri_8h.html#a1c7d80fad9e5024e4642f0be2c535bfd">MatchDomainNameFlags</a></div><div class="ttdeci">MatchDomainNameFlags</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00238">Uri.h:238</a></div></div>
@@ -1278,20 +1266,20 @@ $(document).ready(function(){initNavTree('Uri_8cc_source.html',''); initResizabl
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a20555bec68cbbf50bd02ae7721ba44dc"><div class="ttname"><a href="classAnyP_1_1Uri.html#a20555bec68cbbf50bd02ae7721ba44dc">AnyP::Uri::parseHost</a></div><div class="ttdeci">SBuf parseHost(Parser::Tokenizer &amp;) const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00632">Uri.cc:632</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a22bf6edd46a4800db8002d1fae88773b"><div class="ttname"><a href="classAnyP_1_1Uri.html#a22bf6edd46a4800db8002d1fae88773b">AnyP::Uri::parseUrn</a></div><div class="ttdeci">void parseUrn(Parser::Tokenizer &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00601">Uri.cc:601</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a267687947070d739a63da8a42969f12c"><div class="ttname"><a href="classAnyP_1_1Uri.html#a267687947070d739a63da8a42969f12c">AnyP::Uri::getScheme</a></div><div class="ttdeci">AnyP::UriScheme const &amp; getScheme() const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00058">Uri.h:58</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a27ce3a39f2386734d173d9ae97b614e0"><div class="ttname"><a href="classAnyP_1_1Uri.html#a27ce3a39f2386734d173d9ae97b614e0">AnyP::Uri::touch</a></div><div class="ttdeci">void touch()</div><div class="ttdoc">clear the cached URI display forms</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00724">Uri.cc:724</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a2c86b2285f5a7f86cd1862e8d7b8fe48"><div class="ttname"><a href="classAnyP_1_1Uri.html#a2c86b2285f5a7f86cd1862e8d7b8fe48">AnyP::Uri::authority</a></div><div class="ttdeci">SBuf &amp; authority(bool requirePort=false) const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00733">Uri.cc:733</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a27ce3a39f2386734d173d9ae97b614e0"><div class="ttname"><a href="classAnyP_1_1Uri.html#a27ce3a39f2386734d173d9ae97b614e0">AnyP::Uri::touch</a></div><div class="ttdeci">void touch()</div><div class="ttdoc">clear the cached URI display forms</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00712">Uri.cc:712</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a2c86b2285f5a7f86cd1862e8d7b8fe48"><div class="ttname"><a href="classAnyP_1_1Uri.html#a2c86b2285f5a7f86cd1862e8d7b8fe48">AnyP::Uri::authority</a></div><div class="ttdeci">SBuf &amp; authority(bool requirePort=false) const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00721">Uri.cc:721</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a3d816016c55ce6f79385505d4df653b7"><div class="ttname"><a href="classAnyP_1_1Uri.html#a3d816016c55ce6f79385505d4df653b7">AnyP::Uri::DecodeOrDupe</a></div><div class="ttdeci">static SBuf DecodeOrDupe(const SBuf &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00132">Uri.cc:132</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a4499a7819274e2dbe4ceb399e77e250d"><div class="ttname"><a href="classAnyP_1_1Uri.html#a4499a7819274e2dbe4ceb399e77e250d">AnyP::Uri::path</a></div><div class="ttdeci">void path(const char *p)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00096">Uri.h:96</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a4890e5579e52561b1a3ed5403028a6c9"><div class="ttname"><a href="classAnyP_1_1Uri.html#a4890e5579e52561b1a3ed5403028a6c9">AnyP::Uri::host_</a></div><div class="ttdeci">char host_[SQUIDHOSTNAMELEN]</div><div class="ttdoc">string representation of the URI authority name or IP</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00188">Uri.h:188</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a58ad87d5bdf794875bd1dbe3844918ea"><div class="ttname"><a href="classAnyP_1_1Uri.html#a58ad87d5bdf794875bd1dbe3844918ea">AnyP::Uri::host</a></div><div class="ttdeci">const char * host(void) const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00076">Uri.h:76</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a6001fb9d79869cb3819070d36414318c"><div class="ttname"><a href="classAnyP_1_1Uri.html#a6001fb9d79869cb3819070d36414318c">AnyP::Uri::absolutePath</a></div><div class="ttdeci">SBuf &amp; absolutePath() const</div><div class="ttdoc">RFC 3986 section 4.2 relative reference called 'absolute-path'.</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00787">Uri.cc:787</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a6001fb9d79869cb3819070d36414318c"><div class="ttname"><a href="classAnyP_1_1Uri.html#a6001fb9d79869cb3819070d36414318c">AnyP::Uri::absolutePath</a></div><div class="ttdeci">SBuf &amp; absolutePath() const</div><div class="ttdoc">RFC 3986 section 4.2 relative reference called 'absolute-path'.</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00775">Uri.cc:775</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a65774dcda18717415a5f6eff6213ef7e"><div class="ttname"><a href="classAnyP_1_1Uri.html#a65774dcda18717415a5f6eff6213ef7e">AnyP::Uri::Uri</a></div><div class="ttdeci">Uri()</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00036">Uri.h:36</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a670d796b92cc399bb416026d2a918dcd"><div class="ttname"><a href="classAnyP_1_1Uri.html#a670d796b92cc399bb416026d2a918dcd">AnyP::Uri::Decode</a></div><div class="ttdeci">static std::optional&lt; SBuf &gt; Decode(const SBuf &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00105">Uri.cc:105</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a6be4200ae143482153d6c03a63e2c0e1"><div class="ttname"><a href="classAnyP_1_1Uri.html#a6be4200ae143482153d6c03a63e2c0e1">AnyP::Uri::parsedHost</a></div><div class="ttdeci">std::optional&lt; Host &gt; parsedHost() const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00181">Uri.cc:181</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a77bfb036e33e7d6d3a9c0fd7ae1451fc"><div class="ttname"><a href="classAnyP_1_1Uri.html#a77bfb036e33e7d6d3a9c0fd7ae1451fc">AnyP::Uri::cleanup</a></div><div class="ttdeci">static char * cleanup(const char *uri)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l01088">Uri.cc:1088</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a81085a81e41edcdbe901e5f0da3a84e4"><div class="ttname"><a href="classAnyP_1_1Uri.html#a81085a81e41edcdbe901e5f0da3a84e4">AnyP::Uri::addRelativePath</a></div><div class="ttdeci">void addRelativePath(const char *relUrl)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00891">Uri.cc:891</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a8966ac4c30797e6134204184dba13285"><div class="ttname"><a href="classAnyP_1_1Uri.html#a8966ac4c30797e6134204184dba13285">AnyP::Uri::parsePort</a></div><div class="ttdeci">int parsePort(Parser::Tokenizer &amp;) const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00702">Uri.cc:702</a></div></div>
-<div class="ttc" id="aclassAnyP_1_1Uri_html_a8d1454e7c8fc60b45e27cf7d1f472220"><div class="ttname"><a href="classAnyP_1_1Uri.html#a8d1454e7c8fc60b45e27cf7d1f472220">AnyP::Uri::absolute</a></div><div class="ttdeci">SBuf &amp; absolute() const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00755">Uri.cc:755</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a77bfb036e33e7d6d3a9c0fd7ae1451fc"><div class="ttname"><a href="classAnyP_1_1Uri.html#a77bfb036e33e7d6d3a9c0fd7ae1451fc">AnyP::Uri::cleanup</a></div><div class="ttdeci">static char * cleanup(const char *uri)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l01076">Uri.cc:1076</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a81085a81e41edcdbe901e5f0da3a84e4"><div class="ttname"><a href="classAnyP_1_1Uri.html#a81085a81e41edcdbe901e5f0da3a84e4">AnyP::Uri::addRelativePath</a></div><div class="ttdeci">void addRelativePath(const char *relUrl)</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00879">Uri.cc:879</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a8966ac4c30797e6134204184dba13285"><div class="ttname"><a href="classAnyP_1_1Uri.html#a8966ac4c30797e6134204184dba13285">AnyP::Uri::parsePort</a></div><div class="ttdeci">int parsePort(Parser::Tokenizer &amp;) const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00690">Uri.cc:690</a></div></div>
+<div class="ttc" id="aclassAnyP_1_1Uri_html_a8d1454e7c8fc60b45e27cf7d1f472220"><div class="ttname"><a href="classAnyP_1_1Uri.html#a8d1454e7c8fc60b45e27cf7d1f472220">AnyP::Uri::absolute</a></div><div class="ttdeci">SBuf &amp; absolute() const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00743">Uri.cc:743</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_a94b8c4cdbf6b7252217fb20d974af104"><div class="ttname"><a href="classAnyP_1_1Uri.html#a94b8c4cdbf6b7252217fb20d974af104">AnyP::Uri::Asterisk</a></div><div class="ttdeci">static const SBuf &amp; Asterisk()</div><div class="ttdoc">the static '*' pseudo-URI</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00140">Uri.cc:140</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_aa09ef977328523ec48e7440c83d728d3"><div class="ttname"><a href="classAnyP_1_1Uri.html#aa09ef977328523ec48e7440c83d728d3">AnyP::Uri::port</a></div><div class="ttdeci">void port(const Port p)</div><div class="ttdoc">reset authority port subcomponent</div><div class="ttdef"><b>Definition</b> <a href="Uri_8h_source.html#l00090">Uri.h:90</a></div></div>
 <div class="ttc" id="aclassAnyP_1_1Uri_html_aa165075c682b9d17161d9753ac0da846"><div class="ttname"><a href="classAnyP_1_1Uri.html#aa165075c682b9d17161d9753ac0da846">AnyP::Uri::path</a></div><div class="ttdeci">const SBuf &amp; path() const</div><div class="ttdef"><b>Definition</b> <a href="Uri_8cc_source.html#l00200">Uri.cc:200</a></div></div>
