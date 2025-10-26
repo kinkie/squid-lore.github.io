@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('pinger_8cc.html',''); initResizable();
 <div class="textblock"><code>#include &quot;<a class="el" href="squid_8h_source.html">squid.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="debug_2Stream_8h_source.html">debug/Stream.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Stopwatch_8h_source.html">base/Stopwatch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="TextException_8h_source.html">base/TextException.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="select_8h_source.html">compat/select.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="socket_8h_source.html">compat/socket.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Icmp4_8h_source.html">Icmp4.h</a>&quot;</code><br />
@@ -123,6 +124,11 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad736b147cd4e6416e5b452c31df45c04" id="r_ad736b147cd4e6416e5b452c31df45c04"><td class="memItemLeft" align="right" valign="top">static std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pinger_8cc.html#ad736b147cd4e6416e5b452c31df45c04">TerminationReason</a> (std::ostream &amp;os)</td></tr>
+<tr class="memdesc:ad736b147cd4e6416e5b452c31df45c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">reports std::terminate() cause (e.g., an uncaught or prohibited exception)  <br /></td></tr>
+<tr class="separator:ad736b147cd4e6416e5b452c31df45c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f22a6a804b53e5fb1655c378f1faa52" id="r_a8f22a6a804b53e5fb1655c378f1faa52"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pinger_8cc.html#a8f22a6a804b53e5fb1655c378f1faa52">OnTerminate</a> ()</td></tr>
+<tr class="separator:a8f22a6a804b53e5fb1655c378f1faa52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c3f6775325c30275d11c6abee2db6a0" id="r_ga2c3f6775325c30275d11c6abee2db6a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main</a> (<a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>, char **)</td></tr>
 <tr class="separator:ga2c3f6775325c30275d11c6abee2db6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -155,7 +161,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00084">84</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00085">85</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
 
 </div>
 </div>
@@ -175,6 +181,70 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a8f22a6a804b53e5fb1655c378f1faa52" name="a8f22a6a804b53e5fb1655c378f1faa52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f22a6a804b53e5fb1655c378f1faa52">&#9670;&#160;</a></span>OnTerminate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void OnTerminate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00111">111</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="classIcmpPinger.html#a9a863928b65efb044cb6da8a06883d78">IcmpPinger::Close()</a>, <a class="el" href="pinger_8cc.html#a34b9dad84dc45bb69fd53320e20ec6cd">control</a>, <a class="el" href="debug_2Stream_8h.html#af0ecf487aee4d8ff164c0f40e71c5150">DBG_CRITICAL</a>, <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>, <a class="el" href="classDebug.html#a2e5397f0fd9abedca3410cf4c5157080">Debug::PrepareToDie()</a>, and <a class="el" href="pinger_8cc.html#ad736b147cd4e6416e5b452c31df45c04">TerminationReason()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main()</a>.</p>
+
+</div>
+</div>
+<a id="ad736b147cd4e6416e5b452c31df45c04" name="ad736b147cd4e6416e5b452c31df45c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad736b147cd4e6416e5b452c31df45c04">&#9670;&#160;</a></span>TerminationReason()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::ostream &amp; TerminationReason </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00101">101</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="TextException_8cc.html#aa73ff10b84f321d18602cf47b8695dd5">CurrentException()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pinger_8cc.html#a8f22a6a804b53e5fb1655c378f1faa52">OnTerminate()</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a34b9dad84dc45bb69fd53320e20ec6cd" name="a34b9dad84dc45bb69fd53320e20ec6cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34b9dad84dc45bb69fd53320e20ec6cd">&#9670;&#160;</a></span>control</h2>
@@ -188,9 +258,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00092">92</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00093">93</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main()</a>, <a class="el" href="classIcmp4.html#a7d1fbbd7af06e1357db77dbbb8e460e8">Icmp4::Recv()</a>, <a class="el" href="classIcmp6.html#aea49f80d5618f0f3da033e19e7a36490">Icmp6::Recv()</a>, and <a class="el" href="classTestSBuf.html#a97d044ab9184f64c05c6571cead0b2de">TestSBuf::testAppendStdString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main()</a>, <a class="el" href="pinger_8cc.html#a8f22a6a804b53e5fb1655c378f1faa52">OnTerminate()</a>, <a class="el" href="classIcmp4.html#a7d1fbbd7af06e1357db77dbbb8e460e8">Icmp4::Recv()</a>, <a class="el" href="classIcmp6.html#aea49f80d5618f0f3da033e19e7a36490">Icmp6::Recv()</a>, and <a class="el" href="classTestSBuf.html#a97d044ab9184f64c05c6571cead0b2de">TestSBuf::testAppendStdString()</a>.</p>
 
 </div>
 </div>
@@ -206,7 +276,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00093">93</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00094">94</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classIcmpPinger.html#a9a863928b65efb044cb6da8a06883d78">IcmpPinger::Close()</a>, <a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main()</a>, and <a class="el" href="classIcmpPinger.html#a71c3c0748b57bddcf344e1de5043ec47">IcmpPinger::Recv()</a>.</p>
 
@@ -224,7 +294,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00094">94</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00095">95</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classIcmpPinger.html#a9a863928b65efb044cb6da8a06883d78">IcmpPinger::Close()</a>, <a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main()</a>, and <a class="el" href="classIcmpPinger.html#a71c3c0748b57bddcf344e1de5043ec47">IcmpPinger::Recv()</a>.</p>
 
@@ -242,7 +312,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00096">96</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00097">97</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classIcmp4.html#a6349116a78c0d90dfacdacaea4e22c3e">Icmp4::SendEcho()</a>, and <a class="el" href="classIcmp6.html#ab9fa71ed393311fef111a4529c4ca609">Icmp6::SendEcho()</a>.</p>
 
@@ -268,7 +338,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00089">89</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pinger_8cc_source.html#l00090">90</a> of file <a class="el" href="pinger_8cc_source.html">pinger.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="group__pinger.html#ga2c3f6775325c30275d11c6abee2db6a0">main()</a>.</p>
 

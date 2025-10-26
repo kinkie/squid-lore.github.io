@@ -1,7 +1,6 @@
 var classHttp_1_1StateFlags =
 [
     [ "toOriginPeer", "classHttp_1_1StateFlags.html#a45c3a3e1f8c01186b7753e2f0ecd5ceb", null ],
-    [ "abuse_detected", "classHttp_1_1StateFlags.html#a78e5c53b2444b3a2df585f0078897f94", null ],
     [ "chunked", "classHttp_1_1StateFlags.html#a556876632b7fffc714b608bb0b64b27d", null ],
     [ "chunked_request", "classHttp_1_1StateFlags.html#a27fee96aafa29712c05a4574e1c0eb25", null ],
     [ "forceClose", "classHttp_1_1StateFlags.html#ac7ca9ef56e3e8bc7d028ba33ec50b447", null ],

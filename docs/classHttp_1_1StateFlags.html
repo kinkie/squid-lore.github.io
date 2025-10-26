@@ -133,8 +133,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a1915f1590bb207dffe057702f3d73f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78a29685f56cf64353967d38ae38cd60" id="r_a78a29685f56cf64353967d38ae38cd60"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHttp_1_1StateFlags.html#a78a29685f56cf64353967d38ae38cd60">keepalive_broken</a> = false</td></tr>
 <tr class="separator:a78a29685f56cf64353967d38ae38cd60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78e5c53b2444b3a2df585f0078897f94" id="r_a78e5c53b2444b3a2df585f0078897f94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHttp_1_1StateFlags.html#a78e5c53b2444b3a2df585f0078897f94">abuse_detected</a> = false</td></tr>
-<tr class="separator:a78e5c53b2444b3a2df585f0078897f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcaa947952fe438fa9e8db9a15bd633b" id="r_afcaa947952fe438fa9e8db9a15bd633b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHttp_1_1StateFlags.html#afcaa947952fe438fa9e8db9a15bd633b">request_sent</a> = false</td></tr>
 <tr class="separator:afcaa947952fe438fa9e8db9a15bd633b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a556876632b7fffc714b608bb0b64b27d" id="r_a556876632b7fffc714b608bb0b64b27d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHttp_1_1StateFlags.html#a556876632b7fffc714b608bb0b64b27d">chunked</a> = false</td></tr>
@@ -183,24 +181,6 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a78e5c53b2444b3a2df585f0078897f94" name="a78e5c53b2444b3a2df585f0078897f94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78e5c53b2444b3a2df585f0078897f94">&#9670;&#160;</a></span>abuse_detected</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Http::StateFlags::abuse_detected = false</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00059">59</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classHttpStateData.html#ab9d8eb3796a4a996c3ef6716e1c830f4">HttpStateData::handleMoreRequestBodyAvailable()</a>.</p>
-
-</div>
-</div>
 <a id="a556876632b7fffc714b608bb0b64b27d" name="a556876632b7fffc714b608bb0b64b27d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a556876632b7fffc714b608bb0b64b27d">&#9670;&#160;</a></span>chunked</h2>
 
@@ -213,7 +193,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00061">61</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00060">60</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classHttpStateData.html#a9c219450780a830012d6fe83a88879cb">HttpStateData::decodeAndWriteReplyBody()</a>, <a class="el" href="classHttpStateData.html#af13f840f6085d4ee24033e238fab7af8">HttpStateData::keepaliveAccounting()</a>, <a class="el" href="classHttpStateData.html#a32c5c5b9734a64b08e38ebf1444f6dbc">HttpStateData::persistentConnStatus()</a>, <a class="el" href="classHttpStateData.html#a930162e73c0fa4607de047af3adfa118">HttpStateData::processReplyBody()</a>, and <a class="el" href="classHttpStateData.html#ad1d3644cf802bb8ccce5323e9dff5221">HttpStateData::processReplyHeader()</a>.</p>
 
@@ -231,7 +211,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00062">62</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00061">61</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="http_8cc.html#aca495d7835c15845cdaf2218e5d531bd">copyOneHeaderFromClientsideRequestToUpstreamRequest()</a>, <a class="el" href="classHttpStateData.html#affeabeff5d76ed83dac96992b7619db5">HttpStateData::doneSendingRequestBody()</a>, <a class="el" href="classHttpStateData.html#a79610911b9cd321afeb00f856274b71f">HttpStateData::getMoreRequestBody()</a>, <a class="el" href="classHttpStateData.html#a502ee153428b0bfa4e0ee66b84f46b7f">HttpStateData::httpBuildRequestHeader()</a>, and <a class="el" href="classHttpStateData.html#a69b58264a91a74355a13a64fef7d962d">HttpStateData::sendRequest()</a>.</p>
 
@@ -306,7 +286,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00037">37</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classHttpStateData.html#aa2161b08ab47f01f5aa5e75e620e651a">HttpStateData::calcReadBufferCapacityLimit()</a>, <a class="el" href="classHttpStateData.html#aaa2951fc566582353b1dbe1819f6ff9b">HttpStateData::continueAfterParsingHeader()</a>, <a class="el" href="classHttpStateData.html#ab9d8eb3796a4a996c3ef6716e1c830f4">HttpStateData::handleMoreRequestBodyAvailable()</a>, <a class="el" href="classHttpStateData.html#a173e11f08f6473b2c34540378791cb8b">HttpStateData::processReply()</a>, <a class="el" href="classHttpStateData.html#a930162e73c0fa4607de047af3adfa118">HttpStateData::processReplyBody()</a>, <a class="el" href="classHttpStateData.html#ad1d3644cf802bb8ccce5323e9dff5221">HttpStateData::processReplyHeader()</a>, and <a class="el" href="classHttpStateData.html#a2da44e24a2cb49577848ccc7813dc07e">HttpStateData::truncateVirginBody()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classHttpStateData.html#aa2161b08ab47f01f5aa5e75e620e651a">HttpStateData::calcReadBufferCapacityLimit()</a>, <a class="el" href="classHttpStateData.html#aaa2951fc566582353b1dbe1819f6ff9b">HttpStateData::continueAfterParsingHeader()</a>, <a class="el" href="classHttpStateData.html#a173e11f08f6473b2c34540378791cb8b">HttpStateData::processReply()</a>, <a class="el" href="classHttpStateData.html#a930162e73c0fa4607de047af3adfa118">HttpStateData::processReplyBody()</a>, <a class="el" href="classHttpStateData.html#ad1d3644cf802bb8ccce5323e9dff5221">HttpStateData::processReplyHeader()</a>, and <a class="el" href="classHttpStateData.html#a2da44e24a2cb49577848ccc7813dc07e">HttpStateData::truncateVirginBody()</a>.</p>
 
 </div>
 </div>
@@ -394,7 +374,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00060">60</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00059">59</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classHttpStateData.html#a345be2f3f2c765ee0bb4547380b14ab9">HttpStateData::sendComplete()</a>, and <a class="el" href="classHttpStateData.html#a91cb691a3d2b4dd31fee57f0cad74275">HttpStateData::statusIfComplete()</a>.</p>
 
@@ -412,7 +392,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00063">63</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateFlags_8h_source.html#l00062">62</a> of file <a class="el" href="StateFlags_8h_source.html">StateFlags.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classHttpStateData.html#ae98f63c49f0a94004d6c45f9eefec67e">HttpStateData::finishingChunkedRequest()</a>, and <a class="el" href="classHttpStateData.html#a79610911b9cd321afeb00f856274b71f">HttpStateData::getMoreRequestBody()</a>.</p>
 
