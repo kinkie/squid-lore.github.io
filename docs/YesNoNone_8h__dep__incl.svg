@@ -138,20 +138,20 @@ var sectionId = 'dynsection-1';
 </a>
 </g>
 </g>
-<!-- Node500 -->
-<g id="Node000500" class="node">
-<title>Node500</title>
-<g id="a_Node000500"><a xlink:href="testYesNoNone_8cc.html" target="_top" xlink:title=" ">
+<!-- Node501 -->
+<g id="Node000501" class="node">
+<title>Node501</title>
+<g id="a_Node000501"><a xlink:href="testYesNoNone_8cc.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="6977,-96 6839,-96 6839,-66 6977,-66 6977,-96"/>
 <text text-anchor="start" x="6847" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00">squid/src/tests/testYesNo</text>
 <text text-anchor="middle" x="6908" y="-73" font-family="Helvetica,sans-Serif" font-size="10.00">None.cc</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node500 -->
-<g id="edge50_Node000001_Node000500" class="edge">
-<title>Node1&#45;&gt;Node500</title>
-<g id="a_edge50_Node000001_Node000500"><a xlink:title=" ">
+<!-- Node1&#45;&gt;Node501 -->
+<g id="edge50_Node000001_Node000501" class="edge">
+<title>Node1&#45;&gt;Node501</title>
+<g id="a_edge50_Node000001_Node000501"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M6697.43,-129.74C6739.21,-120.27 6800.33,-106.41 6845.97,-96.06"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="6696.49,-126.37 6687.52,-131.99 6698.04,-133.2 6696.49,-126.37"/>
 </a>
