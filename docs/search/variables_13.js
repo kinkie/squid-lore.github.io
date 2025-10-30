@@ -86,7 +86,7 @@ var searchData=
   ['sendmoredata_83',['SendMoreData',['../classclientReplyContext.html#afa64e15976d047eb00f04402a0525711',1,'clientReplyContext']]],
   ['sendtos_84',['sendtos',['../classStatCounters.html#a86bf286186edd9355bc45d9ceb6135ce',1,'StatCounters']]],
   ['sensitivity_5f_85',['sensitivity_',['../classSBufEqual.html#af02ae24747ce8a734d990b0294afcc47',1,'SBufEqual::sensitivity_'],['../classSBufStartsWith.html#a88e3bea2a094642c5f1de9525514826b',1,'SBufStartsWith::sensitivity_']]],
-  ['sent_86',['sent',['../classDigestFetchState.html#a858bd479cf50402c303a2b315b35d8a7',1,'DigestFetchState::sent'],['../classPeerDigest.html#ad9917a2889274181c1f987a60b7c605f',1,'PeerDigest::sent']]],
+  ['sent_86',['sent',['../classDigestFetchState.html#a858bd479cf50402c303a2b315b35d8a7',1,'DigestFetchState::sent'],['../classPeerDigest.html#ad344294d1b500127953e24e28f977b20',1,'PeerDigest::sent']]],
   ['sent_5fcount_87',['sent_count',['../classDiskdActionData.html#aebad1b87dcaf34ee77a36dd3a481067f',1,'DiskdActionData::sent_count'],['../structdiskd__stats__t.html#a7876e97aece5ab455364f31f6f6e107e',1,'diskd_stats_t::sent_count']]],
   ['sent_5ft_88',['sent_t',['../classidns__query.html#a0d394fe87a3dd3b1f01b222675aa59df',1,'idns_query']]],
   ['sentlastchunk_89',['sentLastChunk',['../classHttp_1_1StateFlags.html#a113de40f36c92e054c7d74abf58d024b',1,'Http::StateFlags']]],
