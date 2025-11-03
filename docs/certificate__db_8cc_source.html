@@ -281,7 +281,7 @@ $(document).ready(function(){initNavTree('certificate__db_8cc_source.html',''); 
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>{</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <a class="code hl_define" href="assert_8h.html#a33fa45e42155e69ce8d0da0fd978b351">assert</a>(cell &lt; width);</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">if</span> (row[cell]) {</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        free(row[cell]);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        OPENSSL_free(row[cell]);</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">if</span> (value) {</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        row[cell] = <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span> *<span class="keyword">&gt;</span>(OPENSSL_malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (strlen(value) + 1)));</div>

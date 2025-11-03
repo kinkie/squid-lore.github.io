@@ -73,7 +73,7 @@ var searchData=
   ['net_70',['net',['../classClassCBucket.html#a988cbe481c12b606e6e703924b0c2d4b',1,'ClassCBucket']]],
   ['net_5fdb_5fentry_71',['net_db_entry',['../classnet__db__name.html#a7cae8028ac88598775d36228e010aa45',1,'net_db_name']]],
   ['netbios_72',['netbios',['../structndstruct.html#a1aaaabdfd4f9b85ee68336d9d448be00',1,'ndstruct']]],
-  ['netdb_73',['netdb',['../classSquidConfig.html#a1648a35241fba94bfcc3c084524c61e4',1,'SquidConfig::Netdb'],['../classStatCounters.html#a76bbd29fad3e173cdeb1d8fc87430fc3',1,'StatCounters::netdb']]],
+  ['netdb_73',['netdb',['../classStatCounters.html#a76bbd29fad3e173cdeb1d8fc87430fc3',1,'StatCounters::netdb'],['../classSquidConfig.html#a1648a35241fba94bfcc3c084524c61e4',1,'SquidConfig::Netdb']]],
   ['netdbexchangehandlereply_74',['netdbExchangeHandleReply',['../net__db_8cc.html#a36feb42ac0fab2d0af2d074d9e4c8a83',1,'net_db.cc']]],
   ['netdbfilename_75',['netdbFilename',['../classSquidConfig.html#aad2436c0ec2ef3a71b8a891f7bd10d82',1,'SquidConfig']]],
   ['netdbsendping_76',['netdbSendPing',['../net__db_8cc.html#a466bd2e39a0fb93080025a75a97f5123',1,'net_db.cc']]],

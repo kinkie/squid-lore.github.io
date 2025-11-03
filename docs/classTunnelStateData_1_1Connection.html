@@ -105,8 +105,8 @@ Collaboration diagram for TunnelStateData::Connection:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad794a359c865693bda36f9e8cd6a840d" id="r_ad794a359c865693bda36f9e8cd6a840d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#ad794a359c865693bda36f9e8cd6a840d">Connection</a> ()</td></tr>
-<tr class="separator:ad794a359c865693bda36f9e8cd6a840d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eeec9c8734846b1ccf7708fc165980d" id="r_a8eeec9c8734846b1ccf7708fc165980d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a8eeec9c8734846b1ccf7708fc165980d">Connection</a> (const char *aSide)</td></tr>
+<tr class="separator:a8eeec9c8734846b1ccf7708fc165980d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89060aec239a0d02b4e9417e3fb6b869" id="r_a89060aec239a0d02b4e9417e3fb6b869"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a89060aec239a0d02b4e9417e3fb6b869">~Connection</a> ()</td></tr>
 <tr class="separator:a89060aec239a0d02b4e9417e3fb6b869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3512ca1c20a2fa00336728ae2f78cb60" id="r_a3512ca1c20a2fa00336728ae2f78cb60"><td class="memTemplParams" colspan="2">template&lt;typename Method &gt; </td></tr>
@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a14d7e6543bdeb68ad02080a8b4e51364" id="r_a14d7e6543bdeb68ad02080a8b4e51364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a14d7e6543bdeb68ad02080a8b4e51364">noteClosure</a> ()</td></tr>
 <tr class="memdesc:a14d7e6543bdeb68ad02080a8b4e51364"><td class="mdescLeft">&#160;</td><td class="mdescRight">reacts to the external closure of our connection  <br /></td></tr>
 <tr class="separator:a14d7e6543bdeb68ad02080a8b4e51364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3c4f1778707a0294c62c498c461d6e" id="r_aee3c4f1778707a0294c62c498c461d6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#aee3c4f1778707a0294c62c498c461d6e">noteEof</a> ()</td></tr>
+<tr class="memdesc:aee3c4f1778707a0294c62c498c461d6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">reacts to a successful zero-size read(2)  <br /></td></tr>
+<tr class="separator:aee3c4f1778707a0294c62c498c461d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25e401dc358920ffa86701cb426c0bde" id="r_a25e401dc358920ffa86701cb426c0bde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a25e401dc358920ffa86701cb426c0bde">bytesWanted</a> (<a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a> lower=0, <a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a> upper=<a class="el" href="types_8h.html#a9ec306f36d50c7375e74f0d1c55a3a67">INT_MAX</a>) const</td></tr>
 <tr class="separator:a25e401dc358920ffa86701cb426c0bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e82517b42ab7c935f5f2d07466ae5f2" id="r_a2e82517b42ab7c935f5f2d07466ae5f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a2e82517b42ab7c935f5f2d07466ae5f2">bytesIn</a> (<a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a> const &amp;)</td></tr>
@@ -136,6 +139,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a63f2a9cae4e376f95db25dd62a5797c0" id="r_a63f2a9cae4e376f95db25dd62a5797c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stub__fd_8cc.html#a35fed7109d24712d6b86b6134537c7bd">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a63f2a9cae4e376f95db25dd62a5797c0">len</a></td></tr>
 <tr class="separator:a63f2a9cae4e376f95db25dd62a5797c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0135f618e22108097239bbd5b81afc57" id="r_a0135f618e22108097239bbd5b81afc57"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a0135f618e22108097239bbd5b81afc57">side</a></td></tr>
+<tr class="separator:a0135f618e22108097239bbd5b81afc57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a808054e8433229c9497784f358ef2d40" id="r_a808054e8433229c9497784f358ef2d40"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a808054e8433229c9497784f358ef2d40">buf</a></td></tr>
 <tr class="separator:a808054e8433229c9497784f358ef2d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76419f29db7f924331e4224d63fc1e90" id="r_a76419f29db7f924331e4224d63fc1e90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAsyncCall.html#a57c571a47666d10c316689dc5d09e170">AsyncCall::Pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a76419f29db7f924331e4224d63fc1e90">writer</a></td></tr>
@@ -152,6 +157,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:abe6fbdb28e2cc763f593299e91cf88d4" id="r_abe6fbdb28e2cc763f593299e91cf88d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#abe6fbdb28e2cc763f593299e91cf88d4">dirty</a></td></tr>
 <tr class="memdesc:abe6fbdb28e2cc763f593299e91cf88d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether <a class="el" href="classTunnelStateData_1_1Connection.html#a31cc6a8a7d29c3e8f4ce9da8fd858c4d" title="writes &#39;b&#39; buffer, setting the &#39;writer&#39; member to &#39;callback&#39;.">write()</a> has been called (at least once)  <br /></td></tr>
 <tr class="separator:abe6fbdb28e2cc763f593299e91cf88d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40689927e79c678e3bd3fe9f190468b7" id="r_a40689927e79c678e3bd3fe9f190468b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a40689927e79c678e3bd3fe9f190468b7">receivedEof</a> = false</td></tr>
+<tr class="memdesc:a40689927e79c678e3bd3fe9f190468b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether read() has returned zero bytes  <br /></td></tr>
+<tr class="separator:a40689927e79c678e3bd3fe9f190468b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7bd23306f05c35cb00cc574fd7754d5" id="r_ae7bd23306f05c35cb00cc574fd7754d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTunnelStateData.html">TunnelStateData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#ae7bd23306f05c35cb00cc574fd7754d5">readPending</a></td></tr>
 <tr class="separator:ae7bd23306f05c35cb00cc574fd7754d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24da2a99079269bd96edaea1fdb7d98b" id="r_a24da2a99079269bd96edaea1fdb7d98b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="event_8h.html#a8408906d26bb4a96322adc2e7b41b3f5">EVH</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTunnelStateData_1_1Connection.html#a24da2a99079269bd96edaea1fdb7d98b">readPendingFunc</a></td></tr>
@@ -169,8 +177,8 @@ Private Attributes</h2></td></tr>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00130">130</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad794a359c865693bda36f9e8cd6a840d" name="ad794a359c865693bda36f9e8cd6a840d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad794a359c865693bda36f9e8cd6a840d">&#9670;&#160;</a></span>Connection()</h2>
+<a id="a8eeec9c8734846b1ccf7708fc165980d" name="a8eeec9c8734846b1ccf7708fc165980d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eeec9c8734846b1ccf7708fc165980d">&#9670;&#160;</a></span>Connection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,18 +189,19 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">TunnelStateData::Connection::Connection </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>aSide</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00134">134</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00482">482</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 </div>
 </div>
@@ -211,9 +220,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00444">444</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00494">494</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="classTunnelStateData_1_1Connection.html#a808054e8433229c9497784f358ef2d40">buf</a>, <a class="el" href="event_8cc.html#ae111818525827ae123def674b61b7770">eventDelete()</a>, <a class="el" href="classTunnelStateData_1_1Connection.html#ae7bd23306f05c35cb00cc574fd7754d5">readPending</a>, <a class="el" href="classTunnelStateData_1_1Connection.html#a24da2a99079269bd96edaea1fdb7d98b">readPendingFunc</a>, and <a class="el" href="xalloc_8h.html#a74ad4c3c3aa58c8fea96eb0dc090fd67">safe_free</a>.</p>
+<p class="reference">References <a class="el" href="event_8cc.html#ae111818525827ae123def674b61b7770">eventDelete()</a>, and <a class="el" href="xalloc_8h.html#a74ad4c3c3aa58c8fea96eb0dc090fd67">safe_free</a>.</p>
 
 </div>
 </div>
@@ -234,7 +243,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00522">522</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00572">572</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>.</p>
 
@@ -268,9 +277,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00511">511</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00561">561</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>.</p>
 
 </div>
 </div>
@@ -290,7 +299,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00769">769</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00834">834</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="assert_8h.html#a33fa45e42155e69ce8d0da0fd978b351">assert</a>, and <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>.</p>
 
@@ -314,7 +323,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00557">557</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00607">607</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="comm_8cc.html#a5251fe5d6fc5e17c11cc995edfef398f">ignoreErrno()</a>.</p>
 
@@ -336,7 +345,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00609">609</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00659">659</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>, <a class="el" href="comm_8cc.html#a5251fe5d6fc5e17c11cc995edfef398f">ignoreErrno()</a>, and <a class="el" href="xstrerror_8cc.html#a3d643f764de4776e5489d4eb55a99849">xstrerr()</a>.</p>
 
@@ -384,9 +393,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00791">791</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00856">856</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="comm_8cc.html#a12f74ce8bc526212a2ba72cecab4ac2b">comm_add_close_handler()</a>, <a class="el" href="CommCalls_8h.html#a7e143fa246c3e54c90fa8d20b390b88d">commCbCall()</a>, <a class="el" href="namespaceComm.html#a91f0a0e22e74a7ad6f7c44c137c6f005">Comm::IsConnOpen()</a>, and <a class="el" href="TextException_8h.html#ad79a19f4098f2506d0aa28628f18fd36">Must</a>.</p>
+<p class="reference">References <a class="el" href="comm_8cc.html#a12f74ce8bc526212a2ba72cecab4ac2b">comm_add_close_handler()</a>, <a class="el" href="CommCalls_8h.html#a7e143fa246c3e54c90fa8d20b390b88d">commCbCall()</a>, <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>, <a class="el" href="namespaceComm.html#a91f0a0e22e74a7ad6f7c44c137c6f005">Comm::IsConnOpen()</a>, and <a class="el" href="TextException_8h.html#ad79a19f4098f2506d0aa28628f18fd36">Must</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a60b9c32b8fd03f6ea93b47c3d43eed7a">TunnelStateData::TunnelStateData()</a>, and <a class="el" href="classTunnelStateData.html#a87af8b087f1b84c43d52848ddaafafad">TunnelStateData::commitToServer()</a>.</p>
 
@@ -407,11 +416,32 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00802">802</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00868">868</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a8b5bf24321a817a12dbea795535ccf00">TunnelStateData::clientClosed()</a>, and <a class="el" href="classTunnelStateData.html#a1b1a3859874e951f885acbc2ee2f5294">TunnelStateData::serverClosed()</a>.</p>
+
+</div>
+</div>
+<a id="aee3c4f1778707a0294c62c498c461d6e" name="aee3c4f1778707a0294c62c498c461d6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee3c4f1778707a0294c62c498c461d6e">&#9670;&#160;</a></span>noteEof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TunnelStateData::Connection::noteEof </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00877">877</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="debug_2Stream_8h.html#ad8cd33a7d75c0efd4d3fd369dc6a8f13">debugs</a>.</p>
 
 </div>
 </div>
@@ -431,7 +461,7 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l01511">1511</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l01588">1588</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a482ae6ef57644beeaafb913478392910">TunnelStateData::connectDone()</a>, <a class="el" href="tunnel_8cc.html#ae59f33c0a681d6afd84e886decacaab7">switchToTunnel()</a>, and <a class="el" href="client__side__request_8h.html#a463df90046fef514df797f43c881f0af">tunnelStart()</a>.</p>
 
@@ -475,7 +505,7 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00782">782</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00847">847</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="ModDevPoll_8cc.html#a439227feff9d7f55384e8780cfc2eb82">size</a>, and <a class="el" href="namespaceComm.html#a96a9518a6c2c77d282a79f406e0252a9">Comm::Write()</a>.</p>
 
@@ -496,9 +526,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00161">161</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00166">166</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData_1_1Connection.html#a89060aec239a0d02b4e9417e3fb6b869">~Connection()</a>, <a class="el" href="classTunnelStateData.html#a862d470eb0ca8ba924f7117de1430261">TunnelStateData::copy()</a>, <a class="el" href="classTunnelStateData.html#a83f8df457d8f5b760ed8afe5a42a6567">TunnelStateData::copyClientBytes()</a>, <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#a049e5bd88a23952c30d6f39f9540266d">TunnelStateData::copyServerBytes()</a>, and <a class="el" href="tunnel_8cc.html#aa0611f331ffe21a90efea1585c90d9e3">tunnelStartShoveling()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a862d470eb0ca8ba924f7117de1430261">TunnelStateData::copy()</a>, <a class="el" href="classTunnelStateData.html#a83f8df457d8f5b760ed8afe5a42a6567">TunnelStateData::copyClientBytes()</a>, <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#a049e5bd88a23952c30d6f39f9540266d">TunnelStateData::copyServerBytes()</a>, and <a class="el" href="tunnel_8cc.html#aa0611f331ffe21a90efea1585c90d9e3">tunnelStartShoveling()</a>.</p>
 
 </div>
 </div>
@@ -522,7 +552,7 @@ template&lt;typename Method &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00181">181</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00188">188</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 </div>
 </div>
@@ -538,9 +568,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00165">165</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00170">170</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a60b9c32b8fd03f6ea93b47c3d43eed7a">TunnelStateData::TunnelStateData()</a>, <a class="el" href="classTunnelStateData.html#a046587d2573feb24be0801048c725aba">TunnelStateData::closeConnections()</a>, <a class="el" href="classTunnelStateData.html#a945e35152ca8e53210e8397e62039f89">TunnelStateData::closePendingConnection()</a>, <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#a30f31eac0b2b515e776211a4b6efeb67">TunnelStateData::finishWritingAndDelete()</a>, <a class="el" href="classTunnelStateData.html#a5839b41a0a6763b647c4c9eafb85d355">TunnelStateData::getHost()</a>, <a class="el" href="classTunnelStateData.html#aac0cef55082f5067ddf3ec2bcb66c361">TunnelStateData::keepGoingAfterRead()</a>, <a class="el" href="classTunnelStateData.html#a3b11a9ec7cce6349d3fd6f4bd2d5e24d">TunnelStateData::noConnections()</a>, <a class="el" href="classTunnelStateData.html#a6022c9b4ae3dba2afea783a3747d1d81">TunnelStateData::readClient()</a>, <a class="el" href="classTunnelStateData.html#a040d015460a5a426e41c3e005cc84d8b">TunnelStateData::readServer()</a>, <a class="el" href="classTunnelStateData.html#a8943d64a11e2e9094d52c9473fc9fc35">TunnelStateData::retryOrBail()</a>, <a class="el" href="classTunnelStateData.html#a11402e262e525f385e1e8b669995e0c0">TunnelStateData::sendError()</a>, <a class="el" href="tunnel_8cc.html#a0a181d9fe91d36779ed3652152cd8daa">tunnelErrorComplete()</a>, <a class="el" href="tunnel_8cc.html#aa0611f331ffe21a90efea1585c90d9e3">tunnelStartShoveling()</a>, <a class="el" href="classTunnelStateData.html#a1b55c3ef194ee33221f4382efd5e3c1d">TunnelStateData::writeClientDone()</a>, and <a class="el" href="classTunnelStateData.html#a6f79bb0263ffbddd29a5773bd7dbdb77">TunnelStateData::writeServerDone()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a60b9c32b8fd03f6ea93b47c3d43eed7a">TunnelStateData::TunnelStateData()</a>, <a class="el" href="classTunnelStateData.html#a046587d2573feb24be0801048c725aba">TunnelStateData::closeConnections()</a>, <a class="el" href="classTunnelStateData.html#a945e35152ca8e53210e8397e62039f89">TunnelStateData::closePendingConnection()</a>, <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#a30f31eac0b2b515e776211a4b6efeb67">TunnelStateData::finishWritingAndDelete()</a>, <a class="el" href="classTunnelStateData.html#a5839b41a0a6763b647c4c9eafb85d355">TunnelStateData::getHost()</a>, <a class="el" href="classTunnelStateData.html#aac0cef55082f5067ddf3ec2bcb66c361">TunnelStateData::keepGoingAfterRead()</a>, <a class="el" href="classTunnelStateData.html#a3b11a9ec7cce6349d3fd6f4bd2d5e24d">TunnelStateData::noConnections()</a>, <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>, <a class="el" href="classTunnelStateData.html#a8943d64a11e2e9094d52c9473fc9fc35">TunnelStateData::retryOrBail()</a>, <a class="el" href="classTunnelStateData.html#a11402e262e525f385e1e8b669995e0c0">TunnelStateData::sendError()</a>, <a class="el" href="tunnel_8cc.html#a0a181d9fe91d36779ed3652152cd8daa">tunnelErrorComplete()</a>, <a class="el" href="tunnel_8cc.html#aa0611f331ffe21a90efea1585c90d9e3">tunnelStartShoveling()</a>, <a class="el" href="classTunnelStateData.html#a1b55c3ef194ee33221f4382efd5e3c1d">TunnelStateData::writeClientDone()</a>, and <a class="el" href="classTunnelStateData.html#a6f79bb0263ffbddd29a5773bd7dbdb77">TunnelStateData::writeServerDone()</a>.</p>
 
 </div>
 </div>
@@ -556,9 +586,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00166">166</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00171">171</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#a6022c9b4ae3dba2afea783a3747d1d81">TunnelStateData::readClient()</a>, and <a class="el" href="classTunnelStateData.html#a040d015460a5a426e41c3e005cc84d8b">TunnelStateData::readServer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>, <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>, <a class="el" href="classTunnelStateData.html#a6022c9b4ae3dba2afea783a3747d1d81">TunnelStateData::readClient()</a>, and <a class="el" href="classTunnelStateData.html#a040d015460a5a426e41c3e005cc84d8b">TunnelStateData::readServer()</a>.</p>
 
 </div>
 </div>
@@ -574,7 +604,7 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00176">176</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00183">183</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a76a53574105baf251539a27f5ddbe19f">TunnelStateData::establishTunnelThruProxy()</a>.</p>
 
@@ -592,9 +622,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00168">168</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00173">173</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a06a66cafd07aca19bb6b769ce5a56237">TunnelStateData::notePeerReadyToShovel()</a>, and <a class="el" href="classTunnelStateData.html#a8943d64a11e2e9094d52c9473fc9fc35">TunnelStateData::retryOrBail()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a06a66cafd07aca19bb6b769ce5a56237">TunnelStateData::notePeerReadyToShovel()</a>, <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>, and <a class="el" href="classTunnelStateData.html#a8943d64a11e2e9094d52c9473fc9fc35">TunnelStateData::retryOrBail()</a>.</p>
 
 </div>
 </div>
@@ -612,7 +642,7 @@ template&lt;typename Method &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00160">160</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#aac0cef55082f5067ddf3ec2bcb66c361">TunnelStateData::keepGoingAfterRead()</a>, <a class="el" href="classTunnelStateData.html#a3004d175a4305907e3b3f95b28faf9a2">TunnelStateData::tunnelEstablishmentDone()</a>, and <a class="el" href="tunnel_8cc.html#aa0611f331ffe21a90efea1585c90d9e3">tunnelStartShoveling()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>, <a class="el" href="classTunnelStateData.html#aac0cef55082f5067ddf3ec2bcb66c361">TunnelStateData::keepGoingAfterRead()</a>, <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>, <a class="el" href="classTunnelStateData.html#a3004d175a4305907e3b3f95b28faf9a2">TunnelStateData::tunnelEstablishmentDone()</a>, and <a class="el" href="tunnel_8cc.html#aa0611f331ffe21a90efea1585c90d9e3">tunnelStartShoveling()</a>.</p>
 
 </div>
 </div>
@@ -628,9 +658,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00171">171</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00178">178</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData_1_1Connection.html#a89060aec239a0d02b4e9417e3fb6b869">~Connection()</a>, <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>, <a class="el" href="tunnel_8cc.html#a24643ef376cabb6acc3a209b16e731be">tunnelDelayedClientRead()</a>, and <a class="el" href="tunnel_8cc.html#a0f96e41d126ea3dbb0e44f6e13ceb740">tunnelDelayedServerRead()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>, <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>, <a class="el" href="tunnel_8cc.html#a24643ef376cabb6acc3a209b16e731be">tunnelDelayedClientRead()</a>, and <a class="el" href="tunnel_8cc.html#a0f96e41d126ea3dbb0e44f6e13ceb740">tunnelDelayedServerRead()</a>.</p>
 
 </div>
 </div>
@@ -646,9 +676,46 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00172">172</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00179">179</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a60b9c32b8fd03f6ea93b47c3d43eed7a">TunnelStateData::TunnelStateData()</a>, <a class="el" href="classTunnelStateData_1_1Connection.html#a89060aec239a0d02b4e9417e3fb6b869">~Connection()</a>, and <a class="el" href="classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb">TunnelStateData::copyRead()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a60b9c32b8fd03f6ea93b47c3d43eed7a">TunnelStateData::TunnelStateData()</a>, and <a class="el" href="classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930">TunnelStateData::copyRead()</a>.</p>
+
+</div>
+</div>
+<a id="a40689927e79c678e3bd3fe9f190468b7" name="a40689927e79c678e3bd3fe9f190468b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40689927e79c678e3bd3fe9f190468b7">&#9670;&#160;</a></span>receivedEof</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TunnelStateData::Connection::receivedEof = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00175">175</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>.</p>
+
+</div>
+</div>
+<a id="a0135f618e22108097239bbd5b81afc57" name="a0135f618e22108097239bbd5b81afc57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0135f618e22108097239bbd5b81afc57">&#9670;&#160;</a></span>side</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* const TunnelStateData::Connection::side</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The role of the agent we are communicating with. This string literal is only used for debugging. </p>
+
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00164">164</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -664,7 +731,7 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00163">163</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00168">168</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a60b9c32b8fd03f6ea93b47c3d43eed7a">TunnelStateData::TunnelStateData()</a>.</p>
 
@@ -682,9 +749,9 @@ template&lt;typename Method &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00162">162</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="tunnel_8cc_source.html#l00167">167</a> of file <a class="el" href="tunnel_8cc_source.html">tunnel.cc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a30f31eac0b2b515e776211a4b6efeb67">TunnelStateData::finishWritingAndDelete()</a>, <a class="el" href="tunnel_8cc.html#adc6156b09e5cb9353408a517f465bb0e">tunnelConnectedWriteDone()</a>, <a class="el" href="classTunnelStateData.html#a5e58b9ee6ba63d51bdf5b07d1deca03e">TunnelStateData::WriteClientDone()</a>, and <a class="el" href="classTunnelStateData.html#affeac00a057cb13b327de28049cb3109">TunnelStateData::WriteServerDone()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classTunnelStateData.html#a30f31eac0b2b515e776211a4b6efeb67">TunnelStateData::finishWritingAndDelete()</a>, <a class="el" href="tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389">operator&lt;&lt;()</a>, <a class="el" href="tunnel_8cc.html#adc6156b09e5cb9353408a517f465bb0e">tunnelConnectedWriteDone()</a>, <a class="el" href="classTunnelStateData.html#a5e58b9ee6ba63d51bdf5b07d1deca03e">TunnelStateData::WriteClientDone()</a>, and <a class="el" href="classTunnelStateData.html#affeac00a057cb13b327de28049cb3109">TunnelStateData::WriteServerDone()</a>.</p>
 
 </div>
 </div>

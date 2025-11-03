@@ -9,7 +9,7 @@ var searchData=
   ['bailwith_6',['bailWith',['../classHttp_1_1Tunneler.html#a2b48c00963ef31b6430cea869f82f8f7',1,'Http::Tunneler']]],
   ['balance_7',['balance',['../classIpc_1_1BaseMultiQueue.html#ae4546899f99b4e289b79d9e1be73612c',1,'Ipc::BaseMultiQueue']]],
   ['banaction_8',['banAction',['../classACLChecklist.html#a1763eefe24044dd9a93b9793f7092562',1,'ACLChecklist']]],
-  ['bancacheloguse_9',['bancacheloguse',['../classDebug.html#ac7916ca6aa4539414578b21aab79f503',1,'Debug::BanCacheLogUse()'],['../classDebugModule.html#a5f353c5f1d439a1649fc7a3723a70e97',1,'DebugModule::banCacheLogUse()']]],
+  ['bancacheloguse_9',['bancacheloguse',['../classDebugModule.html#a5f353c5f1d439a1649fc7a3723a70e97',1,'DebugModule::banCacheLogUse()'],['../classDebug.html#ac7916ca6aa4539414578b21aab79f503',1,'Debug::BanCacheLogUse()']]],
   ['bandwidthbucket_10',['BandwidthBucket',['../classBandwidthBucket.html#a743f728939ba87787ed994ada6e84378',1,'BandwidthBucket']]],
   ['bannedaction_11',['bannedaction',['../classAcl_1_1OrNode.html#adea1ee32b25a49544b8f5d4d42fc2b31',1,'Acl::OrNode::bannedAction()'],['../classACLChecklist.html#a808fa17bd37a2bb9005b983edb5d29bb',1,'ACLChecklist::bannedAction()'],['../classAcl_1_1Tree.html#a464b8bd29dc71fc65198e818570227e0',1,'Acl::Tree::bannedAction()']]],
   ['banreservedkey_12',['banReservedKey',['../classNotes.html#a9273ed9e0e09aa838afa1b21013f0186',1,'Notes']]],

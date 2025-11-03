@@ -16,7 +16,6 @@ var classClientRequestContext =
     [ "hostHeaderIpVerify", "classClientRequestContext.html#af8f934f2f27ff1c700141d23a308d7b7", null ],
     [ "hostHeaderVerify", "classClientRequestContext.html#ad126658971216f8be7208f906bd640ea", null ],
     [ "hostHeaderVerifyFailed", "classClientRequestContext.html#acf179694d4dcf1b64dc448c1284c5190", null ],
-    [ "httpStateIsValid", "classClientRequestContext.html#a784ab483ce56bc45309d8957b966eab5", null ],
     [ "sslBumpAccessCheck", "classClientRequestContext.html#a17a0ac78b84650e7d10ed8b0fed306d7", null ],
     [ "sslBumpAccessCheckDone", "classClientRequestContext.html#a40e4e50e91be122ff320b114fa65fc9a", null ],
     [ "adaptation_acl_check_done", "classClientRequestContext.html#ab75ca746c730c960f7eba0f46709e1dc", null ],

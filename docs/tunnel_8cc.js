@@ -3,6 +3,7 @@ var tunnel_8cc =
     [ "TunnelStateData", "classTunnelStateData.html", "classTunnelStateData" ],
     [ "TunnelStateData::Connection", "classTunnelStateData_1_1Connection.html", "classTunnelStateData_1_1Connection" ],
     [ "guaranteedRequest", "tunnel_8cc.html#a2156f279ffa4df198f4e16fa8b40e0de", null ],
+    [ "operator<<", "tunnel_8cc.html#a478e7cc96de01fc5f424a75c62139389", null ],
     [ "switchToTunnel", "tunnel_8cc.html#ae59f33c0a681d6afd84e886decacaab7", null ],
     [ "tunnelClientClosed", "tunnel_8cc.html#a0bca6c2ce9017cfcb192038dbb15c99c", null ],
     [ "tunnelConnectedWriteDone", "tunnel_8cc.html#adc6156b09e5cb9353408a517f465bb0e", null ],

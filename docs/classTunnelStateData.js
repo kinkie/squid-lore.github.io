@@ -18,7 +18,7 @@ var classTunnelStateData =
     [ "connectToPeer", "classTunnelStateData.html#a792ca1adfee031ee71a9c14e5313e260", null ],
     [ "copy", "classTunnelStateData.html#a862d470eb0ca8ba924f7117de1430261", null ],
     [ "copyClientBytes", "classTunnelStateData.html#a83f8df457d8f5b760ed8afe5a42a6567", null ],
-    [ "copyRead", "classTunnelStateData.html#a62621508de060417b28d8bac7cebdadb", null ],
+    [ "copyRead", "classTunnelStateData.html#a10ff8653451a5d5dc5af0a5609e00930", null ],
     [ "copyServerBytes", "classTunnelStateData.html#a049e5bd88a23952c30d6f39f9540266d", null ],
     [ "deleteThis", "classTunnelStateData.html#a98aa6e710982227c79858bac4daca615", null ],
     [ "establishTunnelThruProxy", "classTunnelStateData.html#a76a53574105baf251539a27f5ddbe19f", null ],
