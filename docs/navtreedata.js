@@ -231,7 +231,7 @@ var NAVTREEINDEX =
 "classSsl_1_1IcapPeerConnector.html#ae6b161a1a464ab9da3be40082ccbf2f7",
 "classSsl_1_1ServerBio.html#a3297a203c3677420d8d3d016bb31a166",
 "classStderrChannel.html#a43dae87198a64f0cc5d0918812324332",
-"classStoreIOState.html#a35cb343ad83898320919a69397bce925",
+"classStoreIOState.html#a373a95c16906207929a7fea287c38565",
 "classStore_1_1Controller.html#ad5cc322884cae7577b6e6f2c9d704f9f",
 "classStore_1_1Disks.html#adb7a50531fa407a61f753945b15f4b47",
 "classString.html#adde64e65188ca773161df0995196069f",
