@@ -329,7 +329,7 @@ var searchData=
   ['sendtos_326',['sendtos',['../classStatCounters.html#a86bf286186edd9355bc45d9ceb6135ce',1,'StatCounters']]],
   ['sensitive_2eh_327',['Sensitive.h',['../Sensitive_8h.html',1,'']]],
   ['sensitivity_5f_328',['sensitivity_',['../classSBufStartsWith.html#a88e3bea2a094642c5f1de9525514826b',1,'SBufStartsWith::sensitivity_'],['../classSBufEqual.html#af02ae24747ce8a734d990b0294afcc47',1,'SBufEqual::sensitivity_']]],
-  ['sent_329',['sent',['../enums_8h.html#ac205be2172292384dd687b5471a87eddaf29619d9240b20155ab50bc3beb3947b',1,'SENT:&#160;enums.h'],['../classDigestFetchState.html#a858bd479cf50402c303a2b315b35d8a7',1,'DigestFetchState::sent'],['../classPeerDigest.html#ad9917a2889274181c1f987a60b7c605f',1,'PeerDigest::sent']]],
+  ['sent_329',['sent',['../enums_8h.html#ac205be2172292384dd687b5471a87eddaf29619d9240b20155ab50bc3beb3947b',1,'SENT:&#160;enums.h'],['../classDigestFetchState.html#a858bd479cf50402c303a2b315b35d8a7',1,'DigestFetchState::sent'],['../classPeerDigest.html#ad344294d1b500127953e24e28f977b20',1,'PeerDigest::sent']]],
   ['sent_5fcdup_330',['SENT_CDUP',['../classFtp_1_1Client.html#a55f8a36ea759c54f51f8b70c768187a1ab181acb31c3a65adfe8b9bcfca4f4273',1,'Ftp::Client']]],
   ['sent_5fcommand_331',['SENT_COMMAND',['../classFtp_1_1Client.html#a55f8a36ea759c54f51f8b70c768187a1a937a4f8873343d26d6c827d5688e9e10',1,'Ftp::Client']]],
   ['sent_5fcount_332',['sent_count',['../structdiskd__stats__t.html#a7876e97aece5ab455364f31f6f6e107e',1,'diskd_stats_t::sent_count'],['../classDiskdActionData.html#aebad1b87dcaf34ee77a36dd3a481067f',1,'DiskdActionData::sent_count']]],
