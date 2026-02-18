@@ -1165,7 +1165,7 @@ var searchData=
   ['config_5fline_5flimit_1162',['CONFIG_LINE_LIMIT',['../ConfigParser_8h.html#ac7fe1cd6461fb85f529cecbc3b783b5f',1,'ConfigParser.h']]],
   ['config_5flineno_1163',['config_lineno',['../cache__cf_8cc.html#ad624f63887a2cdb6f19ba691e3b59188',1,'config_lineno:&#160;cache_cf.cc'],['../cache__cf_8h.html#ad624f63887a2cdb6f19ba691e3b59188',1,'config_lineno:&#160;cache_cf.cc'],['../stub__cache__cf_8cc.html#ad624f63887a2cdb6f19ba691e3b59188',1,'config_lineno:&#160;stub_cache_cf.cc']]],
   ['configdoconfigure_1164',['configDoConfigure',['../cache__cf_8cc.html#afd696fd4e1322e1b4b24e7284d6e5b37',1,'cache_cf.cc']]],
-  ['configfile_1165',['configfile',['../windows__service_8cc.html#a4a01887e12aedd2a730ae8668bec8093',1,'CONFIGFILE:&#160;windows_service.cc'],['../globals_8h.html#a03135df28942a113d83a06cdabf96682',1,'ConfigFile:&#160;globals.h'],['../classSquidConfig.html#aacb5a29f367370d5a14df4e3b485c460',1,'SquidConfig::configFile']]],
+  ['configfile_1165',['configfile',['../globals_8h.html#a03135df28942a113d83a06cdabf96682',1,'ConfigFile:&#160;globals.h'],['../windows__service_8cc.html#a4a01887e12aedd2a730ae8668bec8093',1,'CONFIGFILE:&#160;windows_service.cc'],['../classSquidConfig.html#aacb5a29f367370d5a14df4e3b485c460',1,'SquidConfig::configFile']]],
   ['configfreememory_1166',['configfreememory',['../cache__cf_8h.html#a17488a1efaf06d373438b671df7ecd25',1,'configFreeMemory(void):&#160;cache_cf.cc'],['../cache__cf_8cc.html#a17488a1efaf06d373438b671df7ecd25',1,'configFreeMemory(void):&#160;cache_cf.cc']]],
   ['configoption_1167',['ConfigOption',['../classConfigOption.html',1,'']]],
   ['configoption_2ecc_1168',['ConfigOption.cc',['../ConfigOption_8cc.html',1,'']]],
