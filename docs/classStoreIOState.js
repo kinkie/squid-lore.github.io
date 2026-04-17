@@ -22,10 +22,10 @@ var classStoreIOState =
     [ "callback_data", "classStoreIOState.html#a35cb343ad83898320919a69397bce925", null ],
     [ "closing", "classStoreIOState.html#a6a503076c9f6b30c854dac4c0bc9737e", null ],
     [ "e", "classStoreIOState.html#ac8382cbba926bdd58cc521071bacc50b", null ],
-    [ "flags", "classStoreIOState.html#a42b5ac8aaee4d82d55a9a24ca1126dab", null ],
+    [ "flags", "classStoreIOState.html#a2de50981455dd1809c49fd1a2efc2e00", null ],
     [ "mode", "classStoreIOState.html#a14944acbd4bff12958baf228d923ed7d", null ],
     [ "offset_", "classStoreIOState.html#a957e40d358da36e4cdbb72a5dbcbc9f1", null ],
-    [ "read", "classStoreIOState.html#acc0bf6d6717a5421fed10dae99c08168", null ],
+    [ "read", "classStoreIOState.html#abc7ce83c5f8843e7448034ef0b7ae8e1", null ],
     [ "swap_dirn", "classStoreIOState.html#aeafb7efacacc48e74f70cce50a2bfd53", null ],
     [ "swap_filen", "classStoreIOState.html#a79e54c6c0aeaa2053d66d85def8ff8f9", null ]
 ];
