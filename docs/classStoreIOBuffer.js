@@ -9,7 +9,7 @@ var classStoreIOBuffer =
     [ "range", "classStoreIOBuffer.html#ad6e98166e3dc87878f965b353ed0f933", null ],
     [ "data", "classStoreIOBuffer.html#a08224ebb5a73aa6b18c0e7a60ebf00b5", null ],
     [ "error", "classStoreIOBuffer.html#a1e3225390c0c4999a67e22a9b503ca16", null ],
-    [ "flags", "classStoreIOBuffer.html#af38969a1c987b12ff75e5c79cd144886", null ],
+    [ "flags", "classStoreIOBuffer.html#acb67e9b7fb58fa7b15114bd024533f44", null ],
     [ "length", "classStoreIOBuffer.html#a97772bf328fe745e1d1fc23ee91cec39", null ],
     [ "offset", "classStoreIOBuffer.html#a61c7333c49e943c24964ae030c96b5ec", null ]
 ];
