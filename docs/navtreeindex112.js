@@ -246,8 +246,8 @@ var NAVTREEINDEX112 =
 "classProxyProtocol_1_1Header.html#a49f30901c0db4fe83a9d224c8e724502":[8,0,24,2,2],
 "classProxyProtocol_1_1Header.html#a71c14cc338bb457b25495f25d8003b2e":[8,0,24,2,14],
 "classProxyProtocol_1_1Header.html#a71c14cc338bb457b25495f25d8003b2e":[9,0,20,1,14],
-"classProxyProtocol_1_1Header.html#a7a600049a9fe0536c1fdd0f4866391cc":[9,0,20,1,8],
 "classProxyProtocol_1_1Header.html#a7a600049a9fe0536c1fdd0f4866391cc":[8,0,24,2,8],
-"classProxyProtocol_1_1Header.html#a85e0c54943794799219a5ea5e0108666":[8,0,24,2,0],
-"classProxyProtocol_1_1Header.html#a85e0c54943794799219a5ea5e0108666":[9,0,20,1,0]
+"classProxyProtocol_1_1Header.html#a7a600049a9fe0536c1fdd0f4866391cc":[9,0,20,1,8],
+"classProxyProtocol_1_1Header.html#a85e0c54943794799219a5ea5e0108666":[9,0,20,1,0],
+"classProxyProtocol_1_1Header.html#a85e0c54943794799219a5ea5e0108666":[8,0,24,2,0]
 };
