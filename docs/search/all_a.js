@@ -500,7 +500,7 @@ var searchData=
   ['intpercent_497',['intPercent',['../namespaceMath.html#a5c5c74f00ace4f0a2b80f1b13900b6ce',1,'Math']]],
   ['intrange_2ecc_498',['IntRange.cc',['../IntRange_8cc.html',1,'']]],
   ['intrange_2eh_499',['IntRange.h',['../IntRange_8h.html',1,'']]],
-  ['introduction_500',['introduction',['../group__ClientStreamAPI.html#ClientStreamIntroduction',1,'Introduction'],['../group__FQDNCacheAPI.html#FQDNCacheIntroduction',1,'Introduction'],['../CBDATA.html#CbDataIntro',1,'Introduction'],['../10_DelayPools.html#DelayPoolsIntro',1,'Introduction'],['../group__IPCacheAPI.html#IpcacheIntroduction',1,'Introduction'],['../group__FileSystems.html#FileSystemsIntroduction',1,'Introduction'],['../index.html#Introduction',1,'Introduction']]],
+  ['introduction_500',['introduction',['../group__ClientStreamAPI.html#ClientStreamIntroduction',1,'Introduction'],['../group__FQDNCacheAPI.html#FQDNCacheIntroduction',1,'Introduction'],['../CBDATA.html#CbDataIntro',1,'Introduction'],['../10_DelayPools.html#DelayPoolsIntro',1,'Introduction'],['../group__IPCacheAPI.html#IpcacheIntroduction',1,'Introduction'],['../index.html#Introduction',1,'Introduction'],['../group__FileSystems.html#FileSystemsIntroduction',1,'Introduction']]],
   ['inuse_501',['inuse',['../classMem_1_1PoolMeter.html#a7941469c8576cb55f87c43cd72c0e4e0',1,'Mem::PoolMeter']]],
   ['inuse_5fcount_502',['inuse_count',['../classMemChunk.html#a0511b58a7849c7b9e5eefccf56b69d4b',1,'MemChunk']]],
   ['inuse_5fmap_503',['inuse_map',['../classSharedMemory.html#af812bf01beccf1b7bc14c8e513f1468c',1,'SharedMemory']]],
