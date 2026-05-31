@@ -1,5 +1,6 @@
 var NAVTREEINDEX138 =
 {
+"classTestSBuf.html#abb33562efd7e470e6dcee849c58fe6b6":[9,0,645,11],
 "classTestSBuf.html#abe23326dd2586e53ed659072d07b7e87":[9,0,645,0],
 "classTestSBuf.html#ac12f3bf49ba85bcf1c1e0e7171119ec6":[9,0,645,24],
 "classTestSBuf.html#ac343449d8c5e8acf640b612088e4f661":[9,0,645,64],
@@ -248,6 +249,5 @@ var NAVTREEINDEX138 =
 "classTransients.html#a779676b890bb2045b5d1ee0a6fa1a9f9":[9,0,662,38],
 "classTransients.html#a7ddd28191e3c5299b5d485f786e7d77a":[9,0,662,37],
 "classTransients.html#a8ef0234f8a9506294a93e56ba697765d":[9,0,662,27],
-"classTransients.html#a929ced607bc35b086d981006de11ae89":[9,0,662,17],
-"classTransients.html#a99c14693126fe25d4100a8d27d108640":[9,0,662,8]
+"classTransients.html#a929ced607bc35b086d981006de11ae89":[9,0,662,17]
 };
