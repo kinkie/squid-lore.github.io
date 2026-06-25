@@ -51,7 +51,7 @@ var aiops_8cc =
     [ "squidaio_xstrdup", "aiops_8cc.html#a47b15850aa7057f2c2a211378ca19b3e", null ],
     [ "squidaio_xstrfree", "aiops_8cc.html#a8557470780dd5807dd5e43bc8e21a850", null ],
     [ "done_queue", "aiops_8cc.html#a757654fa9293810165e68a0cbd5b159f", null ],
-    [ "done_requests", "aiops_8cc.html#a681faa3084efcc2cf006db31229c9de9", null ],
+    [ "done_requests", "aiops_8cc.html#a4c479f6cddfc4d038272104ce07a2fe7", null ],
     [ "globattr", "aiops_8cc.html#a1a4389f0a4648d3d1a55e392c7d4b0f2", null ],
     [ "head", "aiops_8cc.html#a2843c63601909c4996765294132ecf69", null ],
     [ "main_thread", "aiops_8cc.html#a5761c2f355ee358ef6f379d658ccb382", null ],
