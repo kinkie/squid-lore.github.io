@@ -874,7 +874,7 @@ var searchData=
   ['typedmsghdr_871',['typedmsghdr',['../classIpc_1_1TypedMsgHdr.html#a5cf4e241b43facecb93a0e5ee5c59d27',1,'Ipc::TypedMsgHdr::TypedMsgHdr()'],['../classIpc_1_1TypedMsgHdr.html',1,'Ipc::TypedMsgHdr'],['../classIpc_1_1TypedMsgHdr.html#ab85db647bea9e821d23328a6a1c23672',1,'Ipc::TypedMsgHdr::TypedMsgHdr()']]],
   ['typedmsghdr_2ecc_872',['TypedMsgHdr.cc',['../TypedMsgHdr_8cc.html',1,'']]],
   ['typedmsghdr_2eh_873',['TypedMsgHdr.h',['../TypedMsgHdr_8h.html',1,'']]],
-  ['typedoption_874',['typedoption',['../classAcl_1_1TypedOption.html#ad6d98234b8c95bd849eb87d0aa92df13',1,'Acl::TypedOption::TypedOption()'],['../classAcl_1_1TypedOption.html',1,'Acl::TypedOption&lt; Recipient &gt;']]],
+  ['typedoption_874',['typedoption',['../classAcl_1_1TypedOption.html',1,'Acl::TypedOption&lt; Recipient &gt;'],['../classAcl_1_1TypedOption.html#ad6d98234b8c95bd849eb87d0aa92df13',1,'Acl::TypedOption::TypedOption()']]],
   ['typedoption_3c_20charactersetoptionvalue_20_3e_875',['TypedOption&lt; CharacterSetOptionValue &gt;',['../classAcl_1_1TypedOption.html',1,'Acl']]],
   ['typelabel_876',['typeLabel',['../classCommonPool.html#a8a9db541e6bd17b0c4ba95a5d31ebb34',1,'CommonPool']]],
   ['typelist_877',['typelist',['../cf__gen_8cc.html#adb295656c3d699a148afe1740c3e2264',1,'TypeList:&#160;cf_gen.cc'],['../classCachePeer.html#a28e677328934360f043df4f59a50e170',1,'CachePeer::typelist']]],
