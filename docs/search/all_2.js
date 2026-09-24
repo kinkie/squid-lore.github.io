@@ -852,7 +852,7 @@ var searchData=
   ['availableforold_849',['availableForOld',['../classAdaptation_1_1Icap_1_1ServiceRep.html#a22a20daf9d0f4fc1659f8650e9a95150',1,'Adaptation::Icap::ServiceRep']]],
   ['availableforswapout_850',['availableForSwapOut',['../classMemObject.html#a382aa4378a090d378b1ebe6a2d6fea51',1,'MemObject']]],
   ['availablepaths_851',['availablePaths',['../classResolvedPeers.html#a6e026223122fec05f2cfcb70edc79dd2',1,'ResolvedPeers']]],
-  ['avalue_852',['avalue',['../classSomethingToAlloc.html#a6a4283946968fa0eb123026fd7895d3e',1,'SomethingToAlloc::aValue'],['../classMoreToAlloc.html#ae5815fecc1730f4c4b678b85e8e645c2',1,'MoreToAlloc::aValue']]],
+  ['avalue_852',['avalue',['../classMoreToAlloc.html#ae5815fecc1730f4c4b678b85e8e645c2',1,'MoreToAlloc::aValue'],['../classSomethingToAlloc.html#a6a4283946968fa0eb123026fd7895d3e',1,'SomethingToAlloc::aValue']]],
   ['average_853',['average',['../structSquidConfig_1_1CommIncoming_1_1Measure.html#a481834ebb390432a3f37cd80dc6ea1a6',1,'SquidConfig::CommIncoming::Measure']]],
   ['average_5fselect_5ffd_5fperiod_854',['average_select_fd_period',['../classMgr_1_1IntervalActionData.html#ae5a2055b47bce021580a874d886b9d9c',1,'Mgr::IntervalActionData']]],
   ['avg_5fclient_5fhttp_5frequests_855',['avg_client_http_requests',['../classMgr_1_1InfoActionData.html#a6cd388e382197c9ee49986e140bef15f',1,'Mgr::InfoActionData']]],
