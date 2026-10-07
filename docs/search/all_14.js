@@ -1903,7 +1903,7 @@ var searchData=
   ['strand_2ecc_1900',['Strand.cc',['../Strand_8cc.html',1,'']]],
   ['strand_2eh_1901',['Strand.h',['../Strand_8h.html',1,'']]],
   ['strandaddrlabel_1902',['strandAddrLabel',['../namespaceIpc.html#a30e5917d89e6925f6c1d1f999e018ab8',1,'Ipc']]],
-  ['strandcoord_1903',['strandcoord',['../classIpc_1_1StrandCoord.html',1,'Ipc::StrandCoord'],['../classIpc_1_1StrandCoord.html#a6f6a4c2fdfd06326996124c75192a331',1,'Ipc::StrandCoord::StrandCoord(int akidId, pid_t aPid)'],['../classIpc_1_1StrandCoord.html#ab081b8086718c9b8dd0393e54781a89b',1,'Ipc::StrandCoord::StrandCoord()']]],
+  ['strandcoord_1903',['strandcoord',['../classIpc_1_1StrandCoord.html',1,'Ipc::StrandCoord'],['../classIpc_1_1StrandCoord.html#ab081b8086718c9b8dd0393e54781a89b',1,'Ipc::StrandCoord::StrandCoord()'],['../classIpc_1_1StrandCoord.html#a6f6a4c2fdfd06326996124c75192a331',1,'Ipc::StrandCoord::StrandCoord(int akidId, pid_t aPid)']]],
   ['strandcoord_2ecc_1904',['StrandCoord.cc',['../StrandCoord_8cc.html',1,'']]],
   ['strandcoord_2eh_1905',['StrandCoord.h',['../StrandCoord_8h.html',1,'']]],
   ['strandcoords_1906',['StrandCoords',['../namespaceIpc.html#ae2aa78ea0c280b4a4de315139f85376f',1,'Ipc']]],
