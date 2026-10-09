@@ -680,7 +680,7 @@ var searchData=
   ['tokentablessl_677',['TokenTableSsl',['../namespaceFormat.html#aa9569a713e45618e8ea355c9a6f234d3',1,'Format']]],
   ['tokentabletransport_678',['TokenTableTransport',['../namespaceFormat.html#a7973b278a17e17ce278a4e8b11ab39e1',1,'Format']]],
   ['tokentype_679',['tokentype',['../classFormat_1_1TokenTableEntry.html#a6987dab8ae42052b3fe12bfc9f0ced10',1,'Format::TokenTableEntry::tokenType'],['../classConfigParser.html#ae39193cea78c3d51cc5498fd0e1a361b',1,'ConfigParser::TokenType']]],
-  ['tolower_680',['tolower',['../util_8cc.html#ae36d9f4e225cef8125d10dc5d1cbb4cd',1,'Tolower():&#160;util.cc'],['../classSBuf.html#af401bcd9916279ffe7c73579f754706b',1,'SBuf::toLower()'],['../util_8h.html#aef258ff43eeff929155a240627a9817c',1,'Tolower(char *):&#160;util.cc'],['../SBuf_8h.html#a8dffd1178cecfcf4a199f1af5ca183cf',1,'ToLower(SBuf buf):&#160;SBuf.h']]],
+  ['tolower_680',['tolower',['../SBuf_8h.html#a8dffd1178cecfcf4a199f1af5ca183cf',1,'ToLower():&#160;SBuf.h'],['../classSBuf.html#af401bcd9916279ffe7c73579f754706b',1,'SBuf::toLower()'],['../util_8cc.html#ae36d9f4e225cef8125d10dc5d1cbb4cd',1,'Tolower(char *q):&#160;util.cc'],['../util_8h.html#aef258ff43eeff929155a240627a9817c',1,'Tolower(char *):&#160;util.cc']]],
   ['tomb_681',['toMB',['../group__MemPoolsAPI.html#gaa5654fb4b029cf27fe1ce5b5304698c0',1,'Pool.h']]],
   ['tomime_682',['toMime',['../classProxyProtocol_1_1Header.html#a1403cd35f45b87c6276db2d1f32fd2d4',1,'ProxyProtocol::Header']]],
   ['tonanoseconds_683',['ToNanoSeconds',['../cache__cf_8cc.html#a00be8b1347a21e8ec83fc8dd90503a93',1,'cache_cf.cc']]],
