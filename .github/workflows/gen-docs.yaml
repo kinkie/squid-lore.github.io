@@ -1,4 +1,6 @@
 name: Automatically build squid documentation
+# moved to https://github.com/squid-cache/code-reference.github.io
+# and disabled scheduled runs
 
 on:
 #  push:
@@ -6,8 +8,8 @@ on:
 #  pull_request:
 #    branches: [ "main" ]
   workflow_dispatch:
-  schedule:
-    - cron: '5 2 * * *'
+#  schedule:
+#    - cron: '5 2 * * *'
 
 permissions:
   contents: write
