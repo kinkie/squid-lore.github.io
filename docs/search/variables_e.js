@@ -69,7 +69,7 @@ var searchData=
   ['negotiateauthenticators_66',['negotiateauthenticators',['../auth_2negotiate_2Config_8cc.html#ade059e240d6c961337fc74c663245596',1,'Config.cc']]],
   ['negotiationtimeout_67',['negotiationTimeout',['../classSecurity_1_1PeerConnector.html#a9067ca35a7a4938ba31635dd25d8e55b',1,'Security::PeerConnector']]],
   ['neighbordumppeers_68',['neighborDumpPeers',['../neighbors_8cc.html#a4f2ef0cb3a2344aab8ecd924faf291a5',1,'neighbors.cc']]],
-  ['neighbors_5fdo_5fprivate_5fkeys_69',['neighbors_do_private_keys',['../globals_8h.html#a861395382bde6d6cab9fb54fade35809',1,'globals.h']]],
+  ['neighbors_5fdo_5fprivate_5fkeys_69',['neighbors_do_private_keys',['../globals_8h.html#aded99b41c0d68430b07e3b1c97254091',1,'globals.h']]],
   ['net_70',['net',['../classClassCBucket.html#a988cbe481c12b606e6e703924b0c2d4b',1,'ClassCBucket']]],
   ['net_5fdb_5fentry_71',['net_db_entry',['../classnet__db__name.html#a7cae8028ac88598775d36228e010aa45',1,'net_db_name']]],
   ['netbios_72',['netbios',['../structndstruct.html#a1aaaabdfd4f9b85ee68336d9d448be00',1,'ndstruct']]],

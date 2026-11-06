@@ -10,5 +10,6 @@ var redirect_8h =
     [ "redirectReconfigure", "redirect_8h.html#ac21ef1bbe139eda140c3fdb7dde74e95", null ],
     [ "redirectShutdown", "redirect_8h.html#adccfc54afca34fb4f27a31d41ae15803", null ],
     [ "redirectStart", "redirect_8h.html#a9a04b6a6da6734389e481b200d8c8dfb", null ],
+    [ "redirectUriIsValid", "redirect_8h.html#af9f0263fdba52d43b0c0637507e7dc54", null ],
     [ "storeIdStart", "redirect_8h.html#ab50124140836fb217c915fbf20c1bead", null ]
 ];

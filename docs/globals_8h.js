@@ -20,7 +20,7 @@ var globals_8h =
     [ "MultipartMsgBoundaryStr", "globals_8h.html#a56ca6d64961ab9f6b14f5fb4221d2c27", null ],
     [ "n_disk_objects", "globals_8h.html#a013db5de4a8f60839972780ffaa6fd86", null ],
     [ "NDnsServersAlloc", "globals_8h.html#acdaa0c7305c22a01d607275f98e5ae6d", null ],
-    [ "neighbors_do_private_keys", "globals_8h.html#a861395382bde6d6cab9fb54fade35809", null ],
+    [ "neighbors_do_private_keys", "globals_8h.html#aded99b41c0d68430b07e3b1c97254091", null ],
     [ "null_string", "globals_8h.html#a8a6c8d13b6170bf1847dd3921530489b", null ],
     [ "Number_FD", "globals_8h.html#a98f5a1948893a2c1835124c71de0b12a", null ],
     [ "Opening_FD", "globals_8h.html#a24061fe3ef1fd290d32ba7fc2e725207", null ],

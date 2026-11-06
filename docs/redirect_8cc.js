@@ -9,6 +9,7 @@ var redirect_8cc =
     [ "redirectShutdown", "redirect_8cc.html#adccfc54afca34fb4f27a31d41ae15803", null ],
     [ "redirectStart", "redirect_8cc.html#ac9db978c5757b982596418dd15cb6ba9", null ],
     [ "redirectStats", "redirect_8cc.html#a07761feabb76d92764e85d6685cbefa5", null ],
+    [ "redirectUriIsValid", "redirect_8cc.html#a55ba263d668db3ca04e30b2e0976f147", null ],
     [ "storeIdHandleReply", "redirect_8cc.html#a921e2181035ad12028018280d0eb4052", null ],
     [ "storeIdStart", "redirect_8cc.html#a7d5d0e17dcebbd0fc8ca8d1cf11f4a95", null ],
     [ "storeIdStats", "redirect_8cc.html#a4f0fc3856daa68331790fc179056e399", null ],
