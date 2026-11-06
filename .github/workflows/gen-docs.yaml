@@ -9,11 +9,25 @@ on:
   schedule:
     - cron: '5 2 * * *'
 
+permissions:
+  contents: write
+
 jobs:
   gen-docs:
     runs-on: ubuntu-24.04
 
     steps:
+      - name: Checkout Docs
+        uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
+
+      - name: Checkout Squid sources
+        uses: actions/checkout@v7
+        with:
+          repository: squid-cache/squid
+          path: squid
+
       - name: Install prerequisite Linux packages
         run: |
           # required for "apt-get build-dep" to work
@@ -21,18 +35,6 @@ jobs:
           sudo apt-get --quiet=2 update
           sudo apt-get --quiet=2 build-dep squid
           sudo apt-get --quiet=2 install libtool-bin doxygen graphviz pdf2svg
-
-
-      - name: Checkout Docs
-        uses: actions/checkout@v5
-        with:
-          token: ${{ secrets.PUSH_TOKEN }}
-
-      - name: Checkout Squid sources
-        uses: actions/checkout@v5
-        with:
-          repository: squid-cache/squid
-          path: squid
 
       - name: Prepare squid sources
         working-directory: squid
