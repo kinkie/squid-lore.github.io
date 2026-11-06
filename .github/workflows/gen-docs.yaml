@@ -28,7 +28,20 @@ jobs:
           repository: squid-cache/squid
           path: squid
 
+      - name: Check for freshness
+        id: fresh
+        run: |
+          # if we are newer than squid sources, bail
+          ourts=$(git log -1 --format="%at")
+          squidts=$(cd squid; git log -1 --format="%at")
+          if [ "$ourts" -le "$squidts" ] ; then
+              echo "doit=false" >>$GITHUB_OUTPUT
+          else
+              echo "doit=true" >>$GITHUB_OUTPUT
+          fi
+
       - name: Install prerequisite Linux packages
+        if: ${{ steps.fresh.output.doit == 'true' }}
         run: |
           # required for "apt-get build-dep" to work
           sudo sed --in-place -E 's/^(Types: deb)$/\1 deb-src/' /etc/apt/sources.list.d/ubuntu.sources
@@ -37,6 +50,7 @@ jobs:
           sudo apt-get --quiet=2 install libtool-bin doxygen graphviz pdf2svg
 
       - name: Prepare squid sources
+        if: ${{ steps.fresh.output.doit == 'true' }}
         working-directory: squid
         run: |
           ./bootstrap.sh
@@ -44,10 +58,12 @@ jobs:
           eval ./configure $DISTCHECK_CONFIGURE_FLAGS
 
       - name: Build programming guide
+        if: ${{ steps.fresh.output.doit == 'true' }}
         run: |
           doxygen doxyfile
 
       - name: update self
+        if: ${{ steps.fresh.output.doit == 'true' }}
         uses: EndBug/add-and-commit@v9
         with:
           message: "automated update"
