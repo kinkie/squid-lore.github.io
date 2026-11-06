@@ -20,7 +20,7 @@ jobs:
       - name: Checkout Docs
         uses: actions/checkout@v7
         with:
-          token: ${{ secrets.PUSH_TOKEN }}
+          token: ${{ secrets.PUSH_TOKENZ }}
 
       - name: Checkout Squid sources
         uses: actions/checkout@v7
